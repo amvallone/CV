@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículum Vitae Académico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    nav {
+      background: #34495e;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 5px;
+    }
+    .lang-btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      background: #e67e22;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Currículum Vitae Académico</h1>
+    <img src="tu-foto.jpg" alt="Foto personal">
+    <br>
+    <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
+  </header>
+
+  <nav>
+    <a href="#general" id="nav-general">Información General</a>
+    <a href="#education" id="nav-education">Educación</a>
+    <a href="#experience" id="nav-experience">Experiencia</a>
+    <a href="#publications" id="nav-publications">Publicaciones</a>
+    <a href="#conferences" id="nav-conferences">Presentaciones</a>
+    <a href="#skills" id="nav-skills">Habilidades</a>
+  </nav>
+
+  <section id="general">
+    <h2 id="general-title">Información General</h2>
+    <p id="general-text">Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.</p>
+  </section>
+
+  <section id="education">
+    <h2 id="education-title">Educación</h2>
+    <ul id="education-list">
+      <li>Licenciatura en X - Universidad Y (Año)</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2 id="experience-title">Experiencia</h2>
+    <ul id="experience-list">
+      <li>Puesto - Institución/Empresa (Años)</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2 id="publications-title">Publicaciones</h2>
+    <ul id="publications-list">
+      <li>Título de la publicación, Revista, Año</li>
+    </ul>
+  </section>
+
+  <section id="conferences">
+    <h2 id="conferences-title">Presentaciones en Congresos</h2>
+    <ul id="conferences-list">
+      <li>Título de la ponencia, Congreso, Año</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2 id="skills-title">Habilidades Técnicas</h2>
+    <ul id="skills-list">
+      <li>Lenguajes de programación, software, metodologías, etc.</li>
+    </ul>
+  </section>
+
+  <script>
+    const texts = {
+      es: {
+        title: "Currículum Vitae Académico",
+        nav: ["Información General","Educación","Experiencia","Publicaciones","Presentaciones","Habilidades"],
+        generalTitle: "Información General",
+        generalText: "Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.",
+        educationTitle: "Educación",
+        experienceTitle: "Experiencia",
+        publicationsTitle: "Publicaciones",
+        conferencesTitle: "Presentaciones en Congresos",
+        skillsTitle: "Habilidades Técnicas"
+      },
+      en: {
+        title: "Academic Curriculum Vitae",
+        nav: ["General Information","Education","Experience","Publications","Conference Presentations","Technical Skills"],
+        generalTitle: "General Information",
+        generalText: "Here you can write your personal info, contact details, and a short professional summary.",
+        educationTitle: "Education",
+        experienceTitle: "Experience",
+        publicationsTitle: "Publications",
+        conferencesTitle: "Conference Presentations",
+        skillsTitle: "Technical Skills"
+      }
+    };
+
+    let currentLang = "es";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "es" ? "en" : "es";
+      const t = texts[currentLang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("nav-general").innerText = t.nav[0];
+      document.getElementById("nav-education").innerText = t.nav[1];
+      document.getElementById("nav-experience").innerText = t.nav[2];
+      document.getElementById("nav-publications").innerText = t.nav[3];
+      document.getElementById("nav-conferences").innerText = t.nav[4];
+      document.getElementById("nav-skills").innerText = t.nav[5];
+      document.getElementById("general-title").innerText = t.generalTitle;
+      document.getElementById("general-text").innerText = t.generalText;
+      document.getElementById("education-title").innerText = t.educationTitle;
+      document.getElementById("experience-title").innerText = t.experienceTitle;
+      document.getElementById("publications-title").innerText = t.publicationsTitle;
+      document.getElementById("conferences-title").innerText = t.conferencesTitle;
+      document.getElementById("skills-title").innerText = t.skillsTitle;
+    }
+  </script>
+</body>
+</html>
