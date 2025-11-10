@@ -23,23 +23,13 @@
       color: #333;
       line-height: 1.5;
     }
-
-    /* animación suave */
     .fade-in {
       animation: fadeInUp 0.6s ease;
     }
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* CABECERA */
     header {
       background: var(--card);
       padding: 20px 20px 10px 20px;
@@ -153,12 +143,12 @@
       padding-bottom: 5px;
       margin-bottom: 15px;
     }
+
+    /* EDUCACIÓN */
     ul {
       padding-left: 0;
       list-style: none;
     }
-
-    /* EDUCACIÓN CON ICONO BIRRETE */
     .edu-item {
       display: flex;
       gap: 10px;
@@ -279,7 +269,6 @@
         </a>
       </div>
       <h1 id="title">Curriullum Vitae Andres Marcelo Vallone</h1>
-      <!-- Resumen bilingüe -->
       <p class="summary" id="summary-text">
         Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.
       </p>
@@ -299,7 +288,6 @@
 
   <section id="general" class="fade-in">
     <h2 id="general-title">Información General</h2>
-    <!-- Aquí puedes colocar más detalles personales -->
     <p id="general-text">
       Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.
     </p>
@@ -307,112 +295,45 @@
 
   <section id="education" class="fade-in">
     <h2 id="education-title">Educación</h2>
-    <ul id="education-list">
-      <!-- Reemplaza estos <li> con tus grados reales -->
-      <li class="edu-item">
-        <div class="edu-icon">
-          <!-- icono birrete -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
-            <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
-          </svg>
-        </div>
-        <div class="edu-content">
-          <strong>Doctorado en X</strong> – Universidad Y <!-- coloca el nombre real -->
-          <br />
-          <small>2018 – 2022</small>
-        </div>
-      </li>
-      <li class="edu-item">
-        <div class="edu-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
-            <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
-          </svg>
-        </div>
-        <div class="edu-content">
-          <strong>Magíster en Gestión</strong> – Universidad Z
-          <br />
-          <small>2014 – 2016</small>
-        </div>
-      </li>
-    </ul>
+    <ul id="education-list"></ul>
   </section>
 
   <section id="experience" class="fade-in">
     <h2 id="experience-title">Experiencia</h2>
-    <ul id="experience-list">
-      <!-- Agrega tu experiencia aquí -->
-      <li>Puesto - Institución/Empresa (Años)</li>
-    </ul>
+    <ul id="experience-list"></ul>
   </section>
 
   <section id="publications" class="fade-in">
     <h2 id="publications-title">Publicaciones</h2>
     <p style="font-size:0.8rem;color:#555;margin-top:-5px;">
-      <!-- Aquí indico dónde pegar el BibTeX -->
       <!-- Pega tus entradas BibTeX en la constante "bibtexData" dentro del script -->
     </p>
-    <ul id="publications-list">
-      <!-- se llena desde JS -->
-    </ul>
+    <ul id="publications-list"></ul>
   </section>
 
   <section id="conferences" class="fade-in">
     <h2 id="conferences-title">Presentaciones en Congresos</h2>
-    <ul id="conferences-list">
-      <li>Título de la ponencia, Congreso, Año</li>
-    </ul>
+    <ul id="conferences-list"></ul>
   </section>
 
   <section id="skills" class="fade-in">
     <h2 id="skills-title">Capacidades</h2>
-    <div class="skills-grid">
-      <div class="skill-card" id="skill-languages">
-        <h3>Idiomas</h3>
-        <ul>
-          <!-- Cambia por tus idiomas -->
-          <li>Español (nativo)</li>
-          <li>Inglés (avanzado)</li>
-          <li>Portugués (intermedio)</li>
-        </ul>
-      </div>
-      <div class="skill-card" id="skill-programming">
-        <h3>Programación</h3>
-        <ul>
-          <!-- Cambia por lo que programas -->
-          <li>R (indicadores compuestos, COINr)</li>
-          <li>Python (data cleaning)</li>
-          <li>HTML/CSS</li>
-        </ul>
-      </div>
-      <div class="skill-card" id="skill-other">
-        <h3>Otras competencias</h3>
-        <ul>
-          <li>Diseño de programas de doctorado</li>
-          <li>Docencia universitaria</li>
-          <li>Gestión de proyectos</li>
-        </ul>
-      </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- Se llena por JS según idioma -->
     </div>
   </section>
 
   <section id="awards" class="fade-in">
-    <h2>Becas y Premios</h2>
-    <!-- Aquí agregas tus becas -->
-    <div class="award-item">
-      <strong>Beca de investigación UCN</strong> – Proyecto sobre innovación regional
-      <br />
-      <small>2023</small>
-    </div>
-    <div class="award-item">
-      <strong>Premio a la docencia destacada</strong> – Escuela de Ciencias Empresariales
-      <br />
-      <small>2022</small>
-    </div>
+    <h2 id="awards-title">Becas y Premios</h2>
+    <div id="awards-list"></div>
   </section>
 
   <script>
-    /* Textos bilingües, ahora también para el resumen */
-    const texts = {
+    /*
+      Aquí centralizamos TODO el contenido en español e inglés.
+      Reemplaza el contenido de cada array por tu información real en ambos idiomas.
+    */
+    const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
         nav: ["Información General","Educación","Experiencia","Publicaciones","Presentaciones","Capacidades","Becas y Premios"],
@@ -420,30 +341,206 @@
         generalText: "Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.",
         summary: "Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.",
         educationTitle: "Educación",
+        education: [
+          {
+            degree: "Doctorado en X",
+            institution: "Universidad Y",
+            years: "2018 – 2022"
+          },
+          {
+            degree: "Magíster en Gestión",
+            institution: "Universidad Z",
+            years: "2014 – 2016"
+          }
+          // <!-- agrega más objetos aquí en español -->
+        ],
         experienceTitle: "Experiencia",
+        experience: [
+          {
+            role: "Profesor Asociado",
+            place: "Escuela de Ciencias Empresariales, UCN",
+            years: "2019 – presente"
+          },
+          {
+            role: "Coordinador de Programa",
+            place: "Doctorado en Ciencias Empresariales",
+            years: "2023 – presente"
+          }
+        ],
         publicationsTitle: "Publicaciones",
         conferencesTitle: "Presentaciones en Congresos",
+        conferences: [
+          { title: "Gobernanza del transporte público en la conurbación La Serena–Coquimbo", event: "Congreso X", year: "2024" }
+        ],
         skillsTitle: "Capacidades",
+        skills: {
+          languagesTitle: "Idiomas",
+          languages: ["Español (nativo)", "Inglés (avanzado)", "Portugués (intermedio)"],
+          programmingTitle: "Programación",
+          programming: ["R (COINr, indicadores compuestos)", "Python (procesamiento de datos)", "HTML/CSS"],
+          otherTitle: "Otras competencias",
+          other: ["Diseño de programas de doctorado","Docencia universitaria","Gestión de proyectos"]
+        },
+        awardsTitle: "Becas y Premios",
+        awards: [
+          {
+            name: "Beca de investigación UCN",
+            description: "Proyecto sobre innovación regional",
+            year: "2023"
+          },
+          {
+            name: "Premio a la docencia destacada",
+            description: "Escuela de Ciencias Empresariales",
+            year: "2022"
+          }
+        ]
       },
       en: {
         title: "Curriculum Vitae Andres Marcelo Vallone",
         nav: ["General Information","Education","Experience","Publications","Conference Presentations","Skills","Scholarships & Awards"],
         generalTitle: "General Information",
-        generalText: "Here you can write your personal info, contact details, and a short professional summary.",
-        summary: "Academic and researcher in business sciences, with experience in university teaching, postgraduate program development, and project management. Interests in innovation, entrepreneurship, and regional development.",
+        generalText: "Here you can write your personal information, contact details and a short professional profile.",
+        summary: "Academic and researcher in business sciences, with experience in university teaching, postgraduate program development and project management. Interests in innovation, entrepreneurship and regional development.",
         educationTitle: "Education",
+        education: [
+          {
+            degree: "PhD in X",
+            institution: "University Y",
+            years: "2018 – 2022"
+          },
+          {
+            degree: "Master in Management",
+            institution: "University Z",
+            years: "2014 – 2016"
+          }
+          // <!-- agrega más objetos aquí en inglés -->
+        ],
         experienceTitle: "Experience",
+        experience: [
+          {
+            role: "Associate Professor",
+            place: "School of Business Sciences, UCN",
+            years: "2019 – present"
+          },
+          {
+            role: "Program Coordinator",
+            place: "PhD in Business Sciences",
+            years: "2023 – present"
+          }
+        ],
         publicationsTitle: "Publications",
         conferencesTitle: "Conference Presentations",
+        conferences: [
+          { title: "Public transport governance in La Serena–Coquimbo", event: "Congress X", year: "2024" }
+        ],
         skillsTitle: "Skills",
+        skills: {
+          languagesTitle: "Languages",
+          languages: ["Spanish (native)", "English (advanced)", "Portuguese (intermediate)"],
+          programmingTitle: "Programming",
+          programming: ["R (COINr, composite indicators)", "Python (data processing)", "HTML/CSS"],
+          otherTitle: "Other competencies",
+          other: ["Doctoral program design","University teaching","Project management"]
+        },
+        awardsTitle: "Scholarships & Awards",
+        awards: [
+          {
+            name: "UCN Research Scholarship",
+            description: "Project on regional innovation",
+            year: "2023"
+          },
+          {
+            name: "Outstanding Teaching Award",
+            description: "School of Business Sciences",
+            year: "2022"
+          }
+        ]
       }
     };
 
     let currentLang = "es";
 
+    function renderEducation(lang) {
+      const list = document.getElementById("education-list");
+      list.innerHTML = "";
+      content[lang].education.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "edu-item";
+        li.innerHTML = `
+          <div class="edu-icon">
+            <!-- icono birrete -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
+              <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
+            </svg>
+          </div>
+          <div class="edu-content">
+            <strong>${item.degree}</strong> – ${item.institution}<br>
+            <small>${item.years}</small>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function renderExperience(lang) {
+      const list = document.getElementById("experience-list");
+      list.innerHTML = "";
+      content[lang].experience.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.role} – ${item.place} (${item.years})`;
+        list.appendChild(li);
+      });
+    }
+
+    function renderConferences(lang) {
+      const list = document.getElementById("conferences-list");
+      list.innerHTML = "";
+      content[lang].conferences.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.title}, ${item.event}, ${item.year}`;
+        list.appendChild(li);
+      });
+    }
+
+    function renderSkills(lang) {
+      const container = document.getElementById("skills-grid");
+      container.innerHTML = "";
+      const s = content[lang].skills;
+
+      const card1 = document.createElement("div");
+      card1.className = "skill-card";
+      card1.innerHTML = `<h3>${s.languagesTitle}</h3><ul>${s.languages.map(i => `<li>${i}</li>`).join("")}</ul>`;
+
+      const card2 = document.createElement("div");
+      card2.className = "skill-card";
+      card2.innerHTML = `<h3>${s.programmingTitle}</h3><ul>${s.programming.map(i => `<li>${i}</li>`).join("")}</ul>`;
+
+      const card3 = document.createElement("div");
+      card3.className = "skill-card";
+      card3.innerHTML = `<h3>${s.otherTitle}</h3><ul>${s.other.map(i => `<li>${i}</li>`).join("")}</ul>`;
+
+      container.appendChild(card1);
+      container.appendChild(card2);
+      container.appendChild(card3);
+    }
+
+    function renderAwards(lang) {
+      document.getElementById("awards-title").innerText = content[lang].awardsTitle;
+      const container = document.getElementById("awards-list");
+      container.innerHTML = "";
+      content[lang].awards.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "award-item";
+        div.innerHTML = `<strong>${a.name}</strong> – ${a.description}<br><small>${a.year}</small>`;
+        container.appendChild(div);
+      });
+    }
+
     function toggleLanguage() {
       currentLang = currentLang === "es" ? "en" : "es";
-      const t = texts[currentLang];
+      const t = content[currentLang];
+
+      // títulos y textos simples
       document.getElementById("title").innerText = t.title;
       document.getElementById("nav-general").innerText = t.nav[0];
       document.getElementById("nav-education").innerText = t.nav[1];
@@ -452,30 +549,28 @@
       document.getElementById("nav-conferences").innerText = t.nav[4];
       document.getElementById("nav-skills").innerText = t.nav[5];
       document.getElementById("nav-awards").innerText = t.nav[6];
+
       document.getElementById("general-title").innerText = t.generalTitle;
       document.getElementById("general-text").innerText = t.generalText;
+      document.getElementById("summary-text").innerText = t.summary;
       document.getElementById("education-title").innerText = t.educationTitle;
       document.getElementById("experience-title").innerText = t.experienceTitle;
       document.getElementById("publications-title").innerText = t.publicationsTitle;
       document.getElementById("conferences-title").innerText = t.conferencesTitle;
       document.getElementById("skills-title").innerText = t.skillsTitle;
-      document.getElementById("summary-text").innerText = t.summary;
+
+      // listas dependientes de idioma
+      renderEducation(currentLang);
+      renderExperience(currentLang);
+      renderConferences(currentLang);
+      renderSkills(currentLang);
+      renderAwards(currentLang);
     }
 
     /*
       ==== PUBLICACIONES DESDE BIBTEX ====
-      Aquí pegas tus entradas BibTeX.
-      Por ejemplo:
-
-      @article{vallone2024,
-        title={Measuring innovation in coastal regions},
-        author={Vallone, Andres M. and Perez, L.},
-        journal={Journal of Coastal Development},
-        year={2024},
-        doi={10.1016/j.jcd.2024.01.001}
-      }
-
-      Puedes pegar varias, una debajo de otra.
+      Pega aquí tus entradas BibTeX.
+      Se muestran igual para ambos idiomas (el formato BibTeX es el mismo).
     */
     const bibtexData = `
 @article{vallone2024,
@@ -493,7 +588,6 @@
 }
 `;
 
-    // Parser sencillo para BibTeX
     function parseBibtex(bibtex) {
       const entries = bibtex.split('@').filter(x => x.trim().length > 0);
       return entries.map(raw => {
@@ -517,11 +611,7 @@
             fields[fieldName] = fieldVal;
           }
         });
-        return {
-          type,
-          key,
-          ...fields
-        };
+        return { type, key, ...fields };
       });
     }
 
@@ -531,8 +621,6 @@
       const pubs = parseBibtex(bibtexData);
       pubs.forEach(pub => {
         const li = document.createElement('li');
-
-        // icono de hoja
         const icon = document.createElement('div');
         icon.className = 'pub-icon';
         icon.innerHTML = `
@@ -540,23 +628,25 @@
             <path d="M6 2C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V9l-5-5H6zm7 1.5L17.5 8H13V3.5z"/>
           </svg>
         `;
-
-        const content = document.createElement('div');
+        const contentDiv = document.createElement('div');
         const title = pub.title || '(Sin título)';
         const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
         const source = pub.journal || pub.booktitle || '';
         const year = pub.year ? ` (${pub.year})` : '';
         const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
-
-        content.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
-
+        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
         li.appendChild(icon);
-        li.appendChild(content);
+        li.appendChild(contentDiv);
         list.appendChild(li);
       });
     }
 
-    // Render inicial
+    // Render inicial en español
+    renderEducation("es");
+    renderExperience("es");
+    renderConferences("es");
+    renderSkills("es");
+    renderAwards("es");
     renderPublications();
   </script>
 </body>
