@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Curriullum Vitae Andres Marcelo Vallone</title>
   <style>
     :root {
@@ -11,15 +11,35 @@
       --secondary: #34495e;
       --accent: #e67e22;
       --card: #ffffff;
+      --soft: rgba(44, 62, 80, 0.06);
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
       background: var(--bg);
       color: #333;
+      line-height: 1.5;
     }
-    /* CABECERA NUEVA EN DOS COLUMNAS */
+
+    /* animación suave */
+    .fade-in {
+      animation: fadeInUp 0.6s ease;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* CABECERA */
     header {
       background: var(--card);
       padding: 20px 20px 10px 20px;
@@ -37,9 +57,10 @@
     .header-photo img {
       width: 150px;
       height: 150px;
-      border-radius: 10px;
+      border-radius: 12px;
       object-fit: cover;
       border: 3px solid var(--primary);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
     .header-content {
       flex: 1;
@@ -52,6 +73,7 @@
       gap: 15px;
       align-items: center;
       margin-bottom: 6px;
+      flex-wrap: wrap;
     }
     .contact-icon {
       display: inline-flex;
@@ -60,6 +82,11 @@
       text-decoration: none;
       color: #555;
       font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+    .contact-icon:hover {
+      transform: translateY(-1px);
+      color: #000;
     }
     .contact-icon svg {
       width: 14px;
@@ -73,7 +100,13 @@
     .summary {
       margin-top: 8px;
       font-size: 0.95rem;
-      line-height: 1.4;
+      background: var(--soft);
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .summary:hover {
+      background: rgba(44, 62, 80, 0.08);
     }
     .lang-btn {
       margin-top: 10px;
@@ -84,12 +117,19 @@
       cursor: pointer;
       border-radius: 5px;
       font-size: 0.75rem;
+      transition: transform 0.15s ease;
+    }
+    .lang-btn:hover {
+      transform: translateY(-1px);
     }
 
     nav {
       background: var(--secondary);
       padding: 10px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     nav a {
       color: white;
@@ -97,26 +137,112 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 0.9rem;
+      transition: opacity 0.15s ease;
     }
+    nav a:hover {
+      opacity: 0.75;
+    }
+
     section {
       padding: 20px;
       max-width: 900px;
       margin: auto;
-      background: transparent;
     }
     h2 {
       border-bottom: 2px solid var(--primary);
       padding-bottom: 5px;
+      margin-bottom: 15px;
     }
     ul {
-      padding-left: 18px;
-    }
-    /* lista de publicaciones generada */
-    #publications-list li {
-      margin-bottom: 6px;
+      padding-left: 0;
+      list-style: none;
     }
 
-    /* Responsive */
+    /* EDUCACIÓN CON ICONO BIRRETE */
+    .edu-item {
+      display: flex;
+      gap: 10px;
+      background: white;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      align-items: flex-start;
+    }
+    .edu-icon {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+    }
+    .edu-content small {
+      color: #666;
+      font-size: 0.73rem;
+    }
+
+    /* PUBLICACIONES */
+    #publications-list li {
+      display: flex;
+      gap: 10px;
+      background: white;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      align-items: flex-start;
+      transition: transform 0.1s ease;
+    }
+    #publications-list li:hover {
+      transform: translateX(2px);
+    }
+    .pub-icon {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+    }
+
+    /* CAPACIDADES */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .skill-card h3 {
+      margin-top: 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .skill-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .skill-card li {
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    /* BECAS Y PREMIOS */
+    .award-item {
+      background: white;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--accent);
+    }
+    .award-item small {
+      color: #666;
+      font-size: 0.7rem;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 700px) {
       header {
         flex-direction: column;
@@ -133,13 +259,14 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="fade-in">
     <div class="header-photo">
-      <img src="tu-foto.jpg" alt="Foto personal">
+      <!-- Reemplaza "tu-foto.jpg" por tu foto real -->
+      <img src="tu-foto.jpg" alt="Foto personal" />
     </div>
     <div class="header-content">
-      <!-- línea pequeña de información -->
       <div class="header-topline">
+        <!-- Cambia los datos de contacto aquí -->
         <a class="contact-icon" href="mailto:correo@ejemplo.cl" title="Enviar correo">
           <!-- icono mail -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -152,7 +279,8 @@
         </a>
       </div>
       <h1 id="title">Curriullum Vitae Andres Marcelo Vallone</h1>
-      <p class="summary" id="general-text-top">
+      <!-- Resumen bilingüe -->
+      <p class="summary" id="summary-text">
         Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.
       </p>
       <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
@@ -165,78 +293,149 @@
     <a href="#experience" id="nav-experience">Experiencia</a>
     <a href="#publications" id="nav-publications">Publicaciones</a>
     <a href="#conferences" id="nav-conferences">Presentaciones</a>
-    <a href="#skills" id="nav-skills">Habilidades</a>
+    <a href="#skills" id="nav-skills">Capacidades</a>
+    <a href="#awards" id="nav-awards">Becas y Premios</a>
   </nav>
 
-  <section id="general">
+  <section id="general" class="fade-in">
     <h2 id="general-title">Información General</h2>
+    <!-- Aquí puedes colocar más detalles personales -->
     <p id="general-text">
       Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.
     </p>
   </section>
 
-  <section id="education">
+  <section id="education" class="fade-in">
     <h2 id="education-title">Educación</h2>
     <ul id="education-list">
-      <li>Licenciatura en X - Universidad Y (Año)</li>
+      <!-- Reemplaza estos <li> con tus grados reales -->
+      <li class="edu-item">
+        <div class="edu-icon">
+          <!-- icono birrete -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
+            <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
+          </svg>
+        </div>
+        <div class="edu-content">
+          <strong>Doctorado en X</strong> – Universidad Y <!-- coloca el nombre real -->
+          <br />
+          <small>2018 – 2022</small>
+        </div>
+      </li>
+      <li class="edu-item">
+        <div class="edu-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
+            <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
+          </svg>
+        </div>
+        <div class="edu-content">
+          <strong>Magíster en Gestión</strong> – Universidad Z
+          <br />
+          <small>2014 – 2016</small>
+        </div>
+      </li>
     </ul>
   </section>
 
-  <section id="experience">
+  <section id="experience" class="fade-in">
     <h2 id="experience-title">Experiencia</h2>
     <ul id="experience-list">
+      <!-- Agrega tu experiencia aquí -->
       <li>Puesto - Institución/Empresa (Años)</li>
     </ul>
   </section>
 
-  <section id="publications">
+  <section id="publications" class="fade-in">
     <h2 id="publications-title">Publicaciones</h2>
     <p style="font-size:0.8rem;color:#555;margin-top:-5px;">
-      (Edita el bloque <code>bibtexData</code> en el script para añadir o actualizar tus publicaciones.)
+      <!-- Aquí indico dónde pegar el BibTeX -->
+      <!-- Pega tus entradas BibTeX en la constante "bibtexData" dentro del script -->
     </p>
     <ul id="publications-list">
-      <!-- Se llena automáticamente desde BibTeX -->
+      <!-- se llena desde JS -->
     </ul>
   </section>
 
-  <section id="conferences">
+  <section id="conferences" class="fade-in">
     <h2 id="conferences-title">Presentaciones en Congresos</h2>
     <ul id="conferences-list">
       <li>Título de la ponencia, Congreso, Año</li>
     </ul>
   </section>
 
-  <section id="skills">
-    <h2 id="skills-title">Habilidades Técnicas</h2>
-    <ul id="skills-list">
-      <li>Lenguajes de programación, software, metodologías, etc.</li>
-    </ul>
+  <section id="skills" class="fade-in">
+    <h2 id="skills-title">Capacidades</h2>
+    <div class="skills-grid">
+      <div class="skill-card" id="skill-languages">
+        <h3>Idiomas</h3>
+        <ul>
+          <!-- Cambia por tus idiomas -->
+          <li>Español (nativo)</li>
+          <li>Inglés (avanzado)</li>
+          <li>Portugués (intermedio)</li>
+        </ul>
+      </div>
+      <div class="skill-card" id="skill-programming">
+        <h3>Programación</h3>
+        <ul>
+          <!-- Cambia por lo que programas -->
+          <li>R (indicadores compuestos, COINr)</li>
+          <li>Python (data cleaning)</li>
+          <li>HTML/CSS</li>
+        </ul>
+      </div>
+      <div class="skill-card" id="skill-other">
+        <h3>Otras competencias</h3>
+        <ul>
+          <li>Diseño de programas de doctorado</li>
+          <li>Docencia universitaria</li>
+          <li>Gestión de proyectos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" class="fade-in">
+    <h2>Becas y Premios</h2>
+    <!-- Aquí agregas tus becas -->
+    <div class="award-item">
+      <strong>Beca de investigación UCN</strong> – Proyecto sobre innovación regional
+      <br />
+      <small>2023</small>
+    </div>
+    <div class="award-item">
+      <strong>Premio a la docencia destacada</strong> – Escuela de Ciencias Empresariales
+      <br />
+      <small>2022</small>
+    </div>
   </section>
 
   <script>
-    /* Textos bilingües */
+    /* Textos bilingües, ahora también para el resumen */
     const texts = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
-        nav: ["Información General","Educación","Experiencia","Publicaciones","Presentaciones","Habilidades"],
+        nav: ["Información General","Educación","Experiencia","Publicaciones","Presentaciones","Capacidades","Becas y Premios"],
         generalTitle: "Información General",
         generalText: "Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.",
+        summary: "Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.",
         educationTitle: "Educación",
         experienceTitle: "Experiencia",
         publicationsTitle: "Publicaciones",
         conferencesTitle: "Presentaciones en Congresos",
-        skillsTitle: "Habilidades Técnicas"
+        skillsTitle: "Capacidades",
       },
       en: {
         title: "Curriculum Vitae Andres Marcelo Vallone",
-        nav: ["General Information","Education","Experience","Publications","Conference Presentations","Technical Skills"],
+        nav: ["General Information","Education","Experience","Publications","Conference Presentations","Skills","Scholarships & Awards"],
         generalTitle: "General Information",
         generalText: "Here you can write your personal info, contact details, and a short professional summary.",
+        summary: "Academic and researcher in business sciences, with experience in university teaching, postgraduate program development, and project management. Interests in innovation, entrepreneurship, and regional development.",
         educationTitle: "Education",
         experienceTitle: "Experience",
         publicationsTitle: "Publications",
         conferencesTitle: "Conference Presentations",
-        skillsTitle: "Technical Skills"
+        skillsTitle: "Skills",
       }
     };
 
@@ -252,6 +451,7 @@
       document.getElementById("nav-publications").innerText = t.nav[3];
       document.getElementById("nav-conferences").innerText = t.nav[4];
       document.getElementById("nav-skills").innerText = t.nav[5];
+      document.getElementById("nav-awards").innerText = t.nav[6];
       document.getElementById("general-title").innerText = t.generalTitle;
       document.getElementById("general-text").innerText = t.generalText;
       document.getElementById("education-title").innerText = t.educationTitle;
@@ -259,11 +459,14 @@
       document.getElementById("publications-title").innerText = t.publicationsTitle;
       document.getElementById("conferences-title").innerText = t.conferencesTitle;
       document.getElementById("skills-title").innerText = t.skillsTitle;
+      document.getElementById("summary-text").innerText = t.summary;
     }
 
     /*
       ==== PUBLICACIONES DESDE BIBTEX ====
-      Pon aquí tus entradas BibTeX. Ejemplo:
+      Aquí pegas tus entradas BibTeX.
+      Por ejemplo:
+
       @article{vallone2024,
         title={Measuring innovation in coastal regions},
         author={Vallone, Andres M. and Perez, L.},
@@ -271,7 +474,8 @@
         year={2024},
         doi={10.1016/j.jcd.2024.01.001}
       }
-      Puedes pegar varias una detrás de otra.
+
+      Puedes pegar varias, una debajo de otra.
     */
     const bibtexData = `
 @article{vallone2024,
@@ -289,7 +493,7 @@
 }
 `;
 
-    // Parser sencillo (no cubre todos los casos de BibTeX muy complejos)
+    // Parser sencillo para BibTeX
     function parseBibtex(bibtex) {
       const entries = bibtex.split('@').filter(x => x.trim().length > 0);
       return entries.map(raw => {
@@ -301,7 +505,6 @@
         const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
 
         const fields = {};
-        // separa por líneas
         fieldsStr.split('\n').forEach(line => {
           line = line.trim();
           if (!line || line.startsWith('%')) return;
@@ -309,14 +512,11 @@
           if (eq > -1) {
             const fieldName = line.substring(0, eq).trim().toLowerCase();
             let fieldVal = line.substring(eq + 1).trim();
-            // quita comas finales
             if (fieldVal.endsWith(',')) fieldVal = fieldVal.slice(0, -1);
-            // quita llaves o comillas
             fieldVal = fieldVal.replace(/^{|}$/g, '').replace(/^"|"$/g, '');
             fields[fieldName] = fieldVal;
           }
         });
-
         return {
           type,
           key,
@@ -331,12 +531,27 @@
       const pubs = parseBibtex(bibtexData);
       pubs.forEach(pub => {
         const li = document.createElement('li');
+
+        // icono de hoja
+        const icon = document.createElement('div');
+        icon.className = 'pub-icon';
+        icon.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
+            <path d="M6 2C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V9l-5-5H6zm7 1.5L17.5 8H13V3.5z"/>
+          </svg>
+        `;
+
+        const content = document.createElement('div');
         const title = pub.title || '(Sin título)';
         const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
         const source = pub.journal || pub.booktitle || '';
         const year = pub.year ? ` (${pub.year})` : '';
         const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
-        li.textContent = `${authors ? authors + '. ' : ''}"${title}." ${source}${year}.${doi}`;
+
+        content.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
+
+        li.appendChild(icon);
+        li.appendChild(content);
         list.appendChild(li);
       });
     }
