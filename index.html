@@ -622,4 +622,145 @@
       content[lang].awards.forEach(a => {
         const div = document.createElement("div");
         div.className = "award-item";
-        div.innerHTML = `<strong>${a.name}</strong> – ${a.descrip
+        div.innerHTML = `<strong>${a.name}</strong> – ${a.description}<br><small>${a.year}</small>`;
+        container.appendChild(div);
+      });
+    }
+
+    function renderProjects(lang) {
+      document.getElementById("projects-title").innerText = content[lang].projectsTitle;
+      const list = document.getElementById("projects-list");
+      list.innerHTML = "";
+      content[lang].projects.forEach(p => {
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
+              <path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${p.title}</strong><br>
+            ${p.role ? p.role + ". " : ""}${p.period ? p.period + ". " : ""}${p.funding ? p.funding : ""}
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "es" ? "en" : "es";
+      const t = content[currentLang];
+
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("nav-general").innerText = t.nav[0];
+      document.getElementById("nav-education").innerText = t.nav[1];
+      document.getElementById("nav-experience").innerText = t.nav[2];
+      document.getElementById("nav-publications").innerText = t.nav[3];
+      document.getElementById("nav-projects").innerText = t.nav[4];
+      document.getElementById("nav-conferences").innerText = t.nav[5];
+      document.getElementById("nav-skills").innerText = t.nav[6];
+      document.getElementById("nav-awards").innerText = t.nav[7];
+
+      document.getElementById("general-title").innerText = t.generalTitle;
+      document.getElementById("general-text").innerText = t.generalText;
+      document.getElementById("summary-text").innerText = t.summary;
+      document.getElementById("education-title").innerText = t.educationTitle;
+      document.getElementById("experience-title").innerText = t.experienceTitle;
+      document.getElementById("publications-title").innerText = t.publicationsTitle;
+      document.getElementById("skills-title").innerText = t.skillsTitle;
+
+      renderEducation(currentLang);
+      renderTeachingExperience(currentLang);
+      renderOtherExperience(currentLang);
+      renderConferences(currentLang);
+      renderSkills(currentLang);
+      renderAwards(currentLang);
+      renderProjects(currentLang);
+    }
+
+    /* PUBLICACIONES DESDE BIBTEX */
+    const bibtexData = `
+@article{vallone2024,
+  title={Measuring innovation in coastal regions},
+  author={Vallone, Andres M. and Perez, L.},
+  journal={Journal of Coastal Development},
+  year={2024},
+  doi={10.1016/j.jcd.2024.01.001}
+}
+@inproceedings{vallone2023,
+  title={Local governance and public transport in Chile},
+  author={Vallone, Andres M.},
+  booktitle={Proceedings of the Latin American Urban Studies},
+  year={2023}
+}
+`;
+
+    function parseBibtex(bibtex) {
+      const entries = bibtex.split('@').filter(x => x.trim().length > 0);
+      return entries.map(raw => {
+        const typeEnd = raw.indexOf('{');
+        const type = raw.substring(0, typeEnd).trim();
+        const body = raw.substring(typeEnd + 1);
+        const keyEnd = body.indexOf(',');
+        const key = body.substring(0, keyEnd).trim();
+        const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
+
+        const fields = {};
+        fieldsStr.split('\n').forEach(line => {
+          line = line.trim();
+          if (!line || line.startsWith('%')) return;
+          const eq = line.indexOf('=');
+          if (eq > -1) {
+            const fieldName = line.substring(0, eq).trim().toLowerCase();
+            let fieldVal = line.substring(eq + 1).trim();
+            if (fieldVal.endsWith(',')) fieldVal = fieldVal.slice(0, -1);
+            fieldVal = fieldVal.replace(/^{|}$/g, '').replace(/^"|"$/g, '');
+            fields[fieldName] = fieldVal;
+          }
+        });
+        return { type, key, ...fields };
+      });
+    }
+
+    function renderPublications() {
+      const list = document.getElementById('publications-list');
+      list.innerHTML = '';
+      const pubs = parseBibtex(bibtexData);
+      pubs.forEach(pub => {
+        const li = document.createElement('li');
+        li.className = "card-list-item";
+        const icon = document.createElement('div');
+        icon.className = 'card-icon';
+        icon.innerHTML = `
+          <!-- icono libro/revista para PUBLICACIONES -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50">
+            <path d="M6 3h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6v-1h8V6a1 1 0 0 0-1-1H6V3zm-2 2h1v14h9v2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
+          </svg>
+        `;
+        const contentDiv = document.createElement('div');
+        const title = pub.title || '(Sin título)';
+        const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
+        const source = pub.journal || pub.booktitle || '';
+        const year = pub.year ? ` (${pub.year})` : '';
+        const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
+        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
+        li.appendChild(icon);
+        li.appendChild(contentDiv);
+        list.appendChild(li);
+      });
+    }
+
+    // Render inicial
+    renderEducation("es");
+    renderTeachingExperience("es");
+    renderOtherExperience("es");
+    renderConferences("es");
+    renderSkills("es");
+    renderAwards("es");
+    renderPublications();
+    renderProjects("es");
+  </script>
+</body>
+</html>
