@@ -12,6 +12,7 @@
       --accent: #e67e22;
       --card: #ffffff;
       --soft: rgba(44, 62, 80, 0.06);
+      --sidebar-w: 260px;
     }
     * { box-sizing: border-box; }
     body {
@@ -21,39 +22,49 @@
       color: #333;
       line-height: 1.5;
     }
-    .fade-in { animation: fadeInUp 0.6s ease; }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
-    /* HEADER */
-    header {
-      background: var(--card);
-      padding: 20px 20px 10px 20px;
+    /* SIDEBAR FIJA */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.03);
+      padding: 18px 16px 12px 16px;
       display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 4px solid var(--primary);
+      flex-direction: column;
+      gap: 12px;
+      z-index: 50;
     }
-    .header-photo { flex: 0 0 150px; display: flex; justify-content: center; }
-    .header-photo img {
-      width: 150px; height: 150px;
+    .sidebar-photo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .sidebar-photo img {
+      width: 130px;
+      height: 130px;
       border-radius: 12px;
       object-fit: cover;
       border: 3px solid var(--primary);
       box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
-    .header-content { flex: 1; max-width: 900px; }
-    .header-topline {
-      font-size: 0.8rem;
-      color: #555;
+    .sidebar-title {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .sidebar-contact {
       display: flex;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.75rem;
+      align-items: flex-start;
     }
     .contact-icon {
       display: inline-flex;
@@ -62,52 +73,57 @@
       text-decoration: none;
       color: #555;
       font-size: 0.75rem;
-      transition: transform 0.2s ease;
     }
-    .contact-icon:hover { transform: translateY(-1px); color: #000; }
-    .contact-icon svg { width: 14px; height: 14px; }
-    h1 { margin: 0; font-size: 1.6rem; color: var(--primary); }
-    .summary {
-      margin-top: 8px;
-      font-size: 0.95rem;
-      background: var(--soft);
-      padding: 10px 12px;
-      border-radius: 8px;
+    .contact-icon svg {
+      width: 14px;
+      height: 14px;
     }
     .lang-btn {
-      margin-top: 10px;
+      margin-top: 4px;
       padding: 6px 14px;
       border: none;
       background: var(--accent);
       color: white;
       cursor: pointer;
       border-radius: 5px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      align-self: center;
     }
-
-    /* NAV */
-    nav {
-      background: var(--secondary);
-      padding: 10px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    nav.sidebar-nav {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
-    nav a {
-      color: white;
-      margin: 0 12px;
+    nav.sidebar-nav a {
       text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
+      color: #333;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.15s ease;
     }
-    nav a:hover { opacity: 0.75; }
+    nav.sidebar-nav a:hover {
+      background: rgba(44,62,80,0.08);
+    }
 
-    /* SECTIONS */
-    section {
+    /* CONTENIDO PRINCIPAL */
+    .main-content {
+      margin-left: calc(var(--sidebar-w) + 16px);
       padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      max-width: 980px;
+    }
+    .summary-box {
+      background: var(--soft);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
+    section {
+      margin-bottom: 28px;
+      background: transparent;
     }
     h2 {
       border-bottom: 2px solid var(--primary);
@@ -130,7 +146,7 @@
     .edu-icon { width: 26px; height: 26px; flex: 0 0 26px; }
     .edu-content small { color: #666; font-size: 0.73rem; }
 
-    /* PUBLICACIONES Y PROYECTOS */
+    /* LISTAS TIPO TARJETA */
     .card-list-item {
       display: flex;
       gap: 10px;
@@ -143,13 +159,9 @@
       transition: transform 0.1s ease;
     }
     .card-list-item:hover { transform: translateX(2px); }
-    .card-icon {
-      width: 24px;
-      height: 24px;
-      flex: 0 0 24px;
-    }
+    .card-icon { width: 24px; height: 24px; flex: 0 0 24px; }
 
-    /* EXPERIENCIA MEJORADA */
+    /* EXPERIENCIA */
     .experience-grid {
       display: flex;
       gap: 15px;
@@ -185,11 +197,7 @@
       margin-bottom: 4px;
       font-weight: bold;
     }
-    .course-list li {
-      margin-left: 10px;
-      margin-bottom: 4px;
-      font-size: 0.82rem;
-    }
+    .course-list li,
     .other-exp-list li {
       margin-left: 10px;
       margin-bottom: 4px;
@@ -227,123 +235,155 @@
     }
     .award-item small { color: #666; font-size: 0.7rem; }
 
-    @media (max-width: 700px) {
-      header { flex-direction: column; align-items: flex-start; }
-      .header-content { max-width: 100%; }
-      nav a { display: inline-block; margin: 5px 10px; }
-      .experience-grid { flex-direction: column; }
+    @media (max-width: 850px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      nav.sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="fade-in">
-    <div class="header-photo">
-      <!-- FOTO -->
+  <!-- SIDEBAR FIJA -->
+  <aside class="sidebar">
+    <div class="sidebar-photo">
+      <!-- Reemplaza con tu foto -->
       <img src="tu-foto.JPG" alt="Foto personal" />
     </div>
-    <div class="header-content">
-      <div class="header-topline">
-        <!-- CONTACTO -->
-        <a class="contact-icon" href="mailto:correo@ejemplo.cl" title="Enviar correo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          correo@ejemplo.cl
-        </a>
-        <a class="contact-icon" href="https://www.ejemplo.cl" target="_blank" rel="noopener" title="Sitio web">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm6.9 6h-3.3c-.2-1.5-.6-2.9-1.1-3.9 1.9.5 3.5 1.9 4.4 3.9zM12 4.1c.5.9 1 2.4 1.2 3.9h-2.4c.2-1.5.7-3 1.2-3.9zM8.5 5.1C8 6.2 7.6 7.6 7.4 9H4.1c.8-1.9 2.4-3.4 4.4-3.9zM4.1 15h3.3c.2 1.4.6 2.8 1.1 3.9-2-.5-3.6-2-4.4-3.9zm3.3-2H4.1c-.1-.3-.1-.7-.1-1s0-.7.1-1h3.3c-.1.3-.1.7-.1 1s0 .7.1 1zm2.8 0h3.6c-.1.8-.3 1.6-.5 2.3-.2.7-.5 1.3-.8 1.8-.3-.5-.6-1.1-.8-1.8-.2-.7-.4-1.5-.5-2.3zm3.6-2H10c.1-.8.3-1.6.5-2.3.2-.7.5-1.3.8-1.8.3.5.6 1.1.8 1.8.2.7.4 1.5.5 2.3zm1.3 4h3.3c-.8 1.9-2.4 3.4-4.4 3.9.5-1 1-2.4 1.1-3.9zm0-2c.1-.3.1-.7.1-1s0-.7-.1-1h3.3c.1.3.1.7.1 1s0 .7-.1 1h-3.3z"/></svg>
-          www.ejemplo.cl
-        </a>
-      </div>
-      <h1 id="title">Curriullum Vitae Andres Marcelo Vallone</h1>
-      <p class="summary" id="summary-text">
+    <div class="sidebar-title" id="title">Curriullum Vitae Andres Marcelo Vallone</div>
+    <div class="sidebar-contact">
+      <!-- MAIL -->
+      <a class="contact-icon" href="mailto:correo@ejemplo.cl" title="Enviar correo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        correo@ejemplo.cl
+      </a>
+
+      <!-- RESEARCHGATE -->
+      <!-- Sustituye el href por tu perfil real de ResearchGate -->
+      <a class="contact-icon" href="https://www.researchgate.net/profile/Tu-Nombre" target="_blank" rel="noopener" title="ResearchGate">
+        <!-- icono sencillo de RG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0cb" >
+          <circle cx="12" cy="12" r="10" fill="#0cb" />
+          <text x="7.2" y="15" font-size="7" fill="#fff" font-family="Arial, sans-serif">RG</text>
+        </svg>
+        ResearchGate
+      </a>
+
+      <!-- ORCID -->
+      <!-- Cambia el ID en el href -->
+      <a class="contact-icon" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" title="ORCID">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
+          <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
+          <path fill="#fff" d="M111 92h14v72h-14V92zm7-30c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9zm26 30h14v40c0 6 1 10 3 13 2 2 5 4 9 4 4 0 7-1 9-4 2-3 3-7 3-13V92h14v40c0 10-2 17-6 22-4 5-10 8-18 8-9 0-15-3-19-9-3-5-5-12-5-21V92z"/>
+        </svg>
+        ORCID: 0000-0000-0000-0000
+      </a>
+
+      <!-- Web of Science ResearcherID -->
+      <!-- Deja solo el texto o arma un link si lo tienes -->
+      <span class="contact-icon" title="Web of Science ResearcherID">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
+        Web of Science ID: <!-- coloca tu ResearcherID aquí --> RID-0000-0000
+      </span>
+
+      <!-- Scopus Author ID -->
+      <span class="contact-icon" title="Scopus Author ID">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
+        Scopus ID: <!-- coloca tu Scopus Author ID aquí --> 12345678900
+      </span>
+    </div>
+    <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
+    <nav class="sidebar-nav">
+      <a href="#general" id="nav-general">Información General</a>
+      <a href="#education" id="nav-education">Educación</a>
+      <a href="#experience" id="nav-experience">Experiencia</a>
+      <a href="#publications" id="nav-publications">Publicaciones</a>
+      <a href="#projects" id="nav-projects">Proyectos</a>
+      <a href="#conferences" id="nav-conferences">Presentaciones</a>
+      <a href="#skills" id="nav-skills">Capacidades</a>
+      <a href="#awards" id="nav-awards">Becas y Premios</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section id="general">
+      <h2 id="general-title">Información General</h2>
+      <div class="summary-box" id="summary-text">
         Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.
-      </p>
-      <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
-    </div>
-  </header>
+      </div>
+      <p id="general-text">Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.</p>
+    </section>
 
-  <nav>
-    <a href="#general" id="nav-general">Información General</a>
-    <a href="#education" id="nav-education">Educación</a>
-    <a href="#experience" id="nav-experience">Experiencia</a>
-    <a href="#publications" id="nav-publications">Publicaciones</a>
-    <a href="#projects" id="nav-projects">Proyectos</a>
-    <a href="#conferences" id="nav-conferences">Presentaciones</a>
-    <a href="#skills" id="nav-skills">Capacidades</a>
-    <a href="#awards" id="nav-awards">Becas y Premios</a>
-  </nav>
+    <section id="education">
+      <h2 id="education-title">Educación</h2>
+      <ul id="education-list"></ul>
+    </section>
 
-  <section id="general" class="fade-in">
-    <h2 id="general-title">Información General</h2>
-    <p id="general-text">
-      Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.
-    </p>
-  </section>
-
-  <section id="education" class="fade-in">
-    <h2 id="education-title">Educación</h2>
-    <ul id="education-list"></ul>
-  </section>
-
-  <section id="experience" class="fade-in">
-    <h2 id="experience-title">Experiencia</h2>
-    <div class="experience-grid">
-      <!-- Docencia -->
-      <div class="exp-card" id="teaching-card">
-        <div class="exp-card-header">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="m12 3 9 4.5-9 4.5L3 7.5 12 3zm7 9.94 2 .99v2.07l-9 4.5-9-4.5v-2.07l2-.99v1.5l7 3.5 7-3.5v-1.5z"/></svg>
-          <h3 id="teaching-exp-title">Experiencia docente</h3>
+    <section id="experience">
+      <h2 id="experience-title">Experiencia</h2>
+      <div class="experience-grid">
+        <div class="exp-card" id="teaching-card">
+          <div class="exp-card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="m12 3 9 4.5-9 4.5L3 7.5 12 3zm7 9.94 2 .99v2.07l-9 4.5-9-4.5v-2.07l2-.99v1.5l7 3.5 7-3.5v-1.5z"/></svg>
+            <h3 id="teaching-exp-title">Experiencia docente</h3>
+          </div>
+          <div>
+            <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
+            <ul id="undergrad-list" class="course-list"></ul>
+          </div>
+          <div>
+            <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
+            <ul id="postgrad-list" class="course-list"></ul>
+          </div>
         </div>
-        <div>
-          <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
-          <ul id="undergrad-list" class="course-list"></ul>
-        </div>
-        <div>
-          <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
-          <ul id="postgrad-list" class="course-list"></ul>
+        <div class="exp-card" id="other-card">
+          <div class="exp-card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            <h3 id="other-exp-title">Otras experiencias</h3>
+          </div>
+          <ul id="other-exp-list" class="other-exp-list"></ul>
         </div>
       </div>
-      <!-- Otras experiencias -->
-      <div class="exp-card" id="other-card">
-        <div class="exp-card-header">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          <h3 id="other-exp-title">Otras experiencias</h3>
-        </div>
-        <ul id="other-exp-list" class="other-exp-list"></ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="publications" class="fade-in">
-    <h2 id="publications-title">Publicaciones</h2>
-    <p style="font-size:0.8rem;color:#555;margin-top:-5px;">
-      <!-- Pega tus BibTeX en bibtexData -->
-    </p>
-    <ul id="publications-list"></ul>
-  </section>
+    <section id="publications">
+      <h2 id="publications-title">Publicaciones</h2>
+      <ul id="publications-list"></ul>
+    </section>
 
-  <!-- NUEVA SECCIÓN DE PROYECTOS -->
-  <section id="projects" class="fade-in">
-    <h2 id="projects-title">Proyectos de investigación</h2>
-    <ul id="projects-list"></ul>
-  </section>
+    <section id="projects">
+      <h2 id="projects-title">Proyectos de investigación</h2>
+      <ul id="projects-list"></ul>
+    </section>
 
-  <section id="conferences" class="fade-in">
-    <h2 id="conferences-title">Presentaciones en Congresos</h2>
-    <ul id="conferences-list"></ul>
-  </section>
+    <section id="conferences">
+      <h2 id="conferences-title">Presentaciones en Congresos</h2>
+      <ul id="conferences-list"></ul>
+    </section>
 
-  <section id="skills" class="fade-in">
-    <h2 id="skills-title">Capacidades</h2>
-    <div class="skills-grid" id="skills-grid"></div>
-  </section>
+    <section id="skills">
+      <h2 id="skills-title">Capacidades</h2>
+      <div class="skills-grid" id="skills-grid"></div>
+    </section>
 
-  <section id="awards" class="fade-in">
-    <h2 id="awards-title">Becas y Premios</h2>
-    <div id="awards-list"></div>
-  </section>
+    <section id="awards">
+      <h2 id="awards-title">Becas y Premios</h2>
+      <div id="awards-list"></div>
+    </section>
+  </main>
 
   <script>
-    /* CONTENIDO BILINGÜE */
+    /* CONTENIDO BILINGÜE (idéntico al anterior) */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -363,12 +403,10 @@
         undergradCourses: [
           "Microeconomía I – Escuela de Ciencias Empresariales – UCN",
           "Economía Regional – UCN"
-          // <-- agrega más cursos de pregrado aquí
         ],
         postgradCourses: [
           "Metodología de la investigación – Postgrado UCN",
           "Indicadores compuestos aplicados – Diplomado"
-          // <-- agrega más cursos de postgrado aquí
         ],
         otherExpTitle: "Otras experiencias",
         otherExperience: [
@@ -390,11 +428,11 @@
             period: "2024 – 2026",
             funding: "Proyecto regional"
           }
-          // <-- agrega más proyectos acá
         ],
         conferencesTitle: "Presentaciones en Congresos",
         conferences: [
-          { title: "Gobernanza del transporte público en la conurbación La Serena–Coquimbo", event: "Congreso X", year: "2024" }
+          { title: "Gobernanza del transporte público en la conurbación La Serena–Coquimbo", event: "Congreso X", year: "2024" },
+          { title: "Certificación y exportación de frutas a la UE", event: "Redcert Chile", year: "2025" }
         ],
         skillsTitle: "Capacidades",
         skills: {
@@ -457,7 +495,8 @@
         ],
         conferencesTitle: "Conference Presentations",
         conferences: [
-          { title: "Public transport governance in La Serena–Coquimbo", event: "Congress X", year: "2024" }
+          { title: "Public transport governance in La Serena–Coquimbo", event: "Congress X", year: "2024" },
+          { title: "Certification and export of fruits to the EU", event: "Redcert Chile", year: "2025" }
         ],
         skillsTitle: "Skills",
         skills: {
@@ -533,11 +572,23 @@
     }
 
     function renderConferences(lang) {
+      document.getElementById("conferences-title").innerText = content[lang].conferencesTitle;
       const list = document.getElementById("conferences-list");
       list.innerHTML = "";
       content[lang].conferences.forEach(item => {
         const li = document.createElement("li");
-        li.textContent = `${item.title}, ${item.event}, ${item.year}`;
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50">
+              <path d="M3 4h18v10H3V4zm2 2v6h14V6H5zm4 12-3 3h2l2-2 2 2h2l-3-3H9z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${item.title}</strong><br>
+            ${item.event}, ${item.year}
+          </div>
+        `;
         list.appendChild(li);
       });
     }
@@ -571,146 +622,4 @@
       content[lang].awards.forEach(a => {
         const div = document.createElement("div");
         div.className = "award-item";
-        div.innerHTML = `<strong>${a.name}</strong> – ${a.description}<br><small>${a.year}</small>`;
-        container.appendChild(div);
-      });
-    }
-
-    function renderProjects(lang) {
-      document.getElementById("projects-title").innerText = content[lang].projectsTitle;
-      const list = document.getElementById("projects-list");
-      list.innerHTML = "";
-      content[lang].projects.forEach(p => {
-        const li = document.createElement("li");
-        li.className = "card-list-item";
-        li.innerHTML = `
-          <div class="card-icon">
-            <!-- icono clipboard / proyecto -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
-              <path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/>
-            </svg>
-          </div>
-          <div>
-            <strong>${p.title}</strong><br>
-            ${p.role ? p.role + ". " : ""}${p.period ? p.period + ". " : ""}${p.funding ? p.funding : ""}
-          </div>
-        `;
-        list.appendChild(li);
-      });
-    }
-
-    function toggleLanguage() {
-      currentLang = currentLang === "es" ? "en" : "es";
-      const t = content[currentLang];
-
-      document.getElementById("title").innerText = t.title;
-      document.getElementById("nav-general").innerText = t.nav[0];
-      document.getElementById("nav-education").innerText = t.nav[1];
-      document.getElementById("nav-experience").innerText = t.nav[2];
-      document.getElementById("nav-publications").innerText = t.nav[3];
-      document.getElementById("nav-projects").innerText = t.nav[4];
-      document.getElementById("nav-conferences").innerText = t.nav[5];
-      document.getElementById("nav-skills").innerText = t.nav[6];
-      document.getElementById("nav-awards").innerText = t.nav[7];
-
-      document.getElementById("general-title").innerText = t.generalTitle;
-      document.getElementById("general-text").innerText = t.generalText;
-      document.getElementById("summary-text").innerText = t.summary;
-      document.getElementById("education-title").innerText = t.educationTitle;
-      document.getElementById("experience-title").innerText = t.experienceTitle;
-      document.getElementById("publications-title").innerText = t.publicationsTitle;
-      document.getElementById("conferences-title").innerText = t.conferencesTitle;
-      document.getElementById("skills-title").innerText = t.skillsTitle;
-
-      renderEducation(currentLang);
-      renderTeachingExperience(currentLang);
-      renderOtherExperience(currentLang);
-      renderConferences(currentLang);
-      renderSkills(currentLang);
-      renderAwards(currentLang);
-      renderProjects(currentLang);
-    }
-
-    /* PUBLICACIONES DESDE BIBTEX */
-    const bibtexData = `
-@article{vallone2024,
-  title={Measuring innovation in coastal regions},
-  author={Vallone, Andres M. and Perez, L.},
-  journal={Journal of Coastal Development},
-  year={2024},
-  doi={10.1016/j.jcd.2024.01.001}
-}
-@inproceedings{vallone2023,
-  title={Local governance and public transport in Chile},
-  author={Vallone, Andres M.},
-  booktitle={Proceedings of the Latin American Urban Studies},
-  year={2023}
-}
-`;
-
-    function parseBibtex(bibtex) {
-      const entries = bibtex.split('@').filter(x => x.trim().length > 0);
-      return entries.map(raw => {
-        const typeEnd = raw.indexOf('{');
-        const type = raw.substring(0, typeEnd).trim();
-        const body = raw.substring(typeEnd + 1);
-        const keyEnd = body.indexOf(',');
-        const key = body.substring(0, keyEnd).trim();
-        const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
-
-        const fields = {};
-        fieldsStr.split('\n').forEach(line => {
-          line = line.trim();
-          if (!line || line.startsWith('%')) return;
-          const eq = line.indexOf('=');
-          if (eq > -1) {
-            const fieldName = line.substring(0, eq).trim().toLowerCase();
-            let fieldVal = line.substring(eq + 1).trim();
-            if (fieldVal.endsWith(',')) fieldVal = fieldVal.slice(0, -1);
-            fieldVal = fieldVal.replace(/^{|}$/g, '').replace(/^"|"$/g, '');
-            fields[fieldName] = fieldVal;
-          }
-        });
-        return { type, key, ...fields };
-      });
-    }
-
-    function renderPublications() {
-      const list = document.getElementById('publications-list');
-      list.innerHTML = '';
-      const pubs = parseBibtex(bibtexData);
-      pubs.forEach(pub => {
-        const li = document.createElement('li');
-        li.className = "card-list-item";
-        const icon = document.createElement('div');
-        icon.className = 'card-icon';
-        icon.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
-            <path d="M6 2C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V9l-5-5H6zm7 1.5L17.5 8H13V3.5z"/>
-          </svg>
-        `;
-        const contentDiv = document.createElement('div');
-        const title = pub.title || '(Sin título)';
-        const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
-        const source = pub.journal || pub.booktitle || '';
-        const year = pub.year ? ` (${pub.year})` : '';
-        const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
-        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
-        li.appendChild(icon);
-        li.appendChild(contentDiv);
-        list.appendChild(li);
-      });
-    }
-
-    /* Render inicial en español */
-    renderEducation("es");
-    renderTeachingExperience("es");
-    renderOtherExperience("es");
-    renderConferences("es");
-    renderSkills("es");
-    renderAwards("es");
-    renderPublications();
-    renderProjects("es");
-  </script>
-</body>
-</html>
+        div.innerHTML = `<strong>${a.name}</strong> – ${a.descrip
