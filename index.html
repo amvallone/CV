@@ -6,20 +6,21 @@
   <title>Curriullum Vitae Andres Marcelo Vallone</title>
   <style>
     :root {
-      --bg: #f4f4f9;
-      --primary: #2c3e50;
+      --bg: #e0e4eb;
+      --bg-soft: #edf0f5;
+      --primary: #243447;
       --secondary: #34495e;
-      --accent: #e67e22;
-      --card: #ffffff;
-      --soft: rgba(44, 62, 80, 0.06);
-      --sidebar-w: 260px;
+      --accent: #d27b3f;
+      --card: #f8f9fb;
+      --soft: rgba(36, 52, 71, 0.05);
+      --sidebar-w: 310px;
     }
     * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: var(--bg);
-      color: #333;
+      color: #222;
       line-height: 1.5;
     }
 
@@ -30,9 +31,9 @@
       left: 0;
       width: var(--sidebar-w);
       height: 100vh;
-      background: #fff;
-      border-right: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 2px 0 12px rgba(0,0,0,0.03);
+      background: linear-gradient(180deg, #ffffff 0%, #eef1f6 100%);
+      border-right: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.02);
       padding: 18px 16px 12px 16px;
       display: flex;
       flex-direction: column;
@@ -45,15 +46,16 @@
       margin-bottom: 4px;
     }
     .sidebar-photo img {
-      width: 130px;
-      height: 130px;
-      border-radius: 12px;
+      width: 160px;
+      height: 160px;
+      border-radius: 14px;
       object-fit: cover;
-      border: 3px solid var(--primary);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      border: 4px solid var(--primary);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      background: #ddd;
     }
     .sidebar-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: bold;
       color: var(--primary);
       text-align: center;
@@ -65,18 +67,23 @@
       gap: 6px;
       font-size: 0.75rem;
       align-items: flex-start;
+      background: rgba(255,255,255,0.6);
+      border-radius: 8px;
+      padding: 6px 8px;
     }
     .contact-icon {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       text-decoration: none;
-      color: #555;
-      font-size: 0.75rem;
+      color: #374355;
+      font-size: 0.73rem;
+      line-height: 1.1;
     }
     .contact-icon svg {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
     }
     .lang-btn {
       margin-top: 4px;
@@ -97,38 +104,40 @@
     }
     nav.sidebar-nav a {
       text-decoration: none;
-      color: #333;
+      color: #243447;
       font-weight: 600;
       font-size: 0.78rem;
       padding: 6px 10px;
       border-radius: 6px;
       transition: background 0.15s ease;
+      background: rgba(255,255,255,0.2);
     }
     nav.sidebar-nav a:hover {
-      background: rgba(44,62,80,0.08);
+      background: rgba(36,52,71,0.12);
     }
 
     /* CONTENIDO PRINCIPAL */
     .main-content {
       margin-left: calc(var(--sidebar-w) + 16px);
       padding: 20px;
-      max-width: 980px;
+      max-width: 1000px;
     }
     .summary-box {
-      background: var(--soft);
+      background: var(--card);
       padding: 10px 12px;
       border-radius: 8px;
       margin-bottom: 18px;
+      border: 1px solid rgba(0,0,0,0.025);
     }
 
     section {
       margin-bottom: 28px;
-      background: transparent;
     }
     h2 {
       border-bottom: 2px solid var(--primary);
       padding-bottom: 5px;
       margin-bottom: 15px;
+      color: #243447;
     }
     ul { padding-left: 0; list-style: none; }
 
@@ -136,11 +145,12 @@
     .edu-item {
       display: flex;
       gap: 10px;
-      background: white;
+      background: #ffffff;
       margin-bottom: 10px;
       padding: 10px 12px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.02);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       align-items: flex-start;
     }
     .edu-icon { width: 26px; height: 26px; flex: 0 0 26px; }
@@ -150,11 +160,12 @@
     .card-list-item {
       display: flex;
       gap: 10px;
-      background: white;
+      background: #ffffff;
       margin-bottom: 10px;
       padding: 10px 12px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.025);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       align-items: flex-start;
       transition: transform 0.1s ease;
     }
@@ -168,12 +179,12 @@
       flex-wrap: wrap;
     }
     .exp-card {
-      background: white;
+      background: #ffffff;
       flex: 1 1 380px;
       padding: 14px 14px 10px 14px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-      border-top: 4px solid rgba(44,62,80,0.15);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border-top: 4px solid rgba(36,52,71,0.18);
     }
     .exp-card-header {
       display: flex;
@@ -188,7 +199,7 @@
     .exp-card h3 {
       margin: 0;
       font-size: 1rem;
-      color: #2c3e50;
+      color: #243447;
     }
     .exp-subtitle {
       font-size: 0.8rem;
@@ -211,10 +222,11 @@
       gap: 12px;
     }
     .skill-card {
-      background: white;
+      background: #ffffff;
       border-radius: 8px;
       padding: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.02);
     }
     .skill-card h3 {
       margin-top: 0;
@@ -227,7 +239,7 @@
 
     /* BECAS Y PREMIOS */
     .award-item {
-      background: white;
+      background: #ffffff;
       padding: 10px 12px;
       border-radius: 6px;
       margin-bottom: 10px;
@@ -235,7 +247,7 @@
     }
     .award-item small { color: #666; font-size: 0.7rem; }
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .sidebar {
         position: static;
         width: 100%;
@@ -269,18 +281,17 @@
       </a>
 
       <!-- RESEARCHGATE -->
-      <!-- Sustituye el href por tu perfil real de ResearchGate -->
+      <!-- cambia el perfil -->
       <a class="contact-icon" href="https://www.researchgate.net/profile/Tu-Nombre" target="_blank" rel="noopener" title="ResearchGate">
-        <!-- icono sencillo de RG -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0cb" >
-          <circle cx="12" cy="12" r="10" fill="#0cb" />
-          <text x="7.2" y="15" font-size="7" fill="#fff" font-family="Arial, sans-serif">RG</text>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="15" height="15">
+          <circle cx="40" cy="40" r="36" fill="#0cb" />
+          <text x="22" y="48" font-size="25" fill="#fff" font-family="Arial, sans-serif">RG</text>
         </svg>
         ResearchGate
       </a>
 
       <!-- ORCID -->
-      <!-- Cambia el ID en el href -->
+      <!-- cambia el ID -->
       <a class="contact-icon" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" title="ORCID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
           <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
@@ -290,16 +301,15 @@
       </a>
 
       <!-- Web of Science ResearcherID -->
-      <!-- Deja solo el texto o arma un link si lo tienes -->
       <span class="contact-icon" title="Web of Science ResearcherID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
-        Web of Science ID: <!-- coloca tu ResearcherID aquí --> RID-0000-0000
+        Web of Science ID: <!-- pon tu ResearcherID --> RID-0000-0000
       </span>
 
       <!-- Scopus Author ID -->
       <span class="contact-icon" title="Scopus Author ID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
-        Scopus ID: <!-- coloca tu Scopus Author ID aquí --> 12345678900
+        Scopus ID: <!-- pon tu Scopus Author ID --> 12345678900
       </span>
     </div>
     <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
@@ -383,7 +393,7 @@
   </main>
 
   <script>
-    /* CONTENIDO BILINGÜE (idéntico al anterior) */
+    /* CONTENIDO BILINGÜE */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -525,7 +535,7 @@
         li.className = "edu-item";
         li.innerHTML = `
           <div class="edu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#243447">
               <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
             </svg>
           </div>
@@ -580,7 +590,8 @@
         li.className = "card-list-item";
         li.innerHTML = `
           <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50">
+            <!-- icono presentación -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#243447">
               <path d="M3 4h18v10H3V4zm2 2v6h14V6H5zm4 12-3 3h2l2-2 2 2h2l-3-3H9z"/>
             </svg>
           </div>
@@ -636,7 +647,8 @@
         li.className = "card-list-item";
         li.innerHTML = `
           <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
+            <!-- icono clipboard / proyecto -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d27b3f">
               <path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/>
             </svg>
           </div>
@@ -680,20 +692,151 @@
       renderProjects(currentLang);
     }
 
-    /* PUBLICACIONES DESDE BIBTEX */
+    /* PUBLICACIONES DESDE BIBTEX
+       Orden temporal: 2025, 2024, 2023, 2022, 2022, 2021, 2020, 2019..., 2017, 2014
+    */
     const bibtexData = `
-@article{vallone2024,
-  title={Measuring innovation in coastal regions},
-  author={Vallone, Andres M. and Perez, L.},
-  journal={Journal of Coastal Development},
-  year={2024},
-  doi={10.1016/j.jcd.2024.01.001}
+@article{honoresCollaborateNotCompete,
+  title = {Collaborate but not compete? Gender, homophily, and the productivity-citation gap in inventor networks},
+  issn = {1043-8599},
+  shorttitle = {Collaborate but not compete?},
+  url = {https://doi.org/10.1080/10438599.2025.2581589},
+  doi = {10.1080/10438599.2025.2581589},
+  journal = {Economics of Innovation and New Technology},
+  author = {Honores, Guillermo and Pinto, Pablo E. and Vallone, Andrés},
+  year = {2025},
+  pages = {1--24}
 }
-@inproceedings{vallone2023,
-  title={Local governance and public transport in Chile},
-  author={Vallone, Andres M.},
-  booktitle={Proceedings of the Latin American Urban Studies},
-  year={2023}
+@article{vasquezBrownSeaweedsFishery2024,
+  title = {Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
+  volume = {165},
+  issn = {0308-597X},
+  shorttitle = {Brown seaweeds fishery and copper mining production},
+  url = {https://www.sciencedirect.com/science/article/pii/S0308597X24001891},
+  doi = {10.1016/j.marpol.2024.106191},
+  journal = {Marine Policy},
+  author = {Vásquez, Julio A. and Morales, Cristian and Vallone, Andrés},
+  month = jul,
+  year = {2024},
+  pages = {106191}
+}
+@misc{SpatiotemporalDynamicsPesticide,
+  title = {The spatio-temporal dynamics of pesticide use: a global exploratory analysis},
+  url = {https://www.tandfonline.com/doi/full/10.1080/09640568.2023.2274284},
+  journal = {Journal of Environmental Planning and Management},
+  year = {2023}
+}
+@article{balaguera-quinteroCarbonFootprintEstimation2022,
+  title = {Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on Global Protocol for Community-Scale Greenhouse Gas Emission Inventories (GPC)},
+  volume = {14},
+  issn = {2071-1050},
+  url = {https://www.mdpi.com/2071-1050/14/16/10309},
+  doi = {10.3390/su141610309},
+  journal = {Sustainability},
+  author = {Balaguera-Quintero, Alejandra and Vallone, Andres and Igor-Tapia, Sebastián},
+  year = {2022},
+  pages = {10309}
+}
+@article{moralesEvolucionCompetitividadExportadora2022,
+  title = {Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
+  volume = {15},
+  shorttitle = {Evolución de la competitividad exportadora en la industria pesquera y acuícola},
+  number = {2},
+  journal = {Multidisciplinary Business Review},
+  author = {Morales, Cristian and Vallone, Andrés and Guevar, Willmer and Sepúlveda, Javier and Espinoza, Sebastián and Paredes, Diego},
+  year = {2022},
+  pages = {14--26}
+}
+@article{pintoExploringTopologyDynamic2021,
+  title = {Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
+  volume = {16},
+  issn = {1932-6203},
+  url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0256956},
+  doi = {10.1371/journal.pone.0256956},
+  journal = {PLOS ONE},
+  author = {Pinto, Pablo E. and Honores, Guillermo and Vallone, Andrés},
+  month = sep,
+  year = {2021},
+  pages = {e0256956}
+}
+@article{valloneSpatiotemporalMethodsAnalysis2020a,
+  title = {Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
+  volume = {64},
+  issn = {1432-0592},
+  url = {https://doi.org/10.1007/s00168-019-00960-9},
+  doi = {10.1007/s00168-019-00960-9},
+  journal = {The Annals of Regional Science},
+  author = {Vallone, Andrés and Chasco, Coro},
+  month = apr,
+  year = {2020},
+  pages = {421--454}
+}
+@article{pintoStructureCollaborationNetworks2019,
+  title = {The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
+  volume = {13},
+  issn = {1751-1577},
+  url = {http://www.sciencedirect.com/science/article/pii/S1751157719302202},
+  doi = {10.1016/j.joi.2019.100984},
+  journal = {Journal of Informetrics},
+  author = {Pinto, Pablo E. and Vallone, Andres and Honores, Guillermo},
+  month = nov,
+  year = {2019},
+  number = {4},
+  pages = {100984}
+}
+@article{ayoubaGDPAnalysisSocioeconomic2019a,
+  title = {Beyond GDP: an analysis of the socio-economic diversity of European regions},
+  issn = {0003-6846},
+  url = {https://doi.org/10.1080/00036846.2019.1646885},
+  doi = {10.1080/00036846.2019.1646885},
+  journal = {Applied Economics},
+  author = {Ayouba, Kassoum and Le Gallo, Julie and Vallone, Andrés},
+  month = aug,
+  year = {2019},
+  pages = {1--20}
+}
+@article{valloneStrategiesAccessWebenabled2019,
+  title = {Strategies to access web-enabled urban spatial data for socioeconomic research using R functions},
+  issn = {1435-5949},
+  url = {https://doi.org/10.1007/s10109-019-00309-y},
+  doi = {10.1007/s10109-019-00309-y},
+  journal = {Journal of Geographical Systems},
+  author = {Vallone, Andrés and Chasco, Coro and Sánchez, Beatriz},
+  month = aug,
+  year = {2019}
+}
+@incollection{chascoAugeEconomiaColaborativa2019,
+  title = {El auge de la economía colaborativa en las ciudades: el caso de Madrid},
+  author = {Chasco, Coro and Ruiz, Sofía and Centeno, Minerva and Vallone, Andres},
+  month = oct,
+  year = {2019},
+  doi = {10.32029/2605-4655.03.01.2019},
+  pages = {151--167}
+}
+@article{pintoDynamicsPatentabilityCollaborativeness2017,
+  title = {The dynamics of patentability and collaborativeness in Chile: An analysis of patenting activity between 1989 and 2013},
+  volume = {49},
+  issn = {0172-2190},
+  url = {http://www.sciencedirect.com/science/article/pii/S0172219016301454},
+  doi = {10.1016/j.wpi.2017.05.004},
+  journal = {World Patent Information},
+  author = {Pinto, Pablo E. and Vallone, Andres and Honores, Guillermo and González, Horacio},
+  month = jun,
+  year = {2017},
+  pages = {52--65}
+}
+@article{ramirezModeloFlexiblePara2014,
+  title = {Un modelo flexible para la simulación de distribución de ciudades},
+  volume = {22},
+  issn = {0718-3305},
+  url = {https://scielo.conicyt.cl/scielo.php?script=sci_abstract&pid=S0718-33052014000300007&lng=es&nrm=iso&tlng=es},
+  doi = {10.4067/S0718-33052014000300007},
+  number = {3},
+  journal = {Ingeniare. Revista chilena de ingeniería},
+  author = {Ramírez, Pablo and Leger, Paul and Vallone, Andrés},
+  month = sep,
+  year = {2014},
+  pages = {351--362}
 }
 `;
 
@@ -735,7 +878,7 @@
         icon.className = 'card-icon';
         icon.innerHTML = `
           <!-- icono libro/revista para PUBLICACIONES -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#243447">
             <path d="M6 3h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6v-1h8V6a1 1 0 0 0-1-1H6V3zm-2 2h1v14h9v2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
           </svg>
         `;
