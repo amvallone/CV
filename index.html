@@ -13,9 +13,7 @@
       --card: #ffffff;
       --soft: rgba(44, 62, 80, 0.06);
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -23,13 +21,13 @@
       color: #333;
       line-height: 1.5;
     }
-    .fade-in {
-      animation: fadeInUp 0.6s ease;
-    }
+    .fade-in { animation: fadeInUp 0.6s ease; }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* HEADER */
     header {
       background: var(--card);
       padding: 20px 20px 10px 20px;
@@ -39,23 +37,15 @@
       justify-content: center;
       border-bottom: 4px solid var(--primary);
     }
-    .header-photo {
-      flex: 0 0 150px;
-      display: flex;
-      justify-content: center;
-    }
+    .header-photo { flex: 0 0 150px; display: flex; justify-content: center; }
     .header-photo img {
-      width: 150px;
-      height: 150px;
+      width: 150px; height: 150px;
       border-radius: 12px;
       object-fit: cover;
       border: 3px solid var(--primary);
       box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
-    .header-content {
-      flex: 1;
-      max-width: 900px;
-    }
+    .header-content { flex: 1; max-width: 900px; }
     .header-topline {
       font-size: 0.8rem;
       color: #555;
@@ -74,29 +64,15 @@
       font-size: 0.75rem;
       transition: transform 0.2s ease;
     }
-    .contact-icon:hover {
-      transform: translateY(-1px);
-      color: #000;
-    }
-    .contact-icon svg {
-      width: 14px;
-      height: 14px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.6rem;
-      color: var(--primary);
-    }
+    .contact-icon:hover { transform: translateY(-1px); color: #000; }
+    .contact-icon svg { width: 14px; height: 14px; }
+    h1 { margin: 0; font-size: 1.6rem; color: var(--primary); }
     .summary {
       margin-top: 8px;
       font-size: 0.95rem;
       background: var(--soft);
       padding: 10px 12px;
       border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-    .summary:hover {
-      background: rgba(44, 62, 80, 0.08);
     }
     .lang-btn {
       margin-top: 10px;
@@ -107,12 +83,9 @@
       cursor: pointer;
       border-radius: 5px;
       font-size: 0.75rem;
-      transition: transform 0.15s ease;
-    }
-    .lang-btn:hover {
-      transform: translateY(-1px);
     }
 
+    /* NAV */
     nav {
       background: var(--secondary);
       padding: 10px;
@@ -123,16 +96,14 @@
     }
     nav a {
       color: white;
-      margin: 0 15px;
+      margin: 0 12px;
       text-decoration: none;
       font-weight: bold;
       font-size: 0.9rem;
-      transition: opacity 0.15s ease;
     }
-    nav a:hover {
-      opacity: 0.75;
-    }
+    nav a:hover { opacity: 0.75; }
 
+    /* SECTIONS */
     section {
       padding: 20px;
       max-width: 900px;
@@ -143,12 +114,9 @@
       padding-bottom: 5px;
       margin-bottom: 15px;
     }
+    ul { padding-left: 0; list-style: none; }
 
     /* EDUCACIÓN */
-    ul {
-      padding-left: 0;
-      list-style: none;
-    }
     .edu-item {
       display: flex;
       gap: 10px;
@@ -159,18 +127,11 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       align-items: flex-start;
     }
-    .edu-icon {
-      width: 26px;
-      height: 26px;
-      flex: 0 0 26px;
-    }
-    .edu-content small {
-      color: #666;
-      font-size: 0.73rem;
-    }
+    .edu-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+    .edu-content small { color: #666; font-size: 0.73rem; }
 
-    /* PUBLICACIONES */
-    #publications-list li {
+    /* PUBLICACIONES Y PROYECTOS */
+    .card-list-item {
       display: flex;
       gap: 10px;
       background: white;
@@ -181,13 +142,58 @@
       align-items: flex-start;
       transition: transform 0.1s ease;
     }
-    #publications-list li:hover {
-      transform: translateX(2px);
-    }
-    .pub-icon {
+    .card-list-item:hover { transform: translateX(2px); }
+    .card-icon {
       width: 24px;
       height: 24px;
       flex: 0 0 24px;
+    }
+
+    /* EXPERIENCIA MEJORADA */
+    .experience-grid {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .exp-card {
+      background: white;
+      flex: 1 1 380px;
+      padding: 14px 14px 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border-top: 4px solid rgba(44,62,80,0.15);
+    }
+    .exp-card-header {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .exp-card-header svg {
+      width: 22px;
+      height: 22px;
+    }
+    .exp-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+    .exp-subtitle {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+    .course-list li {
+      margin-left: 10px;
+      margin-bottom: 4px;
+      font-size: 0.82rem;
+    }
+    .other-exp-list li {
+      margin-left: 10px;
+      margin-bottom: 4px;
+      font-size: 0.82rem;
     }
 
     /* CAPACIDADES */
@@ -209,15 +215,7 @@
       padding-bottom: 4px;
       margin-bottom: 8px;
     }
-    .skill-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-    .skill-card li {
-      font-size: 0.8rem;
-      margin-bottom: 4px;
-    }
+    .skill-card li { font-size: 0.8rem; margin-bottom: 4px; }
 
     /* BECAS Y PREMIOS */
     .award-item {
@@ -227,43 +225,30 @@
       margin-bottom: 10px;
       border-left: 4px solid var(--accent);
     }
-    .award-item small {
-      color: #666;
-      font-size: 0.7rem;
-    }
+    .award-item small { color: #666; font-size: 0.7rem; }
 
-    /* RESPONSIVE */
     @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-content {
-        max-width: 100%;
-      }
-      nav a {
-        display: inline-block;
-        margin: 5px 10px;
-      }
+      header { flex-direction: column; align-items: flex-start; }
+      .header-content { max-width: 100%; }
+      nav a { display: inline-block; margin: 5px 10px; }
+      .experience-grid { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <header class="fade-in">
     <div class="header-photo">
-      <!-- Reemplaza "tu-foto.jpg" por tu foto real -->
+      <!-- FOTO -->
       <img src="tu-foto.jpg" alt="Foto personal" />
     </div>
     <div class="header-content">
       <div class="header-topline">
-        <!-- Cambia los datos de contacto aquí -->
+        <!-- CONTACTO -->
         <a class="contact-icon" href="mailto:correo@ejemplo.cl" title="Enviar correo">
-          <!-- icono mail -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           correo@ejemplo.cl
         </a>
         <a class="contact-icon" href="https://www.ejemplo.cl" target="_blank" rel="noopener" title="Sitio web">
-          <!-- icono web -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm6.9 6h-3.3c-.2-1.5-.6-2.9-1.1-3.9 1.9.5 3.5 1.9 4.4 3.9zM12 4.1c.5.9 1 2.4 1.2 3.9h-2.4c.2-1.5.7-3 1.2-3.9zM8.5 5.1C8 6.2 7.6 7.6 7.4 9H4.1c.8-1.9 2.4-3.4 4.4-3.9zM4.1 15h3.3c.2 1.4.6 2.8 1.1 3.9-2-.5-3.6-2-4.4-3.9zm3.3-2H4.1c-.1-.3-.1-.7-.1-1s0-.7.1-1h3.3c-.1.3-.1.7-.1 1s0 .7.1 1zm2.8 0h3.6c-.1.8-.3 1.6-.5 2.3-.2.7-.5 1.3-.8 1.8-.3-.5-.6-1.1-.8-1.8-.2-.7-.4-1.5-.5-2.3zm3.6-2H10c.1-.8.3-1.6.5-2.3.2-.7.5-1.3.8-1.8.3.5.6 1.1.8 1.8.2.7.4 1.5.5 2.3zm1.3 4h3.3c-.8 1.9-2.4 3.4-4.4 3.9.5-1 1-2.4 1.1-3.9zm0-2c.1-.3.1-.7.1-1s0-.7-.1-1h3.3c.1.3.1.7.1 1s0 .7-.1 1h-3.3z"/></svg>
           www.ejemplo.cl
         </a>
@@ -281,6 +266,7 @@
     <a href="#education" id="nav-education">Educación</a>
     <a href="#experience" id="nav-experience">Experiencia</a>
     <a href="#publications" id="nav-publications">Publicaciones</a>
+    <a href="#projects" id="nav-projects">Proyectos</a>
     <a href="#conferences" id="nav-conferences">Presentaciones</a>
     <a href="#skills" id="nav-skills">Capacidades</a>
     <a href="#awards" id="nav-awards">Becas y Premios</a>
@@ -300,15 +286,45 @@
 
   <section id="experience" class="fade-in">
     <h2 id="experience-title">Experiencia</h2>
-    <ul id="experience-list"></ul>
+    <div class="experience-grid">
+      <!-- Docencia -->
+      <div class="exp-card" id="teaching-card">
+        <div class="exp-card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="m12 3 9 4.5-9 4.5L3 7.5 12 3zm7 9.94 2 .99v2.07l-9 4.5-9-4.5v-2.07l2-.99v1.5l7 3.5 7-3.5v-1.5z"/></svg>
+          <h3 id="teaching-exp-title">Experiencia docente</h3>
+        </div>
+        <div>
+          <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
+          <ul id="undergrad-list" class="course-list"></ul>
+        </div>
+        <div>
+          <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
+          <ul id="postgrad-list" class="course-list"></ul>
+        </div>
+      </div>
+      <!-- Otras experiencias -->
+      <div class="exp-card" id="other-card">
+        <div class="exp-card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <h3 id="other-exp-title">Otras experiencias</h3>
+        </div>
+        <ul id="other-exp-list" class="other-exp-list"></ul>
+      </div>
+    </div>
   </section>
 
   <section id="publications" class="fade-in">
     <h2 id="publications-title">Publicaciones</h2>
     <p style="font-size:0.8rem;color:#555;margin-top:-5px;">
-      <!-- Pega tus entradas BibTeX en la constante "bibtexData" dentro del script -->
+      <!-- Pega tus BibTeX en bibtexData -->
     </p>
     <ul id="publications-list"></ul>
+  </section>
+
+  <!-- NUEVA SECCIÓN DE PROYECTOS -->
+  <section id="projects" class="fade-in">
+    <h2 id="projects-title">Proyectos de investigación</h2>
+    <ul id="projects-list"></ul>
   </section>
 
   <section id="conferences" class="fade-in">
@@ -318,9 +334,7 @@
 
   <section id="skills" class="fade-in">
     <h2 id="skills-title">Capacidades</h2>
-    <div class="skills-grid" id="skills-grid">
-      <!-- Se llena por JS según idioma -->
-    </div>
+    <div class="skills-grid" id="skills-grid"></div>
   </section>
 
   <section id="awards" class="fade-in">
@@ -329,45 +343,55 @@
   </section>
 
   <script>
-    /*
-      Aquí centralizamos TODO el contenido en español e inglés.
-      Reemplaza el contenido de cada array por tu información real en ambos idiomas.
-    */
+    /* CONTENIDO BILINGÜE */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
-        nav: ["Información General","Educación","Experiencia","Publicaciones","Presentaciones","Capacidades","Becas y Premios"],
+        nav: ["Información General","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Capacidades","Becas y Premios"],
         generalTitle: "Información General",
         generalText: "Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.",
         summary: "Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.",
         educationTitle: "Educación",
         education: [
-          {
-            degree: "Doctorado en X",
-            institution: "Universidad Y",
-            years: "2018 – 2022"
-          },
-          {
-            degree: "Magíster en Gestión",
-            institution: "Universidad Z",
-            years: "2014 – 2016"
-          }
-          // <!-- agrega más objetos aquí en español -->
+          { degree: "Doctorado en X", institution: "Universidad Y", years: "2018 – 2022" },
+          { degree: "Magíster en Gestión", institution: "Universidad Z", years: "2014 – 2016" }
         ],
         experienceTitle: "Experiencia",
-        experience: [
-          {
-            role: "Profesor Asociado",
-            place: "Escuela de Ciencias Empresariales, UCN",
-            years: "2019 – presente"
-          },
-          {
-            role: "Coordinador de Programa",
-            place: "Doctorado en Ciencias Empresariales",
-            years: "2023 – presente"
-          }
+        teachingExpTitle: "Experiencia docente",
+        undergradTitle: "Pregrado",
+        postgradTitle: "Postgrado",
+        undergradCourses: [
+          "Microeconomía I – Escuela de Ciencias Empresariales – UCN",
+          "Economía Regional – UCN"
+          // <-- agrega más cursos de pregrado aquí
+        ],
+        postgradCourses: [
+          "Metodología de la investigación – Postgrado UCN",
+          "Indicadores compuestos aplicados – Diplomado"
+          // <-- agrega más cursos de postgrado aquí
+        ],
+        otherExpTitle: "Otras experiencias",
+        otherExperience: [
+          "Coordinador de Programa de Doctorado en Ciencias Empresariales (2023 – presente)",
+          "Consultor externo en desarrollo regional (2021 – 2024)"
         ],
         publicationsTitle: "Publicaciones",
+        projectsTitle: "Proyectos de investigación",
+        projects: [
+          {
+            title: "Impacto de la calidad de agua en el manejo de agroquímicos",
+            role: "Investigador responsable",
+            period: "2023 – 2025",
+            funding: "Fondo interno UCN"
+          },
+          {
+            title: "Gobernanza del transporte público en La Serena–Coquimbo",
+            role: "Co-investigador",
+            period: "2024 – 2026",
+            funding: "Proyecto regional"
+          }
+          // <-- agrega más proyectos acá
+        ],
         conferencesTitle: "Presentaciones en Congresos",
         conferences: [
           { title: "Gobernanza del transporte público en la conurbación La Serena–Coquimbo", event: "Congreso X", year: "2024" }
@@ -383,52 +407,54 @@
         },
         awardsTitle: "Becas y Premios",
         awards: [
-          {
-            name: "Beca de investigación UCN",
-            description: "Proyecto sobre innovación regional",
-            year: "2023"
-          },
-          {
-            name: "Premio a la docencia destacada",
-            description: "Escuela de Ciencias Empresariales",
-            year: "2022"
-          }
+          { name: "Beca de investigación UCN", description: "Proyecto sobre innovación regional", year: "2023" },
+          { name: "Premio a la docencia destacada", description: "Escuela de Ciencias Empresariales", year: "2022" }
         ]
       },
       en: {
         title: "Curriculum Vitae Andres Marcelo Vallone",
-        nav: ["General Information","Education","Experience","Publications","Conference Presentations","Skills","Scholarships & Awards"],
+        nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
         generalTitle: "General Information",
         generalText: "Here you can write your personal information, contact details and a short professional profile.",
         summary: "Academic and researcher in business sciences, with experience in university teaching, postgraduate program development and project management. Interests in innovation, entrepreneurship and regional development.",
         educationTitle: "Education",
         education: [
-          {
-            degree: "PhD in X",
-            institution: "University Y",
-            years: "2018 – 2022"
-          },
-          {
-            degree: "Master in Management",
-            institution: "University Z",
-            years: "2014 – 2016"
-          }
-          // <!-- agrega más objetos aquí en inglés -->
+          { degree: "PhD in X", institution: "University Y", years: "2018 – 2022" },
+          { degree: "Master in Management", institution: "University Z", years: "2014 – 2016" }
         ],
         experienceTitle: "Experience",
-        experience: [
-          {
-            role: "Associate Professor",
-            place: "School of Business Sciences, UCN",
-            years: "2019 – present"
-          },
-          {
-            role: "Program Coordinator",
-            place: "PhD in Business Sciences",
-            years: "2023 – present"
-          }
+        teachingExpTitle: "Teaching experience",
+        undergradTitle: "Undergraduate",
+        postgradTitle: "Postgraduate",
+        undergradCourses: [
+          "Microeconomics I – School of Business Sciences – UCN",
+          "Regional Economics – UCN"
+        ],
+        postgradCourses: [
+          "Research Methods – Graduate program, UCN",
+          "Applied composite indicators – Diploma"
+        ],
+        otherExpTitle: "Other experience",
+        otherExperience: [
+          "Program Coordinator, PhD in Business Sciences (2023 – present)",
+          "External consultant in regional development (2021 – 2024)"
         ],
         publicationsTitle: "Publications",
+        projectsTitle: "Research projects",
+        projects: [
+          {
+            title: "Impact of water quality on agrochemical management",
+            role: "Principal investigator",
+            period: "2023 – 2025",
+            funding: "UCN internal fund"
+          },
+          {
+            title: "Public transport governance in La Serena–Coquimbo",
+            role: "Co-investigator",
+            period: "2024 – 2026",
+            funding: "Regional project"
+          }
+        ],
         conferencesTitle: "Conference Presentations",
         conferences: [
           { title: "Public transport governance in La Serena–Coquimbo", event: "Congress X", year: "2024" }
@@ -444,16 +470,8 @@
         },
         awardsTitle: "Scholarships & Awards",
         awards: [
-          {
-            name: "UCN Research Scholarship",
-            description: "Project on regional innovation",
-            year: "2023"
-          },
-          {
-            name: "Outstanding Teaching Award",
-            description: "School of Business Sciences",
-            year: "2022"
-          }
+          { name: "UCN Research Scholarship", description: "Project on regional innovation", year: "2023" },
+          { name: "Outstanding Teaching Award", description: "School of Business Sciences", year: "2022" }
         ]
       }
     };
@@ -468,7 +486,6 @@
         li.className = "edu-item";
         li.innerHTML = `
           <div class="edu-icon">
-            <!-- icono birrete -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#2c3e50">
               <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
             </svg>
@@ -482,12 +499,35 @@
       });
     }
 
-    function renderExperience(lang) {
-      const list = document.getElementById("experience-list");
-      list.innerHTML = "";
-      content[lang].experience.forEach(item => {
+    function renderTeachingExperience(lang) {
+      document.getElementById("teaching-exp-title").innerText = content[lang].teachingExpTitle;
+      document.getElementById("undergrad-title").innerText = content[lang].undergradTitle;
+      document.getElementById("postgrad-title").innerText = content[lang].postgradTitle;
+
+      const ugList = document.getElementById("undergrad-list");
+      const pgList = document.getElementById("postgrad-list");
+      ugList.innerHTML = "";
+      pgList.innerHTML = "";
+
+      content[lang].undergradCourses.forEach(c => {
         const li = document.createElement("li");
-        li.textContent = `${item.role} – ${item.place} (${item.years})`;
+        li.textContent = c;
+        ugList.appendChild(li);
+      });
+      content[lang].postgradCourses.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c;
+        pgList.appendChild(li);
+      });
+    }
+
+    function renderOtherExperience(lang) {
+      document.getElementById("other-exp-title").innerText = content[lang].otherExpTitle;
+      const list = document.getElementById("other-exp-list");
+      list.innerHTML = "";
+      content[lang].otherExperience.forEach(exp => {
+        const li = document.createElement("li");
+        li.textContent = exp;
         list.appendChild(li);
       });
     }
@@ -536,19 +576,42 @@
       });
     }
 
+    function renderProjects(lang) {
+      document.getElementById("projects-title").innerText = content[lang].projectsTitle;
+      const list = document.getElementById("projects-list");
+      list.innerHTML = "";
+      content[lang].projects.forEach(p => {
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <!-- icono clipboard / proyecto -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
+              <path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${p.title}</strong><br>
+            ${p.role ? p.role + ". " : ""}${p.period ? p.period + ". " : ""}${p.funding ? p.funding : ""}
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
     function toggleLanguage() {
       currentLang = currentLang === "es" ? "en" : "es";
       const t = content[currentLang];
 
-      // títulos y textos simples
       document.getElementById("title").innerText = t.title;
       document.getElementById("nav-general").innerText = t.nav[0];
       document.getElementById("nav-education").innerText = t.nav[1];
       document.getElementById("nav-experience").innerText = t.nav[2];
       document.getElementById("nav-publications").innerText = t.nav[3];
-      document.getElementById("nav-conferences").innerText = t.nav[4];
-      document.getElementById("nav-skills").innerText = t.nav[5];
-      document.getElementById("nav-awards").innerText = t.nav[6];
+      document.getElementById("nav-projects").innerText = t.nav[4];
+      document.getElementById("nav-conferences").innerText = t.nav[5];
+      document.getElementById("nav-skills").innerText = t.nav[6];
+      document.getElementById("nav-awards").innerText = t.nav[7];
 
       document.getElementById("general-title").innerText = t.generalTitle;
       document.getElementById("general-text").innerText = t.generalText;
@@ -559,19 +622,16 @@
       document.getElementById("conferences-title").innerText = t.conferencesTitle;
       document.getElementById("skills-title").innerText = t.skillsTitle;
 
-      // listas dependientes de idioma
       renderEducation(currentLang);
-      renderExperience(currentLang);
+      renderTeachingExperience(currentLang);
+      renderOtherExperience(currentLang);
       renderConferences(currentLang);
       renderSkills(currentLang);
       renderAwards(currentLang);
+      renderProjects(currentLang);
     }
 
-    /*
-      ==== PUBLICACIONES DESDE BIBTEX ====
-      Pega aquí tus entradas BibTeX.
-      Se muestran igual para ambos idiomas (el formato BibTeX es el mismo).
-    */
+    /* PUBLICACIONES DESDE BIBTEX */
     const bibtexData = `
 @article{vallone2024,
   title={Measuring innovation in coastal regions},
@@ -621,8 +681,9 @@
       const pubs = parseBibtex(bibtexData);
       pubs.forEach(pub => {
         const li = document.createElement('li');
+        li.className = "card-list-item";
         const icon = document.createElement('div');
-        icon.className = 'pub-icon';
+        icon.className = 'card-icon';
         icon.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e67e22">
             <path d="M6 2C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V9l-5-5H6zm7 1.5L17.5 8H13V3.5z"/>
@@ -641,13 +702,15 @@
       });
     }
 
-    // Render inicial en español
+    /* Render inicial en español */
     renderEducation("es");
-    renderExperience("es");
+    renderTeachingExperience("es");
+    renderOtherExperience("es");
     renderConferences("es");
     renderSkills("es");
     renderAwards("es");
     renderPublications();
+    renderProjects("es");
   </script>
 </body>
 </html>
