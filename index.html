@@ -145,30 +145,64 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.03);
       align-items: flex-start;
     }
-    .edu-icon, .card-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+    .edu-icon, .card-icon { width: 22px; height: 22px; flex: 0 0 22px; }
     .edu-content small { color: #6b5b47; font-size: 0.73rem; }
+
+    /* EXPERIENCIA NUEVA (más limpia, íconos más chicos) */
     .experience-grid { display: flex; gap: 15px; flex-wrap: wrap; }
     .exp-card {
       background: #f1ede5;
       flex: 1 1 380px;
-      padding: 14px 14px 10px 14px;
+      padding: 12px 12px 8px 12px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      border-top: 4px solid rgba(146, 133, 110, 0.45);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border-top: 3px solid rgba(146, 133, 110, 0.55);
     }
     .exp-card-header {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+    .exp-card-header svg {
+      width: 16px;
+      height: 16px;
+      fill: #5e7050;
+      flex: 0 0 16px;
+    }
+    .exp-card h3 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #3a3a2d;
     }
     .exp-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #5d523f;
-      margin-top: 10px;
+      margin-top: 8px;
       margin-bottom: 4px;
       font-weight: bold;
     }
+    .course-list,
+    .other-exp-list {
+      margin: 0;
+      padding-left: 0;
+    }
+    .course-list li,
+    .other-exp-list li {
+      display: flex;
+      gap: 5px;
+      align-items: flex-start;
+      margin-bottom: 4px;
+      font-size: 0.78rem;
+    }
+    .course-list li::before,
+    .other-exp-list li::before {
+      content: "•";
+      color: #5e7050;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -311,7 +345,7 @@
   </main>
 
   <script>
-    /* 1. Datos bilingües */
+    /* DATA bilingüe */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -444,19 +478,20 @@
       }
     };
 
-    /* 2. BibTeX simplificado */
+    /* BibTeX (lo que ya teníamos reducido) */
     const bibtexData = `
 @article{vasquez2024,
   title={Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
-  author={Vazquez, J. and Morales, C. and Vallone, A.},
+  author={Vásquez, Julio A. and Morales, Cristian and Vallone, Andrés},
   journal={Marine Policy},
   volume={165},
   year={2024},
+  pages={106191},
   doi={10.1016/j.marpol.2024.106191}
 }
-@article{balguera2022,
+@article{balaguera2022,
   title={Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on GPC},
-  author={Balaguera-Quintero, A. and Vallone, A. and Igor-Tapia, S.},
+  author={Balaguera-Quintero, Alejandra and Vallone, Andres and Igor-Tapia, Sebastián},
   journal={Sustainability},
   volume={14},
   number={16},
@@ -465,7 +500,7 @@
 }
 @article{morales2022,
   title={Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
-  author={Morales, C. and Vallone, A. and Guevara-Ramírez, W. and Sepúlveda, J. and Espinoza, S. and Paredes, D.},
+  author={Morales, Cristian and Vallone, Andrés and Guevara-Ramírez, Willmer and Sepúlveda, Javier and Espinoza, Sebastián and Paredes, Diego},
   journal={Multidisciplinary Business Review},
   volume={15},
   number={2},
@@ -474,7 +509,7 @@
 }
 @article{pinto2021,
   title={Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
-  author={Pinto, P. and Honores, G. and Vallone, A.},
+  author={Pinto, Pablo E. and Honores, Guillermo and Vallone, Andrés},
   journal={PLOS ONE},
   volume={16},
   number={9},
@@ -483,33 +518,40 @@
 }
 @article{vallone2020,
   title={Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
-  author={Vallone, A. and Chasco, C.},
+  author={Vallone, Andrés and Chasco, Coro},
   journal={The Annals of Regional Science},
   volume={64},
+  number={2},
   pages={421--454},
   year={2020}
 }
 @article{pinto2019,
   title={The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
-  author={Pinto, P. and Vallone, A. and Honores, G.},
+  author={Pinto, Pablo E. and Vallone, Andres and Honores, Guillermo},
   journal={Journal of Informetrics},
+  volume={13},
+  number={4},
+  pages={100984},
   year={2019}
 }
 @article{ayouba2019,
   title={Beyond GDP: an analysis of the socio-economic diversity of European regions},
-  author={Ayouba, K. and Le Gallo, J. and Vallone, A.},
+  author={Ayouba, Kassoum and Le Gallo, Julie and Vallone, Andrés},
   journal={Applied Economics},
   year={2019}
 }
 @article{ramirez2014,
   title={Un modelo flexible para la simulación de distribución de ciudades},
-  author={Ramírez, P. and Leger, P. and Vallone, A.},
+  author={Ramírez, Pablo and Leger, Paul and Vallone, Andrés},
   journal={Ingeniare. Revista chilena de ingeniería},
+  volume={22},
+  number={3},
+  pages={351--362},
   year={2014}
 }
 `;
 
-    /* 3. Funciones de render */
+    /* helpers */
     function parseBibtex(bibtex) {
       const entries = bibtex.split('@').filter(x => x.trim().length > 0);
       return entries.map(raw => {
@@ -534,6 +576,31 @@
         });
         return { type, key, ...fields };
       });
+    }
+
+    /* formatear autores en APA básico */
+    function formatAuthorsAPA(authStr) {
+      if (!authStr) return "";
+      const parts = authStr.split(" and ").map(a => a.trim());
+      const formatted = parts.map(a => {
+        // casos "Apellido, Nombre"
+        if (a.includes(",")) {
+          const [last, first] = a.split(",").map(x => x.trim());
+          if (!first) return last;
+          const initials = first.split(" ").map(n => n ? n[0].toUpperCase() + "." : "").join(" ");
+          return `${last}, ${initials}`;
+        } else {
+          // casos "Nombre Apellido"
+          const tokens = a.split(" ");
+          const last = tokens.pop();
+          const initials = tokens.map(n => n ? n[0].toUpperCase() + "." : "").join(" ");
+          return `${last}, ${initials}`;
+        }
+      });
+
+      if (formatted.length === 1) return formatted[0];
+      if (formatted.length === 2) return formatted.join(" & ");
+      return formatted.slice(0, -1).join(", ") + ", & " + formatted[formatted.length - 1];
     }
 
     function renderEducation(lang) {
@@ -640,11 +707,14 @@
       });
     }
 
+    /* PROYECTOS: comenzamos por el año */
     function renderProjects(lang) {
       document.getElementById("projects-title").innerText = content[lang].projectsTitle;
       const list = document.getElementById("projects-list");
       list.innerHTML = "";
-      content[lang].projects.forEach(p => {
+      const projects = [...content[lang].projects].sort((a,b) => (b.period||"").localeCompare(a.period||""));
+      projects.forEach(p => {
+        const year = p.period || "";
         const li = document.createElement("li");
         li.className = "card-list-item";
         li.innerHTML = `
@@ -654,14 +724,15 @@
             </svg>
           </div>
           <div>
-            <strong>${p.title}</strong><br>
-            ${p.role ? p.role + ". " : ""}${p.period ? p.period + ". " : ""}${p.funding ? p.funding : ""}
+            <strong>${year}</strong> – ${p.title}<br>
+            ${p.role ? p.role + ". " : ""}${p.funding ? p.funding : ""}
           </div>
         `;
         list.appendChild(li);
       });
     }
 
+    /* PUBLICACIONES en APA 7 básico */
     function renderPublications() {
       const list = document.getElementById('publications-list');
       list.innerHTML = '';
@@ -677,19 +748,26 @@
           </svg>
         `;
         const contentDiv = document.createElement('div');
-        const title = pub.title || '(Sin título)';
-        const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
-        const source = pub.journal || pub.booktitle || '';
-        const year = pub.year ? ` (${pub.year})` : '';
-        const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
-        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
+
+        const authorsAPA = formatAuthorsAPA(pub.author);
+        const year = pub.year ? `(${pub.year}).` : "(s.f.).";
+        const title = pub.title ? pub.title.trim().replace(/\.$/, "") + "." : "";
+        const journal = pub.journal ? `<em>${pub.journal}</em>` : "";
+        const volume = pub.volume ? `<em>${pub.volume}</em>` : "";
+        const number = pub.number ? `(${pub.number})` : "";
+        const pages = pub.pages ? `, ${pub.pages}` : "";
+        const doi = pub.doi ? ` https://doi.org/${pub.doi.replace("https://doi.org/","")}` : "";
+        // APA 7: Autor, A. A., & Autor, B. B. (Año). Título. Revista en cursiva, volumen(número), páginas. https://doi...
+        contentDiv.innerHTML = `
+          ${authorsAPA} ${year} ${title} ${journal}${journal && (volume || number) ? ", " : ""}${volume}${number}${pages}.${doi}
+        `;
         li.appendChild(icon);
         li.appendChild(contentDiv);
         list.appendChild(li);
       });
     }
 
-    /* 4. toggle */
+    /* render general */
     let currentLang = "es";
     function renderAll(lang) {
       const t = content[lang];
@@ -721,7 +799,7 @@
       renderSkills(lang);
       renderAwards(lang);
       renderProjects(lang);
-      renderPublications();
+      renderPublications(); // mismo listado para ambos idiomas
     }
 
     function toggleLanguage() {
@@ -729,7 +807,6 @@
       renderAll(currentLang);
     }
 
-    /* 5. Render inicial */
     document.addEventListener("DOMContentLoaded", function () {
       renderAll("es");
     });
