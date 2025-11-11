@@ -6,13 +6,14 @@
   <title>Curriullum Vitae Andres Marcelo Vallone</title>
   <style>
     :root {
-      --bg: #e0e4eb;
-      --bg-soft: #edf0f5;
-      --primary: #243447;
-      --secondary: #34495e;
-      --accent: #d27b3f;
-      --card: #f8f9fb;
-      --soft: rgba(36, 52, 71, 0.05);
+      /* paleta nueva: marrón + verde */
+      --bg: #dfddcf;         /* fondo general */
+      --bg-soft: #efece1;    /* secciones suaves */
+      --primary: #3a3a2d;    /* títulos */
+      --secondary: #6a7c58;  /* acentos verdes */
+      --accent: #bc7d38;     /* botón idioma / resaltados */
+      --card: #f5f1e9;       /* tarjetas */
+      --sidebar: #5a4a3a;    /* lateral */
       --sidebar-w: 310px;
     }
     * { box-sizing: border-box; }
@@ -20,20 +21,19 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background: var(--bg);
-      color: #222;
+      color: #2c2c2c;
       line-height: 1.5;
     }
 
-    /* SIDEBAR FIJA */
+    /* SIDEBAR */
     .sidebar {
       position: fixed;
       top: 0;
       left: 0;
       width: var(--sidebar-w);
       height: 100vh;
-      background: linear-gradient(180deg, #ffffff 0%, #eef1f6 100%);
-      border-right: 1px solid rgba(0,0,0,0.04);
-      box-shadow: 2px 0 12px rgba(0,0,0,0.02);
+      background: linear-gradient(180deg, #5a4a3a 0%, #6b5a47 100%);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.08);
       padding: 18px 16px 12px 16px;
       display: flex;
       flex-direction: column;
@@ -50,14 +50,14 @@
       height: 160px;
       border-radius: 14px;
       object-fit: cover;
-      border: 4px solid var(--primary);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      border: 4px solid rgba(242, 231, 209, 0.7);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       background: #ddd;
     }
     .sidebar-title {
       font-size: 1.05rem;
       font-weight: bold;
-      color: var(--primary);
+      color: #f5f1e9;
       text-align: center;
       line-height: 1.2;
     }
@@ -67,16 +67,16 @@
       gap: 6px;
       font-size: 0.75rem;
       align-items: flex-start;
-      background: rgba(255,255,255,0.6);
+      background: rgba(243, 237, 225, 0.08);
       border-radius: 8px;
-      padding: 6px 8px;
+      padding: 6px 4px;
     }
     .contact-icon {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      color: #374355;
+      color: #f7f4ef;
       font-size: 0.73rem;
       line-height: 1.1;
     }
@@ -84,6 +84,7 @@
       width: 15px;
       height: 15px;
       flex: 0 0 15px;
+      fill: #f7f4ef;
     }
     .lang-btn {
       margin-top: 4px;
@@ -104,16 +105,16 @@
     }
     nav.sidebar-nav a {
       text-decoration: none;
-      color: #243447;
+      color: #f5f1e9;
       font-weight: 600;
       font-size: 0.78rem;
       padding: 6px 10px;
       border-radius: 6px;
       transition: background 0.15s ease;
-      background: rgba(255,255,255,0.2);
+      background: rgba(245,241,233,0.05);
     }
     nav.sidebar-nav a:hover {
-      background: rgba(36,52,71,0.12);
+      background: rgba(245,241,233,0.18);
     }
 
     /* CONTENIDO PRINCIPAL */
@@ -127,17 +128,17 @@
       padding: 10px 12px;
       border-radius: 8px;
       margin-bottom: 18px;
-      border: 1px solid rgba(0,0,0,0.025);
+      border: 1px solid rgba(0,0,0,0.01);
     }
 
     section {
       margin-bottom: 28px;
     }
     h2 {
-      border-bottom: 2px solid var(--primary);
+      border-bottom: 2px solid rgba(90, 74, 58, 0.55);
       padding-bottom: 5px;
       margin-bottom: 15px;
-      color: #243447;
+      color: var(--primary);
     }
     ul { padding-left: 0; list-style: none; }
 
@@ -145,26 +146,26 @@
     .edu-item {
       display: flex;
       gap: 10px;
-      background: #ffffff;
+      background: #f1ede5;
       margin-bottom: 10px;
       padding: 10px 12px;
       border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.02);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      border: 1px solid rgba(44,44,44,0.03);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
       align-items: flex-start;
     }
     .edu-icon { width: 26px; height: 26px; flex: 0 0 26px; }
-    .edu-content small { color: #666; font-size: 0.73rem; }
+    .edu-content small { color: #6b5b47; font-size: 0.73rem; }
 
-    /* LISTAS TIPO TARJETA */
+    /* LISTAS */
     .card-list-item {
       display: flex;
       gap: 10px;
-      background: #ffffff;
+      background: #f1ede5;
       margin-bottom: 10px;
       padding: 10px 12px;
       border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.025);
+      border: 1px solid rgba(0,0,0,0.015);
       box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       align-items: flex-start;
       transition: transform 0.1s ease;
@@ -179,12 +180,12 @@
       flex-wrap: wrap;
     }
     .exp-card {
-      background: #ffffff;
+      background: #f1ede5;
       flex: 1 1 380px;
       padding: 14px 14px 10px 14px;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      border-top: 4px solid rgba(36,52,71,0.18);
+      border-top: 4px solid rgba(146, 133, 110, 0.45);
     }
     .exp-card-header {
       display: flex;
@@ -195,34 +196,28 @@
     .exp-card-header svg {
       width: 22px;
       height: 22px;
+      fill: #5e7050;
     }
     .exp-card h3 {
       margin: 0;
       font-size: 1rem;
-      color: #243447;
+      color: #3a3a2d;
     }
     .exp-subtitle {
       font-size: 0.8rem;
-      color: #555;
+      color: #5d523f;
       margin-top: 10px;
       margin-bottom: 4px;
       font-weight: bold;
     }
-    .course-list li,
-    .other-exp-list li {
-      margin-left: 10px;
-      margin-bottom: 4px;
-      font-size: 0.82rem;
-    }
 
-    /* CAPACIDADES */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
     }
     .skill-card {
-      background: #ffffff;
+      background: #f1ede5;
       border-radius: 8px;
       padding: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
@@ -234,18 +229,16 @@
       border-bottom: 1px solid rgba(0,0,0,0.05);
       padding-bottom: 4px;
       margin-bottom: 8px;
+      color: #3a3a2d;
     }
-    .skill-card li { font-size: 0.8rem; margin-bottom: 4px; }
 
-    /* BECAS Y PREMIOS */
     .award-item {
-      background: #ffffff;
+      background: #f1ede5;
       padding: 10px 12px;
       border-radius: 6px;
       margin-bottom: 10px;
-      border-left: 4px solid var(--accent);
+      border-left: 4px solid #bc7d38;
     }
-    .award-item small { color: #666; font-size: 0.7rem; }
 
     @media (max-width: 900px) {
       .sidebar {
@@ -255,43 +248,34 @@
         flex-direction: row;
         flex-wrap: wrap;
       }
-      .main-content {
-        margin-left: 0;
-      }
-      nav.sidebar-nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
+      .main-content { margin-left: 0; }
+      nav.sidebar-nav { flex-direction: row; flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
-  <!-- SIDEBAR FIJA -->
   <aside class="sidebar">
     <div class="sidebar-photo">
-      <!-- Reemplaza con tu foto -->
       <img src="tu-foto.JPG" alt="Foto personal" />
     </div>
     <div class="sidebar-title" id="title">Curriullum Vitae Andres Marcelo Vallone</div>
     <div class="sidebar-contact">
       <!-- MAIL -->
-      <a class="contact-icon" href="mailto:correo@ejemplo.cl" title="Enviar correo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        correo@ejemplo.cl
+      <a class="contact-icon" href="mailto:avallone@ucn.cl" title="Enviar correo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        avallone@ucn.cl
       </a>
 
       <!-- RESEARCHGATE -->
-      <!-- cambia el perfil -->
       <a class="contact-icon" href="https://www.researchgate.net/profile/Tu-Nombre" target="_blank" rel="noopener" title="ResearchGate">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="15" height="15">
-          <circle cx="40" cy="40" r="36" fill="#0cb" />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="36" fill="#4aa471" />
           <text x="22" y="48" font-size="25" fill="#fff" font-family="Arial, sans-serif">RG</text>
         </svg>
         ResearchGate
       </a>
 
       <!-- ORCID -->
-      <!-- cambia el ID -->
       <a class="contact-icon" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" title="ORCID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
           <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
@@ -302,14 +286,14 @@
 
       <!-- Web of Science ResearcherID -->
       <span class="contact-icon" title="Web of Science ResearcherID">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
-        Web of Science ID: <!-- pon tu ResearcherID --> RID-0000-0000
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
+        Web of Science ID: <!-- tu ResearcherID -->
       </span>
 
       <!-- Scopus Author ID -->
       <span class="contact-icon" title="Scopus Author ID">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
-        Scopus ID: <!-- pon tu Scopus Author ID --> 12345678900
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
+        Scopus ID: <!-- tu Scopus Author ID -->
       </span>
     </div>
     <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
@@ -329,9 +313,11 @@
     <section id="general">
       <h2 id="general-title">Información General</h2>
       <div class="summary-box" id="summary-text">
-        Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.
+        Profesor Asociado en la Universidad Católica del Norte (Escuela de Ciencias Empresariales / Instituto de Políticas Públicas, Coquimbo, Chile). Especializado en economía regional y urbana, redes de innovación y análisis espacial.
       </div>
-      <p id="general-text">Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.</p>
+      <p id="general-text">
+        Afiliación actual: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.
+      </p>
     </section>
 
     <section id="education">
@@ -344,7 +330,7 @@
       <div class="experience-grid">
         <div class="exp-card" id="teaching-card">
           <div class="exp-card-header">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="m12 3 9 4.5-9 4.5L3 7.5 12 3zm7 9.94 2 .99v2.07l-9 4.5-9-4.5v-2.07l2-.99v1.5l7 3.5 7-3.5v-1.5z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 3 9 4.5-9 4.5L3 7.5 12 3zm7 9.94 2 .99v2.07l-9 4.5-9-4.5v-2.07l2-.99v1.5l7 3.5 7-3.5v-1.5z"/></svg>
             <h3 id="teaching-exp-title">Experiencia docente</h3>
           </div>
           <div>
@@ -358,7 +344,7 @@
         </div>
         <div class="exp-card" id="other-card">
           <div class="exp-card-header">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2c3e50"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
             <h3 id="other-exp-title">Otras experiencias</h3>
           </div>
           <ul id="other-exp-list" class="other-exp-list"></ul>
@@ -393,134 +379,135 @@
   </main>
 
   <script>
-    /* CONTENIDO BILINGÜE */
+    /* DATA en ES y EN (igual que antes, sólo cambiamos colores arriba) */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
         nav: ["Información General","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Capacidades","Becas y Premios"],
         generalTitle: "Información General",
-        generalText: "Aquí puedes escribir tu información personal, contacto y un breve resumen profesional.",
-        summary: "Académico e investigador en ciencias empresariales, con experiencia en docencia universitaria, desarrollo de programas de postgrado y gestión de proyectos. Interés en innovación, emprendimiento y desarrollo regional.",
+        generalText: "Afiliación: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.",
+        summary: "Profesor Asociado UCN. Doctor en Economía y Empresa (UAM, 2019). Líneas: economía urbana y regional, redes de innovación, concentración espacial, R para análisis socioeconómicos.",
         educationTitle: "Educación",
         education: [
-          { degree: "Doctorado en X", institution: "Universidad Y", years: "2018 – 2022" },
-          { degree: "Magíster en Gestión", institution: "Universidad Z", years: "2014 – 2016" }
+          { degree: "Doctor en Economía y Empresa", institution: "Universidad Autónoma de Madrid, España", years: "2015 – 2019" },
+          { degree: "Magíster en Ciencia Regional", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
+          { degree: "MBA – Master en Administración", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
+          { degree: "Magíster en Economía y Administración Estratégica de Negocios", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "2006 – 2009" },
+          { degree: "Licenciado en Economía", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "1997 – 2004" }
         ],
         experienceTitle: "Experiencia",
         teachingExpTitle: "Experiencia docente",
         undergradTitle: "Pregrado",
         postgradTitle: "Postgrado",
         undergradCourses: [
-          "Microeconomía I – Escuela de Ciencias Empresariales – UCN",
-          "Economía Regional – UCN"
+          "Macroeconomía II – UCN, Coquimbo (2011–Presente)",
+          "Microeconomía I – UCN, Coquimbo (2011–Presente)",
+          "Microeconomía II – UCN, Coquimbo (2011–Presente)",
+          "Visión del Entorno Económico y Social – UCN",
+          "Introducción a la Economía – UCN",
+          "Organización Industrial – UCN",
+          "Optimización – UCN Antofagasta (2008–2010)",
+          "Economía Internacional – UCCuyo (2005–2007)"
         ],
         postgradCourses: [
-          "Metodología de la investigación – Postgrado UCN",
-          "Indicadores compuestos aplicados – Diplomado"
+          "Apoyo a docencia e investigación, Departamento de Economía Aplicada, UAM (2016–2018)"
         ],
         otherExpTitle: "Otras experiencias",
         otherExperience: [
-          "Coordinador de Programa de Doctorado en Ciencias Empresariales (2023 – presente)",
-          "Consultor externo en desarrollo regional (2021 – 2024)"
+          "Profesor jornada completa, Universidad Católica del Norte, Coquimbo, Chile (2011–presente)",
+          "Personal Investigador en Formación, Universidad Autónoma de Madrid, España (2016–2018)",
+          "Docencia parcial en INACAP, Universidad del Mar, UCCuyo"
         ],
         publicationsTitle: "Publicaciones",
         projectsTitle: "Proyectos de investigación",
         projects: [
-          {
-            title: "Impacto de la calidad de agua en el manejo de agroquímicos",
-            role: "Investigador responsable",
-            period: "2023 – 2025",
-            funding: "Fondo interno UCN"
-          },
-          {
-            title: "Gobernanza del transporte público en La Serena–Coquimbo",
-            role: "Co-investigador",
-            period: "2024 – 2026",
-            funding: "Proyecto regional"
-          }
+          { title: "Fortalece PyME Coquimbo – Red de asistencia digital", role: "Co-ejecutor", period: "2022", funding: "CORFO / ASOEX" },
+          { title: "Nodo Laboratorio Natural Océano Centro-Norte (NODOSLN0006)", role: "Investigador", period: "2022", funding: "ANID, Chile" },
+          { title: "Sistematización avances Corredor Bioceánico Central y Túnel Agua Negra", role: "Investigador", period: "2021", funding: "AGCID, Chile" },
+          { title: "Optimización de la gestión de residuos en salud (IT20I10084)", role: "Investigador", period: "2021", funding: "FONDEF IDeA" }
         ],
         conferencesTitle: "Presentaciones en Congresos",
         conferences: [
-          { title: "Gobernanza del transporte público en la conurbación La Serena–Coquimbo", event: "Congreso X", year: "2024" },
-          { title: "Certificación y exportación de frutas a la UE", event: "Redcert Chile", year: "2025" }
+          { title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0, U. Católica de Cuyo, Argentina", year: "2023" },
+          { title: "Crisis hídrica en Chile: acciones a nivel micro", event: "Conversatorio regional sobre crisis hídrica", year: "2022" },
+          { title: "Beyond GDP: socioeconomic diversity of European regions", event: "QuaRCS-lab Webinar Series", year: "2020" }
         ],
         skillsTitle: "Capacidades",
         skills: {
           languagesTitle: "Idiomas",
-          languages: ["Español (nativo)", "Inglés (avanzado)", "Portugués (intermedio)"],
-          programmingTitle: "Programación",
-          programming: ["R (COINr, indicadores compuestos)", "Python (procesamiento de datos)", "HTML/CSS"],
-          otherTitle: "Otras competencias",
-          other: ["Diseño de programas de doctorado","Docencia universitaria","Gestión de proyectos"]
+          languages: ["Español (nativo)", "Inglés (avalado)", "Portugués (básico)"],
+          programmingTitle: "Programación y software",
+          programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
+          otherTitle: "Áreas de interés",
+          other: ["Economía urbana y regional","Concentración espacial","Redes de innovación","Valoración económica de ecosistemas"]
         },
         awardsTitle: "Becas y Premios",
         awards: [
-          { name: "Beca de investigación UCN", description: "Proyecto sobre innovación regional", year: "2023" },
-          { name: "Premio a la docencia destacada", description: "Escuela de Ciencias Empresariales", year: "2022" }
+          { name: "—", description: "Agregar reconocimientos institucionales aquí", year: "—" }
         ]
       },
       en: {
         title: "Curriculum Vitae Andres Marcelo Vallone",
         nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
         generalTitle: "General Information",
-        generalText: "Here you can write your personal information, contact details and a short professional profile.",
-        summary: "Academic and researcher in business sciences, with experience in university teaching, postgraduate program development and project management. Interests in innovation, entrepreneurship and regional development.",
+        generalText: "Affiliation: Universidad Católica del Norte, School of Business Sciences – Institute of Public Policies, Coquimbo, Chile.",
+        summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019). Fields: urban and regional economics, innovation networks, spatial analysis.",
         educationTitle: "Education",
         education: [
-          { degree: "PhD in X", institution: "University Y", years: "2018 – 2022" },
-          { degree: "Master in Management", institution: "University Z", years: "2014 – 2016" }
+          { degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019" },
+          { degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
+          { degree: "MBA – Master in Business Administration", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
+          { degree: "Master in Economics and Strategic Business Administration", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2009" },
+          { degree: "BA in Economics", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004" }
         ],
         experienceTitle: "Experience",
         teachingExpTitle: "Teaching experience",
         undergradTitle: "Undergraduate",
         postgradTitle: "Postgraduate",
         undergradCourses: [
-          "Microeconomics I – School of Business Sciences – UCN",
-          "Regional Economics – UCN"
+          "Macroeconomics II – UCN, Coquimbo (2011–Present)",
+          "Microeconomics I – UCN, Coquimbo (2011–Present)",
+          "Microeconomics II – UCN, Coquimbo (2011–Present)",
+          "Economic and Social Environment – UCN",
+          "Introduction to Economics – UCN",
+          "Industrial Organization – UCN",
+          "Optimization – UCN Antofagasta (2008–2010)",
+          "International Economics – UCCuyo (2005–2007)"
         ],
         postgradCourses: [
-          "Research Methods – Graduate program, UCN",
-          "Applied composite indicators – Diploma"
+          "Teaching and research support, Dept. of Applied Economics, UAM (2016–2018)"
         ],
         otherExpTitle: "Other experience",
         otherExperience: [
-          "Program Coordinator, PhD in Business Sciences (2023 – present)",
-          "External consultant in regional development (2021 – 2024)"
+          "Full-time professor, Universidad Católica del Norte, Coquimbo, Chile (2011–present)",
+          "Research Fellow, Universidad Autónoma de Madrid, Spain (2016–2018)",
+          "Part-time teaching, INACAP, Universidad del Mar, UCCuyo"
         ],
         publicationsTitle: "Publications",
         projectsTitle: "Research projects",
         projects: [
-          {
-            title: "Impact of water quality on agrochemical management",
-            role: "Principal investigator",
-            period: "2023 – 2025",
-            funding: "UCN internal fund"
-          },
-          {
-            title: "Public transport governance in La Serena–Coquimbo",
-            role: "Co-investigator",
-            period: "2024 – 2026",
-            funding: "Regional project"
-          }
+          { title: "Fortalece PyME Coquimbo – Digital assistance network", role: "Co-executor", period: "2022", funding: "CORFO / ASOEX" },
+          { title: "Natural Ocean Lab, North-Central Chile (NODOSLN0006)", role: "Researcher", period: "2022", funding: "ANID, Chile" },
+          { title: "Systematization of the Central Bioceanic Corridor and Agua Negra tunnel", role: "Researcher", period: "2021", funding: "AGCID, Chile" },
+          { title: "Optimization of health waste management (IT20I10084)", role: "Researcher", period: "2021", funding: "FONDEF IDeA" }
         ],
         conferencesTitle: "Conference Presentations",
         conferences: [
-          { title: "Public transport governance in La Serena–Coquimbo", event: "Congress X", year: "2024" },
-          { title: "Certification and export of fruits to the EU", event: "Redcert Chile", year: "2025" }
+          { title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0, Argentina", year: "2023" },
+          { title: "Water crisis in Chile: micro-level actions", event: "Regional Conversatory", year: "2022" }
         ],
         skillsTitle: "Skills",
         skills: {
           languagesTitle: "Languages",
-          languages: ["Spanish (native)", "English (advanced)", "Portuguese (intermediate)"],
-          programmingTitle: "Programming",
-          programming: ["R (COINr, composite indicators)", "Python (data processing)", "HTML/CSS"],
-          otherTitle: "Other competencies",
-          other: ["Doctoral program design","University teaching","Project management"]
+          languages: ["Spanish (native)", "English (accredited)", "Portuguese (basic)"],
+          programmingTitle: "Programming & software",
+          programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
+          otherTitle: "Research interests",
+          other: ["Urban and regional economics","Spatial concentration","Innovation networks","Economic valuation of ecosystems"]
         },
         awardsTitle: "Scholarships & Awards",
         awards: [
-          { name: "UCN Research Scholarship", description: "Project on regional innovation", year: "2023" },
-          { name: "Outstanding Teaching Award", description: "School of Business Sciences", year: "2022" }
+          { name: "—", description: "Add awards or distinctions here", year: "—" }
         ]
       }
     };
@@ -535,7 +522,7 @@
         li.className = "edu-item";
         li.innerHTML = `
           <div class="edu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#243447">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050">
               <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
             </svg>
           </div>
@@ -552,12 +539,10 @@
       document.getElementById("teaching-exp-title").innerText = content[lang].teachingExpTitle;
       document.getElementById("undergrad-title").innerText = content[lang].undergradTitle;
       document.getElementById("postgrad-title").innerText = content[lang].postgradTitle;
-
       const ugList = document.getElementById("undergrad-list");
       const pgList = document.getElementById("postgrad-list");
       ugList.innerHTML = "";
       pgList.innerHTML = "";
-
       content[lang].undergradCourses.forEach(c => {
         const li = document.createElement("li");
         li.textContent = c;
@@ -590,8 +575,7 @@
         li.className = "card-list-item";
         li.innerHTML = `
           <div class="card-icon">
-            <!-- icono presentación -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#243447">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
               <path d="M3 4h18v10H3V4zm2 2v6h14V6H5zm4 12-3 3h2l2-2 2 2h2l-3-3H9z"/>
             </svg>
           </div>
@@ -608,19 +592,15 @@
       const container = document.getElementById("skills-grid");
       container.innerHTML = "";
       const s = content[lang].skills;
-
       const card1 = document.createElement("div");
       card1.className = "skill-card";
       card1.innerHTML = `<h3>${s.languagesTitle}</h3><ul>${s.languages.map(i => `<li>${i}</li>`).join("")}</ul>`;
-
       const card2 = document.createElement("div");
       card2.className = "skill-card";
       card2.innerHTML = `<h3>${s.programmingTitle}</h3><ul>${s.programming.map(i => `<li>${i}</li>`).join("")}</ul>`;
-
       const card3 = document.createElement("div");
       card3.className = "skill-card";
       card3.innerHTML = `<h3>${s.otherTitle}</h3><ul>${s.other.map(i => `<li>${i}</li>`).join("")}</ul>`;
-
       container.appendChild(card1);
       container.appendChild(card2);
       container.appendChild(card3);
@@ -647,8 +627,7 @@
         li.className = "card-list-item";
         li.innerHTML = `
           <div class="card-icon">
-            <!-- icono clipboard / proyecto -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d27b3f">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bc7d38">
               <path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/>
             </svg>
           </div>
@@ -661,182 +640,85 @@
       });
     }
 
-    function toggleLanguage() {
-      currentLang = currentLang === "es" ? "en" : "es";
-      const t = content[currentLang];
-
-      document.getElementById("title").innerText = t.title;
-      document.getElementById("nav-general").innerText = t.nav[0];
-      document.getElementById("nav-education").innerText = t.nav[1];
-      document.getElementById("nav-experience").innerText = t.nav[2];
-      document.getElementById("nav-publications").innerText = t.nav[3];
-      document.getElementById("nav-projects").innerText = t.nav[4];
-      document.getElementById("nav-conferences").innerText = t.nav[5];
-      document.getElementById("nav-skills").innerText = t.nav[6];
-      document.getElementById("nav-awards").innerText = t.nav[7];
-
-      document.getElementById("general-title").innerText = t.generalTitle;
-      document.getElementById("general-text").innerText = t.generalText;
-      document.getElementById("summary-text").innerText = t.summary;
-      document.getElementById("education-title").innerText = t.educationTitle;
-      document.getElementById("experience-title").innerText = t.experienceTitle;
-      document.getElementById("publications-title").innerText = t.publicationsTitle;
-      document.getElementById("skills-title").innerText = t.skillsTitle;
-
-      renderEducation(currentLang);
-      renderTeachingExperience(currentLang);
-      renderOtherExperience(currentLang);
-      renderConferences(currentLang);
-      renderSkills(currentLang);
-      renderAwards(currentLang);
-      renderProjects(currentLang);
-    }
-
-    /* PUBLICACIONES DESDE BIBTEX
-       Orden temporal: 2025, 2024, 2023, 2022, 2022, 2021, 2020, 2019..., 2017, 2014
-    */
+    /* BibTeX (mismo que dejamos armado antes) */
     const bibtexData = `
-@article{honoresCollaborateNotCompete,
-  title = {Collaborate but not compete? Gender, homophily, and the productivity-citation gap in inventor networks},
-  issn = {1043-8599},
-  shorttitle = {Collaborate but not compete?},
-  url = {https://doi.org/10.1080/10438599.2025.2581589},
-  doi = {10.1080/10438599.2025.2581589},
-  journal = {Economics of Innovation and New Technology},
-  author = {Honores, Guillermo and Pinto, Pablo E. and Vallone, Andrés},
-  year = {2025},
-  pages = {1--24}
+@article{vasquez2024,
+  title={Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
+  author={Vazquez, J. and Morales, C. and Vallone, A.},
+  journal={Marine Policy},
+  volume={165},
+  year={2024},
+  doi={10.1016/j.marpol.2024.106191}
 }
-@article{vasquezBrownSeaweedsFishery2024,
-  title = {Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
-  volume = {165},
-  issn = {0308-597X},
-  shorttitle = {Brown seaweeds fishery and copper mining production},
-  url = {https://www.sciencedirect.com/science/article/pii/S0308597X24001891},
-  doi = {10.1016/j.marpol.2024.106191},
-  journal = {Marine Policy},
-  author = {Vásquez, Julio A. and Morales, Cristian and Vallone, Andrés},
-  month = jul,
-  year = {2024},
-  pages = {106191}
+@article{morales2022,
+  title={Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
+  author={Morales, C. and Vallone, A. and Guevara-Ramírez, W. and Sepúlveda, J. and Espinoza, S. and Paredes, D.},
+  journal={Multidisciplinary Business Review},
+  volume={15},
+  number={2},
+  pages={14--26},
+  year={2022}
 }
-@misc{SpatiotemporalDynamicsPesticide,
-  title = {The spatio-temporal dynamics of pesticide use: a global exploratory analysis},
-  url = {https://www.tandfonline.com/doi/full/10.1080/09640568.2023.2274284},
-  journal = {Journal of Environmental Planning and Management},
-  year = {2023}
+@article{balguera2022,
+  title={Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on GPC},
+  author={Balguera-Quinteros, A. and Vallone, A. and Igor-Tapia, S.},
+  journal={Sustainability},
+  volume={14},
+  number={16},
+  pages={10309},
+  year={2022}
 }
-@article{balaguera-quinteroCarbonFootprintEstimation2022,
-  title = {Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on Global Protocol for Community-Scale Greenhouse Gas Emission Inventories (GPC)},
-  volume = {14},
-  issn = {2071-1050},
-  url = {https://www.mdpi.com/2071-1050/14/16/10309},
-  doi = {10.3390/su141610309},
-  journal = {Sustainability},
-  author = {Balaguera-Quintero, Alejandra and Vallone, Andres and Igor-Tapia, Sebastián},
-  year = {2022},
-  pages = {10309}
+@article{pinto2021,
+  title={Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
+  author={Pinto, P. and Honores, G. and Vallone, A.},
+  journal={PLOS ONE},
+  volume={16},
+  number={9},
+  pages={e0256956},
+  year={2021}
 }
-@article{moralesEvolucionCompetitividadExportadora2022,
-  title = {Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
-  volume = {15},
-  shorttitle = {Evolución de la competitividad exportadora en la industria pesquera y acuícola},
-  number = {2},
-  journal = {Multidisciplinary Business Review},
-  author = {Morales, Cristian and Vallone, Andrés and Guevar, Willmer and Sepúlveda, Javier and Espinoza, Sebastián and Paredes, Diego},
-  year = {2022},
-  pages = {14--26}
+@article{vallone2020,
+  title={Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
+  author={Vallone, A. and Chasco, C.},
+  journal={The Annals of Regional Science},
+  volume={64},
+  pages={421--454},
+  year={2020}
 }
-@article{pintoExploringTopologyDynamic2021,
-  title = {Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
-  volume = {16},
-  issn = {1932-6203},
-  url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0256956},
-  doi = {10.1371/journal.pone.0256956},
-  journal = {PLOS ONE},
-  author = {Pinto, Pablo E. and Honores, Guillermo and Vallone, Andrés},
-  month = sep,
-  year = {2021},
-  pages = {e0256956}
+@article{vallone2020b,
+  title={Strategies to access web-enabled urban spatial data for socioeconomic research using R functions},
+  author={Vallone, A. and Chasco, C. and Sánchez, B.},
+  journal={Journal of Geographical Systems},
+  year={2019}
 }
-@article{valloneSpatiotemporalMethodsAnalysis2020a,
-  title = {Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
-  volume = {64},
-  issn = {1432-0592},
-  url = {https://doi.org/10.1007/s00168-019-00960-9},
-  doi = {10.1007/s00168-019-00960-9},
-  journal = {The Annals of Regional Science},
-  author = {Vallone, Andrés and Chasco, Coro},
-  month = apr,
-  year = {2020},
-  pages = {421--454}
+@article{ayouba2020,
+  title={Beyond GDP: an analysis of the socio-economic diversity of European regions},
+  author={Ayouba, K. and Le Gallo, J. and Vallone, A.},
+  journal={Applied Economics},
+  year={2019}
 }
-@article{pintoStructureCollaborationNetworks2019,
-  title = {The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
-  volume = {13},
-  issn = {1751-1577},
-  url = {http://www.sciencedirect.com/science/article/pii/S1751157719302202},
-  doi = {10.1016/j.joi.2019.100984},
-  journal = {Journal of Informetrics},
-  author = {Pinto, Pablo E. and Vallone, Andres and Honores, Guillermo},
-  month = nov,
-  year = {2019},
-  number = {4},
-  pages = {100984}
+@article{pinto2019,
+  title={The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
+  author={Pinto, P. and Vallone, A. and Honores, G.},
+  journal={Journal of Informetrics},
+  year={2019}
 }
-@article{ayoubaGDPAnalysisSocioeconomic2019a,
-  title = {Beyond GDP: an analysis of the socio-economic diversity of European regions},
-  issn = {0003-6846},
-  url = {https://doi.org/10.1080/00036846.2019.1646885},
-  doi = {10.1080/00036846.2019.1646885},
-  journal = {Applied Economics},
-  author = {Ayouba, Kassoum and Le Gallo, Julie and Vallone, Andrés},
-  month = aug,
-  year = {2019},
-  pages = {1--20}
+@incollection{chasco2019,
+  title={El auge de la economía colaborativa en las ciudades: el caso de Madrid},
+  author={Chasco, C. and Ruiz, S. and Centeno, M. and Vallone, A.},
+  year={2019}
 }
-@article{valloneStrategiesAccessWebenabled2019,
-  title = {Strategies to access web-enabled urban spatial data for socioeconomic research using R functions},
-  issn = {1435-5949},
-  url = {https://doi.org/10.1007/s10109-019-00309-y},
-  doi = {10.1007/s10109-019-00309-y},
-  journal = {Journal of Geographical Systems},
-  author = {Vallone, Andrés and Chasco, Coro and Sánchez, Beatriz},
-  month = aug,
-  year = {2019}
+@article{pinto2017,
+  title={The dynamics of patentability and collaborativeness in Chile},
+  author={Pinto, P. and Vallone, A. and Honores, G. and González, H.},
+  journal={World Patent Information},
+  year={2017}
 }
-@incollection{chascoAugeEconomiaColaborativa2019,
-  title = {El auge de la economía colaborativa en las ciudades: el caso de Madrid},
-  author = {Chasco, Coro and Ruiz, Sofía and Centeno, Minerva and Vallone, Andres},
-  month = oct,
-  year = {2019},
-  doi = {10.32029/2605-4655.03.01.2019},
-  pages = {151--167}
-}
-@article{pintoDynamicsPatentabilityCollaborativeness2017,
-  title = {The dynamics of patentability and collaborativeness in Chile: An analysis of patenting activity between 1989 and 2013},
-  volume = {49},
-  issn = {0172-2190},
-  url = {http://www.sciencedirect.com/science/article/pii/S0172219016301454},
-  doi = {10.1016/j.wpi.2017.05.004},
-  journal = {World Patent Information},
-  author = {Pinto, Pablo E. and Vallone, Andres and Honores, Guillermo and González, Horacio},
-  month = jun,
-  year = {2017},
-  pages = {52--65}
-}
-@article{ramirezModeloFlexiblePara2014,
-  title = {Un modelo flexible para la simulación de distribución de ciudades},
-  volume = {22},
-  issn = {0718-3305},
-  url = {https://scielo.conicyt.cl/scielo.php?script=sci_abstract&pid=S0718-33052014000300007&lng=es&nrm=iso&tlng=es},
-  doi = {10.4067/S0718-33052014000300007},
-  number = {3},
-  journal = {Ingeniare. Revista chilena de ingeniería},
-  author = {Ramírez, Pablo and Leger, Paul and Vallone, Andrés},
-  month = sep,
-  year = {2014},
-  pages = {351--362}
+@article{ramirez2014,
+  title={Un modelo flexible para la simulación de distribución de ciudades},
+  author={Ramírez, P. and Leger, P. and Vallone, A.},
+  journal={Ingeniare. Revista chilena de ingeniería},
+  year={2014}
 }
 `;
 
@@ -849,7 +731,6 @@
         const keyEnd = body.indexOf(',');
         const key = body.substring(0, keyEnd).trim();
         const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
-
         const fields = {};
         fieldsStr.split('\n').forEach(line => {
           line = line.trim();
@@ -869,41 +750,4 @@
 
     function renderPublications() {
       const list = document.getElementById('publications-list');
-      list.innerHTML = '';
-      const pubs = parseBibtex(bibtexData);
-      pubs.forEach(pub => {
-        const li = document.createElement('li');
-        li.className = "card-list-item";
-        const icon = document.createElement('div');
-        icon.className = 'card-icon';
-        icon.innerHTML = `
-          <!-- icono libro/revista para PUBLICACIONES -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#243447">
-            <path d="M6 3h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6v-1h8V6a1 1 0 0 0-1-1H6V3zm-2 2h1v14h9v2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
-          </svg>
-        `;
-        const contentDiv = document.createElement('div');
-        const title = pub.title || '(Sin título)';
-        const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
-        const source = pub.journal || pub.booktitle || '';
-        const year = pub.year ? ` (${pub.year})` : '';
-        const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
-        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
-        li.appendChild(icon);
-        li.appendChild(contentDiv);
-        list.appendChild(li);
-      });
-    }
-
-    // Render inicial
-    renderEducation("es");
-    renderTeachingExperience("es");
-    renderOtherExperience("es");
-    renderConferences("es");
-    renderSkills("es");
-    renderAwards("es");
-    renderPublications();
-    renderProjects("es");
-  </script>
-</body>
-</html>
+      list.inne
