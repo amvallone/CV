@@ -6,14 +6,13 @@
   <title>Curriullum Vitae Andres Marcelo Vallone</title>
   <style>
     :root {
-      /* paleta nueva: marrón + verde */
-      --bg: #dfddcf;         /* fondo general */
-      --bg-soft: #efece1;    /* secciones suaves */
-      --primary: #3a3a2d;    /* títulos */
-      --secondary: #6a7c58;  /* acentos verdes */
-      --accent: #bc7d38;     /* botón idioma / resaltados */
-      --card: #f5f1e9;       /* tarjetas */
-      --sidebar: #5a4a3a;    /* lateral */
+      --bg: #dfddcf;
+      --bg-soft: #efece1;
+      --primary: #3a3a2d;
+      --secondary: #6a7c58;
+      --accent: #bc7d38;
+      --card: #f5f1e9;
+      --sidebar: #5a4a3a;
       --sidebar-w: 310px;
     }
     * { box-sizing: border-box; }
@@ -24,8 +23,6 @@
       color: #2c2c2c;
       line-height: 1.5;
     }
-
-    /* SIDEBAR */
     .sidebar {
       position: fixed;
       top: 0;
@@ -116,8 +113,6 @@
     nav.sidebar-nav a:hover {
       background: rgba(245,241,233,0.18);
     }
-
-    /* CONTENIDO PRINCIPAL */
     .main-content {
       margin-left: calc(var(--sidebar-w) + 16px);
       padding: 20px;
@@ -130,10 +125,7 @@
       margin-bottom: 18px;
       border: 1px solid rgba(0,0,0,0.01);
     }
-
-    section {
-      margin-bottom: 28px;
-    }
+    section { margin-bottom: 28px; }
     h2 {
       border-bottom: 2px solid rgba(90, 74, 58, 0.55);
       padding-bottom: 5px;
@@ -141,23 +133,7 @@
       color: var(--primary);
     }
     ul { padding-left: 0; list-style: none; }
-
-    /* EDUCACIÓN */
-    .edu-item {
-      display: flex;
-      gap: 10px;
-      background: #f1ede5;
-      margin-bottom: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(44,44,44,0.03);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-      align-items: flex-start;
-    }
-    .edu-icon { width: 26px; height: 26px; flex: 0 0 26px; }
-    .edu-content small { color: #6b5b47; font-size: 0.73rem; }
-
-    /* LISTAS */
+    .edu-item,
     .card-list-item {
       display: flex;
       gap: 10px;
@@ -166,19 +142,12 @@
       padding: 10px 12px;
       border-radius: 8px;
       border: 1px solid rgba(0,0,0,0.015);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
       align-items: flex-start;
-      transition: transform 0.1s ease;
     }
-    .card-list-item:hover { transform: translateX(2px); }
-    .card-icon { width: 24px; height: 24px; flex: 0 0 24px; }
-
-    /* EXPERIENCIA */
-    .experience-grid {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+    .edu-icon, .card-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+    .edu-content small { color: #6b5b47; font-size: 0.73rem; }
+    .experience-grid { display: flex; gap: 15px; flex-wrap: wrap; }
     .exp-card {
       background: #f1ede5;
       flex: 1 1 380px;
@@ -193,16 +162,6 @@
       align-items: center;
       margin-bottom: 8px;
     }
-    .exp-card-header svg {
-      width: 22px;
-      height: 22px;
-      fill: #5e7050;
-    }
-    .exp-card h3 {
-      margin: 0;
-      font-size: 1rem;
-      color: #3a3a2d;
-    }
     .exp-subtitle {
       font-size: 0.8rem;
       color: #5d523f;
@@ -210,7 +169,6 @@
       margin-bottom: 4px;
       font-weight: bold;
     }
-
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -221,17 +179,7 @@
       border-radius: 8px;
       padding: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.02);
     }
-    .skill-card h3 {
-      margin-top: 0;
-      font-size: 0.95rem;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding-bottom: 4px;
-      margin-bottom: 8px;
-      color: #3a3a2d;
-    }
-
     .award-item {
       background: #f1ede5;
       padding: 10px 12px;
@@ -239,15 +187,8 @@
       margin-bottom: 10px;
       border-left: 4px solid #bc7d38;
     }
-
     @media (max-width: 900px) {
-      .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
+      .sidebar { position: static; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
       .main-content { margin-left: 0; }
       nav.sidebar-nav { flex-direction: row; flex-wrap: wrap; }
     }
@@ -260,13 +201,10 @@
     </div>
     <div class="sidebar-title" id="title">Curriullum Vitae Andres Marcelo Vallone</div>
     <div class="sidebar-contact">
-      <!-- MAIL -->
       <a class="contact-icon" href="mailto:avallone@ucn.cl" title="Enviar correo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         avallone@ucn.cl
       </a>
-
-      <!-- RESEARCHGATE -->
       <a class="contact-icon" href="https://www.researchgate.net/profile/Tu-Nombre" target="_blank" rel="noopener" title="ResearchGate">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
           <circle cx="40" cy="40" r="36" fill="#4aa471" />
@@ -274,8 +212,6 @@
         </svg>
         ResearchGate
       </a>
-
-      <!-- ORCID -->
       <a class="contact-icon" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" title="ORCID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
           <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
@@ -283,17 +219,13 @@
         </svg>
         ORCID: 0000-0000-0000-0000
       </a>
-
-      <!-- Web of Science ResearcherID -->
-      <span class="contact-icon" title="Web of Science ResearcherID">
+      <span class="contact-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
-        Web of Science ID: <!-- tu ResearcherID -->
+        Web of Science ID:
       </span>
-
-      <!-- Scopus Author ID -->
-      <span class="contact-icon" title="Scopus Author ID">
+      <span class="contact-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
-        Scopus ID: <!-- tu Scopus Author ID -->
+        Scopus ID:
       </span>
     </div>
     <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
@@ -379,7 +311,7 @@
   </main>
 
   <script>
-    /* DATA en ES y EN (igual que antes, sólo cambiamos colores arriba) */
+    /* 1. Datos bilingües */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -512,7 +444,97 @@
       }
     };
 
-    let currentLang = "es";
+    /* 2. BibTeX simplificado */
+    const bibtexData = `
+@article{vasquez2024,
+  title={Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
+  author={Vazquez, J. and Morales, C. and Vallone, A.},
+  journal={Marine Policy},
+  volume={165},
+  year={2024},
+  doi={10.1016/j.marpol.2024.106191}
+}
+@article{balguera2022,
+  title={Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on GPC},
+  author={Balaguera-Quintero, A. and Vallone, A. and Igor-Tapia, S.},
+  journal={Sustainability},
+  volume={14},
+  number={16},
+  pages={10309},
+  year={2022}
+}
+@article{morales2022,
+  title={Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
+  author={Morales, C. and Vallone, A. and Guevara-Ramírez, W. and Sepúlveda, J. and Espinoza, S. and Paredes, D.},
+  journal={Multidisciplinary Business Review},
+  volume={15},
+  number={2},
+  pages={14--26},
+  year={2022}
+}
+@article{pinto2021,
+  title={Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
+  author={Pinto, P. and Honores, G. and Vallone, A.},
+  journal={PLOS ONE},
+  volume={16},
+  number={9},
+  pages={e0256956},
+  year={2021}
+}
+@article{vallone2020,
+  title={Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
+  author={Vallone, A. and Chasco, C.},
+  journal={The Annals of Regional Science},
+  volume={64},
+  pages={421--454},
+  year={2020}
+}
+@article{pinto2019,
+  title={The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
+  author={Pinto, P. and Vallone, A. and Honores, G.},
+  journal={Journal of Informetrics},
+  year={2019}
+}
+@article{ayouba2019,
+  title={Beyond GDP: an analysis of the socio-economic diversity of European regions},
+  author={Ayouba, K. and Le Gallo, J. and Vallone, A.},
+  journal={Applied Economics},
+  year={2019}
+}
+@article{ramirez2014,
+  title={Un modelo flexible para la simulación de distribución de ciudades},
+  author={Ramírez, P. and Leger, P. and Vallone, A.},
+  journal={Ingeniare. Revista chilena de ingeniería},
+  year={2014}
+}
+`;
+
+    /* 3. Funciones de render */
+    function parseBibtex(bibtex) {
+      const entries = bibtex.split('@').filter(x => x.trim().length > 0);
+      return entries.map(raw => {
+        const typeEnd = raw.indexOf('{');
+        const type = raw.substring(0, typeEnd).trim();
+        const body = raw.substring(typeEnd + 1);
+        const keyEnd = body.indexOf(',');
+        const key = body.substring(0, keyEnd).trim();
+        const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
+        const fields = {};
+        fieldsStr.split('\n').forEach(line => {
+          line = line.trim();
+          if (!line || line.startsWith('%')) return;
+          const eq = line.indexOf('=');
+          if (eq > -1) {
+            const fieldName = line.substring(0, eq).trim().toLowerCase();
+            let fieldVal = line.substring(eq + 1).trim();
+            if (fieldVal.endsWith(',')) fieldVal = fieldVal.slice(0, -1);
+            fieldVal = fieldVal.replace(/^{|}$/g, '').replace(/^"|"$/g, '');
+            fields[fieldName] = fieldVal;
+          }
+        });
+        return { type, key, ...fields };
+      });
+    }
 
     function renderEducation(lang) {
       const list = document.getElementById("education-list");
@@ -640,114 +662,77 @@
       });
     }
 
-    /* BibTeX (mismo que dejamos armado antes) */
-    const bibtexData = `
-@article{vasquez2024,
-  title={Brown seaweeds fishery and copper mining production: Two distant economic industries connected by socioecological impacts in Northern Chile},
-  author={Vazquez, J. and Morales, C. and Vallone, A.},
-  journal={Marine Policy},
-  volume={165},
-  year={2024},
-  doi={10.1016/j.marpol.2024.106191}
-}
-@article{morales2022,
-  title={Evolución de la competitividad exportadora en la industria pesquera y acuícola: el caso de Chile},
-  author={Morales, C. and Vallone, A. and Guevara-Ramírez, W. and Sepúlveda, J. and Espinoza, S. and Paredes, D.},
-  journal={Multidisciplinary Business Review},
-  volume={15},
-  number={2},
-  pages={14--26},
-  year={2022}
-}
-@article{balguera2022,
-  title={Carbon Footprint Estimation for La Serena-Coquimbo Conurbation Based on GPC},
-  author={Balguera-Quinteros, A. and Vallone, A. and Igor-Tapia, S.},
-  journal={Sustainability},
-  volume={14},
-  number={16},
-  pages={10309},
-  year={2022}
-}
-@article{pinto2021,
-  title={Exploring the topology and dynamic growth properties of co-invention networks and technology fields},
-  author={Pinto, P. and Honores, G. and Vallone, A.},
-  journal={PLOS ONE},
-  volume={16},
-  number={9},
-  pages={e0256956},
-  year={2021}
-}
-@article{vallone2020,
-  title={Spatiotemporal methods for analysis of urban system dynamics: an application to Chile},
-  author={Vallone, A. and Chasco, C.},
-  journal={The Annals of Regional Science},
-  volume={64},
-  pages={421--454},
-  year={2020}
-}
-@article{vallone2020b,
-  title={Strategies to access web-enabled urban spatial data for socioeconomic research using R functions},
-  author={Vallone, A. and Chasco, C. and Sánchez, B.},
-  journal={Journal of Geographical Systems},
-  year={2019}
-}
-@article{ayouba2020,
-  title={Beyond GDP: an analysis of the socio-economic diversity of European regions},
-  author={Ayouba, K. and Le Gallo, J. and Vallone, A.},
-  journal={Applied Economics},
-  year={2019}
-}
-@article{pinto2019,
-  title={The structure of collaboration networks: Findings from three decades of co-invention patents in Chile},
-  author={Pinto, P. and Vallone, A. and Honores, G.},
-  journal={Journal of Informetrics},
-  year={2019}
-}
-@incollection{chasco2019,
-  title={El auge de la economía colaborativa en las ciudades: el caso de Madrid},
-  author={Chasco, C. and Ruiz, S. and Centeno, M. and Vallone, A.},
-  year={2019}
-}
-@article{pinto2017,
-  title={The dynamics of patentability and collaborativeness in Chile},
-  author={Pinto, P. and Vallone, A. and Honores, G. and González, H.},
-  journal={World Patent Information},
-  year={2017}
-}
-@article{ramirez2014,
-  title={Un modelo flexible para la simulación de distribución de ciudades},
-  author={Ramírez, P. and Leger, P. and Vallone, A.},
-  journal={Ingeniare. Revista chilena de ingeniería},
-  year={2014}
-}
-`;
-
-    function parseBibtex(bibtex) {
-      const entries = bibtex.split('@').filter(x => x.trim().length > 0);
-      return entries.map(raw => {
-        const typeEnd = raw.indexOf('{');
-        const type = raw.substring(0, typeEnd).trim();
-        const body = raw.substring(typeEnd + 1);
-        const keyEnd = body.indexOf(',');
-        const key = body.substring(0, keyEnd).trim();
-        const fieldsStr = body.substring(keyEnd + 1, body.lastIndexOf('}')).trim();
-        const fields = {};
-        fieldsStr.split('\n').forEach(line => {
-          line = line.trim();
-          if (!line || line.startsWith('%')) return;
-          const eq = line.indexOf('=');
-          if (eq > -1) {
-            const fieldName = line.substring(0, eq).trim().toLowerCase();
-            let fieldVal = line.substring(eq + 1).trim();
-            if (fieldVal.endsWith(',')) fieldVal = fieldVal.slice(0, -1);
-            fieldVal = fieldVal.replace(/^{|}$/g, '').replace(/^"|"$/g, '');
-            fields[fieldName] = fieldVal;
-          }
-        });
-        return { type, key, ...fields };
+    function renderPublications() {
+      const list = document.getElementById('publications-list');
+      list.innerHTML = '';
+      const pubs = parseBibtex(bibtexData);
+      pubs.forEach(pub => {
+        const li = document.createElement('li');
+        li.className = "card-list-item";
+        const icon = document.createElement('div');
+        icon.className = 'card-icon';
+        icon.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
+            <path d="M6 3h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6v-1h8V6a1 1 0 0 0-1-1H6V3zm-2 2h1v14h9v2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
+          </svg>
+        `;
+        const contentDiv = document.createElement('div');
+        const title = pub.title || '(Sin título)';
+        const authors = pub.author ? pub.author.replace(/ and /g, ', ') : '';
+        const source = pub.journal || pub.booktitle || '';
+        const year = pub.year ? ` (${pub.year})` : '';
+        const doi = pub.doi ? ` DOI: ${pub.doi}` : '';
+        contentDiv.innerHTML = `<strong>${title}</strong><br>${authors ? authors + '. ' : ''}${source}${year}.${doi}`;
+        li.appendChild(icon);
+        li.appendChild(contentDiv);
+        list.appendChild(li);
       });
     }
 
-    function renderPublications() {
-      const list = document.getElementById('publications-list');
-      list.inne
+    /* 4. toggle */
+    let currentLang = "es";
+    function renderAll(lang) {
+      const t = content[lang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("nav-general").innerText = t.nav[0];
+      document.getElementById("nav-education").innerText = t.nav[1];
+      document.getElementById("nav-experience").innerText = t.nav[2];
+      document.getElementById("nav-publications").innerText = t.nav[3];
+      document.getElementById("nav-projects").innerText = t.nav[4];
+      document.getElementById("nav-conferences").innerText = t.nav[5];
+      document.getElementById("nav-skills").innerText = t.nav[6];
+      document.getElementById("nav-awards").innerText = t.nav[7];
+
+      document.getElementById("general-title").innerText = t.generalTitle;
+      document.getElementById("general-text").innerText = t.generalText;
+      document.getElementById("summary-text").innerText = t.summary;
+      document.getElementById("education-title").innerText = t.educationTitle;
+      document.getElementById("experience-title").innerText = t.experienceTitle;
+      document.getElementById("publications-title").innerText = t.publicationsTitle;
+      document.getElementById("projects-title").innerText = t.projectsTitle;
+      document.getElementById("conferences-title").innerText = t.conferencesTitle;
+      document.getElementById("skills-title").innerText = t.skillsTitle;
+      document.getElementById("awards-title").innerText = t.awardsTitle;
+
+      renderEducation(lang);
+      renderTeachingExperience(lang);
+      renderOtherExperience(lang);
+      renderConferences(lang);
+      renderSkills(lang);
+      renderAwards(lang);
+      renderProjects(lang);
+      renderPublications();
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "es" ? "en" : "es";
+      renderAll(currentLang);
+    }
+
+    /* 5. Render inicial */
+    document.addEventListener("DOMContentLoaded", function () {
+      renderAll("es");
+    });
+  </script>
+</body>
+</html>
