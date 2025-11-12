@@ -1,197 +1,148 @@
-<script>
-  /* ==== el mismo objeto content que ya tenías arriba ==== */
-  const content = {
-    es: {
-      title: "Curriullum Vitae Andres Marcelo Vallone",
-      nav: ["Información General","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Capacidades","Becas y Premios"],
-      generalTitle: "Información General",
-      generalText: "Afiliación: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.",
-      summary: "Profesor Asociado UCN. Doctor en Economía y Empresa (UAM, 2019). Líneas: economía urbana y regional, redes de innovación, concentración espacial, R para análisis socioeconómicos.",
-      educationTitle: "Educación",
-      education: [
-        { degree: "Doctor en Economía y Empresa", institution: "Universidad Autónoma de Madrid, España", years: "2015 – 2019" },
-        { degree: "Magíster en Ciencia Regional", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
-        { degree: "MBA – Master en Administración", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
-        { degree: "Magíster en Economía y Administración Estratégica de Negocios", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "2006 – 2009" },
-        { degree: "Licenciado en Economía", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "1997 – 2004" }
-      ],
-      experienceTitle: "Experiencia",
-      teachingExpTitle: "Experiencia docente",
-      undergradTitle: "Pregrado",
-      postgradTitle: "Postgrado",
-      undergradCourses: [
-        "Macroeconomía II – UCN, Coquimbo (2011–Presente)",
-        "Microeconomía I – UCN, Coquimbo (2011–Presente)",
-        "Microeconomía II – UCN, Coquimbo (2011–Presente)",
-        "Visión del Entorno Económico y Social – UCN",
-        "Introducción a la Economía – UCN",
-        "Organización Industrial – UCN",
-        "Optimización – UCN Antofagasta (2008–2010)",
-        "Economía Internacional – UCCuyo (2005–2007)"
-      ],
-      postgradCourses: [
-        "Apoyo a docencia e investigación, Departamento de Economía Aplicada, UAM (2016–2018)"
-      ],
-      otherExpTitle: "Otras experiencias",
-      otherExperience: [
-        "Profesor jornada completa, Universidad Católica del Norte, Coquimbo, Chile (2011–presente)",
-        "Personal Investigador en Formación, Universidad Autónoma de Madrid, España (2016–2018)",
-        "Docencia parcial en INACAP, Universidad del Mar, UCCuyo"
-      ],
-      publicationsTitle: "Publicaciones",
-      publicationsJournalsTitle: "Revistas indexadas",
-      publicationsChaptersTitle: "Capítulos de libro",
-      projectsTitle: "Proyectos de investigación",
-      projects: [
-        { title: "Fortalece PyME Coquimbo – Red de asistencia digital", role: "Co-ejecutor", period: "2022", funding: "CORFO / ASOEX" },
-        { title: "Nodo Laboratorio Natural Océano Centro-Norte (NODOSLN0006)", role: "Investigador", period: "2022", funding: "ANID, Chile" },
-        { title: "Sistematización avances Corredor Bioceánico Central y Túnel Agua Negra", role: "Investigador", period: "2021", funding: "AGCID, Chile" }
-      ],
-      conferencesTitle: "Presentaciones en Congresos",
-      conferences: [
-        { title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0, U. Católica de Cuyo, Argentina", year: "2023" },
-        { title: "Crisis hídrica en Chile: acciones a nivel micro", event: "Conversatorio regional sobre crisis hídrica", year: "2022" }
-      ],
-      skillsTitle: "Capacidades",
-      skills: {
-        languagesTitle: "Idiomas",
-        languages: ["Español (nativo)", "Inglés (avalado)", "Portugués (básico)"],
-        programmingTitle: "Programación y software",
-        programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
-        otherTitle: "Áreas de interés",
-        other: ["Economía urbana y regional","Concentración espacial","Redes de innovación","Valoración económica de ecosistemas"]
-      },
-      awardsTitle: "Becas y Premios",
-      awards: []
-    },
-    en: {
-      title: "Curriculum Vitae Andres Marcelo Vallone",
-      nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
-      generalTitle: "General Information",
-      generalText: "Affiliation: Universidad Católica del Norte, School of Business Sciences – Institute of Public Policies, Coquimbo, Chile.",
-      summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019). Fields: urban and regional economics, innovation networks, spatial analysis.",
-      educationTitle: "Education",
-      education: [
-        { degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019" },
-        { degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
-        { degree: "MBA – Master in Business Administration", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
-        { degree: "Master in Economics and Strategic Business Administration", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2009" },
-        { degree: "BA in Economics", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004" }
-      ],
-      experienceTitle: "Experience",
-      teachingExpTitle: "Teaching experience",
-      undergradTitle: "Undergraduate",
-      postgradTitle: "Postgraduate",
-      undergradCourses: [
-        "Macroeconomics II – UCN, Coquimbo (2011–Present)",
-        "Microeconomics I – UCN, Coquimbo (2011–Present)",
-        "Microeconomics II – UCN, Coquimbo (2011–Present)",
-        "Economic and Social Environment – UCN",
-        "Introduction to Economics – UCN",
-        "Industrial Organization – UCN",
-        "Optimization – UCN Antofagasta (2008–2010)",
-        "International Economics – UCCuyo (2005–2007)"
-      ],
-      postgradCourses: [
-        "Teaching and research support, Dept. of Applied Economics, UAM (2016–2018)"
-      ],
-      otherExpTitle: "Other experience",
-      otherExperience: [
-        "Full-time professor, Universidad Católica del Norte, Coquimbo, Chile (2011–present)",
-        "Research Fellow, Universidad Autónoma de Madrid, Spain (2016–2018)",
-        "Part-time teaching, INACAP, Universidad del Mar, UCCuyo"
-      ],
-      publicationsTitle: "Publications",
-      publicationsJournalsTitle: "Indexed journals",
-      publicationsChaptersTitle: "Book chapters",
-      projectsTitle: "Research projects",
-      conferencesTitle: "Conference Presentations",
-      conferences: [
-        { title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0, Argentina", year: "2023" }
-      ],
-      skillsTitle: "Skills",
-      skills: {
-        languagesTitle: "Languages",
-        languages: ["Spanish (native)", "English (accredited)", "Portuguese (basic)"],
-        programmingTitle: "Programming & software",
-        programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
-        otherTitle: "Research interests",
-        other: ["Urban and regional economics","Spatial concentration","Innovation networks","Economic valuation of ecosystems"]
-      },
-      awardsTitle: "Scholarships & Awards",
-      awards: []
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriullum Vitae Andres Marcelo Vallone</title>
+  <style>
+    :root {
+      --bg: #dfddcf;
+      --primary: #3a3a2d;
+      --accent: #bc7d38;
+      --card: #f5f1e9;
+      --sidebar: #5a4a3a;
+      --sidebar-w: 310px;
     }
-  };
-
-  let currentLang = "es";
-  let pubsCache = [];
-  let presentationsCache = [];
-  let projectsCache = [];
-
-  /* ====== utilidades ya conocidas ====== */
-  function parseBibtex(bibtex) {
-    const entries = [];
-    const raw = bibtex.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
-    for (const chunk of raw) {
-      const typeMatch = chunk.match(/^([a-zA-Z]+)\s*{/);
-      if (!typeMatch) continue;
-      const type = typeMatch[1].toLowerCase();
-      const keyMatch = chunk.match(/^[a-zA-Z]+\s*{\s*([^,]+),/);
-      const key = keyMatch ? keyMatch[1].trim() : "";
-      const body = chunk.substring(chunk.indexOf("{") + 1, chunk.lastIndexOf("}"));
-      const fields = {};
-      const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|"[^"]*")\s*,?/g;
-      let m;
-      while ((m = fieldRegex.exec(body)) !== null) {
-        const name = m[1].toLowerCase();
-        let val = m[2].trim();
-        if ((val.startsWith("{") && val.endsWith("}")) || (val.startsWith('"') && val.endsWith('"'))) {
-          val = val.slice(1, -1);
-        }
-        fields[name] = val.replace(/\s+/g, " ").trim();
-      }
-      entries.push({ type, key, ...fields });
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: #2c2c2c;
+      line-height: 1.5;
+      font-size: 15px;
     }
-    return entries;
-  }
-
-  function formatAuthorsAPA(authStr) {
-    if (!authStr) return "";
-    const parts = authStr.split(/\s+and\s+/i).map(a => a.trim()).filter(Boolean);
-    const formatted = parts.map(a => {
-      if (a.includes(",")) {
-        const [last, firstsRaw] = a.split(",").map(x => x.trim());
-        const initials = (firstsRaw || "").split(/\s+/).filter(Boolean).map(n => n[0].toUpperCase() + ".").join(" ");
-        return `${last}, ${initials}`.trim();
-      } else {
-        const tokens = a.split(/\s+/);
-        const last = tokens.pop();
-        const initials = tokens.map(n => n[0].toUpperCase() + ".").join(" ");
-        return `${last}, ${initials}`.trim();
-      }
-    });
-    if (formatted.length === 1) return formatted[0];
-    if (formatted.length === 2) return formatted.join(" & ");
-    return formatted.slice(0, -1).join(", ") + ", & " + formatted[formatted.length - 1];
-  }
-
-  /* ====== CARGAS que NO lanzan error ====== */
-  async function loadPublicationsFromBib(path = "library.bib") {
-    try {
-      const res = await fetch(path);
-      if (!res.ok) {
-        console.warn("No se pudo leer " + path);
-        return;
-      }
-      const txt = await res.text();
-      pubsCache = parseBibtex(txt);
-    } catch (e) {
-      console.warn("No se pudo obtener library.bib (¿abriste el HTML como file:// ?). Se usarán publicaciones vacías.");
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: linear-gradient(180deg, #5a4a3a 0%, #6b5a47 100%);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+      padding: 18px 16px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 50;
     }
-  }
+    .sidebar-photo { display: flex; justify-content: center; margin-bottom: 4px; }
+    .sidebar-photo img {
+      width: 160px; height: 160px; border-radius: 14px; object-fit: cover;
+      border: 4px solid rgba(242, 231, 209, 0.7);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15); background: #ddd;
+    }
+    .sidebar-title { font-size: 1.1rem; font-weight: bold; color: #f5f1e9; text-align: center; line-height: 1.2; }
+    .sidebar-contact {
+      display: flex; flex-direction: column; gap: 6px;
+      font-size: 0.8rem;
+      align-items: flex-start; background: rgba(243, 237, 225, 0.08);
+      border-radius: 8px; padding: 6px 4px;
+    }
+    .contact-icon { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: #f7f4ef; font-size: 0.78rem; }
+    .contact-icon svg { width: 15px; height: 15px; flex: 0 0 15px; fill: #f7f4ef; }
+    .lang-btn {
+      margin-top: 4px; padding: 6px 14px; border: none; background: var(--accent); color: white;
+      cursor: pointer; border-radius: 5px; font-size: 0.75rem; align-self: center;
+    }
+    nav.sidebar-nav { margin-top: 6px; display: flex; flex-direction: column; gap: 5px; }
+    nav.sidebar-nav a {
+      text-decoration: none; color: #f5f1e9; font-weight: 600; font-size: 0.8rem;
+      padding: 6px 10px; border-radius: 6px; background: rgba(245,241,233,0.05);
+    }
+    nav.sidebar-nav a:hover { background: rgba(245,241,233,0.18); }
+    .main-content { margin-left: calc(var(--sidebar-w) + 16px); padding: 20px; max-width: 1000px; }
+    .summary-box { background: var(--card); padding: 10px 12px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; }
+    section { margin-bottom: 28px; }
+    h2 { border-bottom: 2px solid rgba(90, 74, 58, 0.55); padding-bottom: 5px; margin-bottom: 15px; color: var(--primary); }
+    ul { padding-left: 0; list-style: none; }
+    .subsection-title { margin-top: 12px; margin-bottom: 10px; font-size: 0.9rem; color: #3a3a2d; }
+    .edu-item, .card-list-item {
+      display: flex; gap: 10px; background: #f1ede5; margin-bottom: 10px; padding: 10px 12px;
+      border-radius: 8px; align-items: flex-start; font-size: 0.9rem;
+    }
+    .edu-icon, .card-icon { width: 22px; height: 22px; flex: 0 0 22px; }
+    .experience-grid { display: flex; gap: 15px; flex-wrap: wrap; }
+    .exp-card {
+      background: #f1ede5; flex: 1 1 380px; padding: 12px; border-radius: 10px;
+      border-top: 3px solid rgba(146, 133, 110, 0.55); font-size: 0.9rem;
+    }
+    .exp-subtitle { font-size: 0.8rem; color: #5d523f; margin-top: 8px; margin-bottom: 4px; font-weight: bold; }
+    .pub-abstract {
+      background: rgba(0,0,0,0.03);
+      margin-top: 6px;
+      padding: 6px 8px;
+      border-left: 3px solid #bc7d38;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: #3b372f;
+    }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .skill-card { background: #f1ede5; border-radius: 8px; padding: 12px; font-size: 0.9rem; }
+    @media (max-width: 900px) {
+      .sidebar { position: static; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
+      .main-content { margin-left: 0; }
+      nav.sidebar-nav { flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-photo"><img src="tu-foto.JPG" alt="Foto personal" /></div>
+    <div class="sidebar-title" id="title">Curriullum Vitae Andres Marcelo Vallone</div>
+    <div class="sidebar-contact">
+      <a class="contact-icon" href="mailto:avallone@ucn.cl">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        avallone@ucn.cl
+      </a>
+      <a class="contact-icon" href="https://www.researchgate.net/profile/Andres-Vallone?ev=hdr_xprf" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="36" fill="#4aa471" />
+          <text x="22" y="48" font-size="25" fill="#fff" font-family="Arial, sans-serif">RG</text>
+        </svg>
+        ResearchGate
+      </a>
+      <a class="contact-icon" href="https://orcid.org/0000-0002-9258-2209" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
+          <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
+          <path fill="#fff" d="M111 92h14v72h-14V92zm7-30c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9zm26 30h14v40c0 6 1 10 3 13 2 2 5 4 9 4 4 0 7-1 9-4 2-3 3-7 3-13V92h14v40c0 10-2 17-6 22-4 5-10 8-18 8-9 0-15-3-19-9-3-5-5-12-5-21V92z"/>
+        </svg>
+        ORCID: 0000-0002-9258-2209
+      </a>
+      <span class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
+        Web of Science ID: AEI-2718-2022
+      </span>
+      <span class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
+        Scopus ID: 56266470300
+      </span>
+    </div>
+    <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
+    <nav class="sidebar-nav">
+      <a href="#general" id="nav-general">Información General</a>
+      <a href="#education" id="nav-education">Educación</a>
+      <a href="#experience" id="nav-experience">Experiencia</a>
+      <a href="#publications" id="nav-publications">Publicaciones</a>
+      <a href="#projects" id="nav-projects">Proyectos</a>
+      <a href="#conferences" id="nav-conferences">Presentaciones</a>
+      <a href="#skills" id="nav-skills">Capacidades</a>
+      <a href="#awards" id="nav-awards">Becas y Premios</a>
+    </nav>
+  </aside>
 
-  async function loadPresentationsFromTex(path = "presentation.tex") {
-    try {
-      const res = await fetch(path);
-      if (!res.ok) {
-        console.warn("No se pudo leer " + path);
+  <main class="main-content">
+    <section id="general">
+      <h2 id="general-title">Información General</h2>
+      <div class="summary-box" id="summary-text">
+        Profesor Asociado en l
