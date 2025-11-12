@@ -89,6 +89,7 @@
     }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
     .skill-card { background: #f1ede5; border-radius: 8px; padding: 12px; font-size: 0.9rem; }
+    .award-item { background: #f1ede5; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #bc7d38; }
     @media (max-width: 900px) {
       .sidebar { position: static; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
       .main-content { margin-left: 0; }
@@ -204,7 +205,7 @@
   </main>
 
   <script>
-    // ====== 1. datos base (para que SIEMPRE pinte) ======
+    // ====== datos base ======
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -224,7 +225,8 @@
           "Microeconomía I – UCN, Coquimbo (2011–Presente)",
           "Microeconomía II – UCN, Coquimbo (2011–Presente)",
           "Visión del Entorno Económico y Social – UCN",
-          "Introducción a la Economía – UCN"
+          "Introducción a la Economía – UCN",
+          "Organización Industrial – UCN"
         ],
         postgradCourses: [
           "Apoyo a docencia e investigación, Departamento de Economía Aplicada, UAM (2016–2018)"
@@ -248,12 +250,22 @@
         ],
         skills: {
           languagesTitle: "Idiomas",
-          languages: ["Español (nativo)", "Inglés (avalado)"],
+          languages: ["Español (nativo)", "Inglés (avalado)", "Portugués (básico)"],
           programmingTitle: "Programación y software",
-          programming: ["R","GAMS","Python","LaTeX"],
+          programming: ["R","GAMS","Python","LaTeX","ArGIS"],
           otherTitle: "Áreas de interés",
-          other: ["Economía urbana y regional","Redes de innovación"]
-        }
+          other: ["Economía urbana y regional","Redes de innovación","Valoración económica de ecosistemas"]
+        },
+        awards: [
+          { year: "2025", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2024", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2023", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2023", text: "Premio a la Innovación docente - “Inclusión de estudiantes ciegos en aula para cursos de economía“, Vicerrectoría Académica - Universidad Católica del Norte" },
+          { year: "2021", text: "Investigador emergente del Campus Guayacán, Vicerrectoría En Investigación y Desarrollo Tecnológico - Universidad Católica del Norte" },
+          { year: "2009", text: "2009 - 2010 Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte" },
+          { year: "2007", text: "2007 - 2009 Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte" },
+          { year: "2006", text: "Beca de estudio de postgrado, Universidad Católica de Cuyo" }
+        ]
       },
       en: {
         title: "Curriculum Vitae Andres Marcelo Vallone",
@@ -267,13 +279,15 @@
         ],
         undergradCourses: [
           "Macroeconomics II – UCN (2011–Present)",
-          "Microeconomics I – UCN (2011–Present)"
+          "Microeconomics I – UCN (2011–Present)",
+          "Microeconomics II – UCN (2011–Present)"
         ],
         postgradCourses: [
-          "Teaching and research support, UAM (2016–2018)"
+          "Teaching and research support, Dept. of Applied Economics, UAM (2016–2018)"
         ],
         otherExperience: [
-          "Full-time professor, Universidad Católica del Norte (2011–present)"
+          "Full-time professor, Universidad Católica del Norte (2011–present)",
+          "Research Fellow, Universidad Autónoma de Madrid (2016–2018)"
         ],
         publicationsJournalsTitle: "Indexed journals",
         publicationsChaptersTitle: "Book chapters",
@@ -289,12 +303,23 @@
         ],
         skills: {
           languagesTitle: "Languages",
-          languages: ["Spanish (native)","English"],
+          languages: ["Spanish (native)", "English", "Portuguese (basic)"],
           programmingTitle: "Programming & software",
-          programming: ["R","GAMS","Python","LaTeX"],
+          programming: ["R","GAMS","Python","LaTeX","ArGIS"],
           otherTitle: "Research interests",
           other: ["Urban and regional economics","Innovation networks"]
-        }
+        },
+        // dejo las becas en español porque las diste así
+        awards: [
+          { year: "2025", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2024", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2023", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
+          { year: "2023", text: "Premio a la Innovación docente - “Inclusión de estudiantes ciegos en aula para cursos de economía“, Vicerrectoría Académica - Universidad Católica del Norte" },
+          { year: "2021", text: "Investigador emergente del Campus Guayacán, Vicerrectoría En Investigación y Desarrollo Tecnológico - Universidad Católica del Norte" },
+          { year: "2009", text: "2009 - 2010 Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte" },
+          { year: "2007", text: "2007 - 2009 Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte" },
+          { year: "2006", text: "Beca de estudio de postgrado, Universidad Católica de Cuyo" }
+        ]
       }
     };
 
@@ -303,27 +328,28 @@
     let presentationsCache = [];
     let projectsCache = [];
 
-    // ====== helpers ======
+    // ====== formato autores APA ======
     function formatAuthorsAPA(str) {
       if (!str) return "";
       const parts = str.split(/\s+and\s+/i).map(s => s.trim()).filter(Boolean);
-      const f = parts.map(a => {
+      const formatted = parts.map(a => {
         if (a.includes(",")) {
           const [last, first] = a.split(",").map(x => x.trim());
           const initials = (first || "").split(/\s+/).map(n => n[0]?.toUpperCase() + ".").join(" ");
           return `${last}, ${initials}`.trim();
         } else {
-          const tok = a.split(/\s+/);
-          const last = tok.pop();
-          const initials = tok.map(n => n[0]?.toUpperCase() + ".").join(" ");
+          const tokens = a.split(/\s+/);
+          const last = tokens.pop();
+          const initials = tokens.map(n => n[0]?.toUpperCase() + ".").join(" ");
           return `${last}, ${initials}`.trim();
         }
       });
-      if (f.length === 1) return f[0];
-      if (f.length === 2) return f.join(" & ");
-      return f.slice(0,-1).join(", ") + ", & " + f[f.length-1];
+      if (formatted.length === 1) return formatted[0];
+      if (formatted.length === 2) return formatted.join(" & ");
+      return formatted.slice(0, -1).join(", ") + ", & " + formatted[formatted.length - 1];
     }
 
+    // ====== parse bib ======
     function parseBibtex(text) {
       const out = [];
       const entries = text.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
@@ -350,7 +376,7 @@
       return out;
     }
 
-    // ====== render funcs ======
+    // ====== render ======
     function renderEducation(lang) {
       const ul = document.getElementById("education-list");
       ul.innerHTML = "";
@@ -370,13 +396,12 @@
     }
 
     function renderExperience(lang) {
-      // docente
       document.getElementById("teaching-exp-title").innerText =
         lang === "es" ? "Experiencia docente" : "Teaching experience";
       document.getElementById("undergrad-title").innerText =
         lang === "es" ? "Pregrado" : "Undergraduate";
       document.getElementById("postgrad-title").innerText =
-        lang === "es" ? "Postgrado" : "Postgraduate";
+       lang === "es" ? "Postgrado" : "Postgraduate";
 
       const ug = document.getElementById("undergrad-list");
       const pg = document.getElementById("postgrad-list");
@@ -393,19 +418,19 @@
         pg.appendChild(li);
       });
 
-      // otras
       document.getElementById("other-exp-title").innerText =
         lang === "es" ? "Otras experiencias" : "Other experience";
-      const o = document.getElementById("other-exp-list");
-      o.innerHTML = "";
+      const other = document.getElementById("other-exp-list");
+      other.innerHTML = "";
       content[lang].otherExperience.forEach(c => {
         const li = document.createElement("li");
         li.textContent = c;
-        o.appendChild(li);
+        other.appendChild(li);
       });
     }
 
     function renderSkills(lang) {
+      document.getElementById("skills-title").innerText = content[lang].skillsTitle;
       const box = document.getElementById("skills-grid");
       box.innerHTML = "";
       const s = content[lang].skills;
@@ -421,14 +446,27 @@
       box.appendChild(card1); box.appendChild(card2); box.appendChild(card3);
     }
 
+    function renderAwards(lang) {
+      document.getElementById("awards-title").innerText = content[lang].awardsTitle;
+      const list = document.getElementById("awards-list");
+      list.innerHTML = "";
+      const awards = [...content[lang].awards].sort((a,b)=>parseInt(b.year)-parseInt(a.year));
+      awards.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "award-item";
+        div.innerHTML = `<strong>${a.year}</strong> – ${a.text}`;
+        list.appendChild(div);
+      });
+    }
+
     function renderProjects(lang) {
       document.getElementById("projects-title").innerText =
         lang === "es" ? "Proyectos de investigación" : "Research projects";
       const list = document.getElementById("projects-list");
       list.innerHTML = "";
       const source = projectsCache.length ? projectsCache : content[lang].projects;
-      source.sort((a,b) => (b.period||"").localeCompare(a.period||""));
-      source.forEach(p => {
+      const sorted = [...source].sort((a,b)=>(b.period||"").localeCompare(a.period||""));
+      sorted.forEach(p => {
         const li = document.createElement("li");
         li.className = "card-list-item";
         li.innerHTML = `
@@ -473,7 +511,6 @@
       const chaptersList = document.getElementById("publications-chapters-list");
       journalsList.innerHTML = "";
       chaptersList.innerHTML = "";
-      // si no hay bib, no rompe
       const sorted = pubsCache.length ? [...pubsCache].sort((a,b)=>(b.year||"").localeCompare(a.year||"")) : [];
       sorted.forEach(pub => {
         const isChapter = pub.type === "incollection" || pub.booktitle;
@@ -490,7 +527,7 @@
         const doi = pub.doi ? ` https://doi.org/${pub.doi.replace(/^https?:\/\/doi\.org\//,"")}` : (pub.url ? " " + pub.url : "");
 
         if (isChapter) {
-          const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/,"") : "";
+          const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/, "") : "";
           const publisher = pub.publisher ? pub.publisher : "";
           cdiv.innerHTML = `
             <div class="pub-meta">
@@ -536,7 +573,7 @@
       document.getElementById("general-text").innerText = t.generalText;
       document.getElementById("summary-text").innerText = t.summary;
       document.getElementById("education-title").innerText = lang === "es" ? "Educación" : "Education";
-      document.getElementById("experience-title").innerText = t.experienceTitle;
+      document.getElementById("experience-title").innerText = t.experienceTitle || (lang === "es" ? "Experiencia" : "Experience");
       document.getElementById("publications-title").innerText = lang === "es" ? "Publicaciones" : "Publications";
       document.getElementById("pub-journals-title").innerText = t.publicationsJournalsTitle;
       document.getElementById("pub-chapters-title").innerText = t.publicationsChaptersTitle;
@@ -545,9 +582,10 @@
       renderEducation(lang);
       renderExperience(lang);
       renderSkills(lang);
+      renderAwards(lang);
       renderProjects(lang);
       renderConferences(lang);
-      renderPublications(); // si no hay bib no pasa nada
+      renderPublications();
     }
 
     function toggleLanguage() {
@@ -563,14 +601,17 @@
         const txt = await res.text();
         pubsCache = parseBibtex(txt);
       } catch(e) {
-        // silencioso
+        // no pasa nada
       }
     }
+
     async function tryLoadPresentations() {
       try {
         const res = await fetch("./presentation.tex");
         if (!res.ok) return;
-        const txt = await res.text();
+        let txt = await res.text();
+        // ignorar \cvsection o \cvsection*
+        txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
         const regex = /\\cventry\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
         const out = [];
         let m;
@@ -583,14 +624,19 @@
             extra: m[5].trim()
           });
         }
-        if (out.length) presentationsCache = out;
+        if (out.length) {
+          presentationsCache = out;
+        }
       } catch(e) {}
     }
+
     async function tryLoadProjects() {
       try {
         const res = await fetch("./project.tex");
         if (!res.ok) return;
-        const txt = await res.text();
+        let txt = await res.text();
+        // ignorar \cvsection o \cvsection*
+        txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
         const regex = /\\cvpub\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
         const out = [];
         let m;
@@ -602,17 +648,19 @@
             funding: m[4].trim()
           });
         }
-        if (out.length) projectsCache = out;
+        if (out.length) {
+          projectsCache = out;
+        }
       } catch(e) {}
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. pinta inmediatamente
+      // pintar primero
       renderAll("es");
-      // 2. luego intenta cargar archivos (si está en GitHub Pages y los archivos están, se actualizará)
+      // luego intentamos cargar archivos externos
       tryLoadBib().then(renderPublications);
-      tryLoadPresentations().then(function(){ renderConferences(currentLang); });
-      tryLoadProjects().then(function(){ renderProjects(currentLang); });
+      tryLoadPresentations().then(()=>renderConferences(currentLang));
+      tryLoadProjects().then(()=>renderProjects(currentLang));
     });
   </script>
 </body>
