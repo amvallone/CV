@@ -1,47 +1,197 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curriullum Vitae Andres Marcelo Vallone</title>
-  <style>
-    :root {
-      --bg: #dfddcf;
-      --bg-soft: #efece1;
-      --primary: #3a3a2d;
-      --secondary: #6a7c58;
-      --accent: #bc7d38;
-      --card: #f5f1e9;
-      --sidebar: #5a4a3a;
-      --sidebar-w: 310px;
+<script>
+  /* ==== el mismo objeto content que ya tenías arriba ==== */
+  const content = {
+    es: {
+      title: "Curriullum Vitae Andres Marcelo Vallone",
+      nav: ["Información General","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Capacidades","Becas y Premios"],
+      generalTitle: "Información General",
+      generalText: "Afiliación: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.",
+      summary: "Profesor Asociado UCN. Doctor en Economía y Empresa (UAM, 2019). Líneas: economía urbana y regional, redes de innovación, concentración espacial, R para análisis socioeconómicos.",
+      educationTitle: "Educación",
+      education: [
+        { degree: "Doctor en Economía y Empresa", institution: "Universidad Autónoma de Madrid, España", years: "2015 – 2019" },
+        { degree: "Magíster en Ciencia Regional", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
+        { degree: "MBA – Master en Administración", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
+        { degree: "Magíster en Economía y Administración Estratégica de Negocios", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "2006 – 2009" },
+        { degree: "Licenciado en Economía", institution: "Universidad Católica de Cuyo, San Juan, Argentina", years: "1997 – 2004" }
+      ],
+      experienceTitle: "Experiencia",
+      teachingExpTitle: "Experiencia docente",
+      undergradTitle: "Pregrado",
+      postgradTitle: "Postgrado",
+      undergradCourses: [
+        "Macroeconomía II – UCN, Coquimbo (2011–Presente)",
+        "Microeconomía I – UCN, Coquimbo (2011–Presente)",
+        "Microeconomía II – UCN, Coquimbo (2011–Presente)",
+        "Visión del Entorno Económico y Social – UCN",
+        "Introducción a la Economía – UCN",
+        "Organización Industrial – UCN",
+        "Optimización – UCN Antofagasta (2008–2010)",
+        "Economía Internacional – UCCuyo (2005–2007)"
+      ],
+      postgradCourses: [
+        "Apoyo a docencia e investigación, Departamento de Economía Aplicada, UAM (2016–2018)"
+      ],
+      otherExpTitle: "Otras experiencias",
+      otherExperience: [
+        "Profesor jornada completa, Universidad Católica del Norte, Coquimbo, Chile (2011–presente)",
+        "Personal Investigador en Formación, Universidad Autónoma de Madrid, España (2016–2018)",
+        "Docencia parcial en INACAP, Universidad del Mar, UCCuyo"
+      ],
+      publicationsTitle: "Publicaciones",
+      publicationsJournalsTitle: "Revistas indexadas",
+      publicationsChaptersTitle: "Capítulos de libro",
+      projectsTitle: "Proyectos de investigación",
+      projects: [
+        { title: "Fortalece PyME Coquimbo – Red de asistencia digital", role: "Co-ejecutor", period: "2022", funding: "CORFO / ASOEX" },
+        { title: "Nodo Laboratorio Natural Océano Centro-Norte (NODOSLN0006)", role: "Investigador", period: "2022", funding: "ANID, Chile" },
+        { title: "Sistematización avances Corredor Bioceánico Central y Túnel Agua Negra", role: "Investigador", period: "2021", funding: "AGCID, Chile" }
+      ],
+      conferencesTitle: "Presentaciones en Congresos",
+      conferences: [
+        { title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0, U. Católica de Cuyo, Argentina", year: "2023" },
+        { title: "Crisis hídrica en Chile: acciones a nivel micro", event: "Conversatorio regional sobre crisis hídrica", year: "2022" }
+      ],
+      skillsTitle: "Capacidades",
+      skills: {
+        languagesTitle: "Idiomas",
+        languages: ["Español (nativo)", "Inglés (avalado)", "Portugués (básico)"],
+        programmingTitle: "Programación y software",
+        programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
+        otherTitle: "Áreas de interés",
+        other: ["Economía urbana y regional","Concentración espacial","Redes de innovación","Valoración económica de ecosistemas"]
+      },
+      awardsTitle: "Becas y Premios",
+      awards: []
+    },
+    en: {
+      title: "Curriculum Vitae Andres Marcelo Vallone",
+      nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
+      generalTitle: "General Information",
+      generalText: "Affiliation: Universidad Católica del Norte, School of Business Sciences – Institute of Public Policies, Coquimbo, Chile.",
+      summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019). Fields: urban and regional economics, innovation networks, spatial analysis.",
+      educationTitle: "Education",
+      education: [
+        { degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019" },
+        { degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
+        { degree: "MBA – Master in Business Administration", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
+        { degree: "Master in Economics and Strategic Business Administration", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2009" },
+        { degree: "BA in Economics", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004" }
+      ],
+      experienceTitle: "Experience",
+      teachingExpTitle: "Teaching experience",
+      undergradTitle: "Undergraduate",
+      postgradTitle: "Postgraduate",
+      undergradCourses: [
+        "Macroeconomics II – UCN, Coquimbo (2011–Present)",
+        "Microeconomics I – UCN, Coquimbo (2011–Present)",
+        "Microeconomics II – UCN, Coquimbo (2011–Present)",
+        "Economic and Social Environment – UCN",
+        "Introduction to Economics – UCN",
+        "Industrial Organization – UCN",
+        "Optimization – UCN Antofagasta (2008–2010)",
+        "International Economics – UCCuyo (2005–2007)"
+      ],
+      postgradCourses: [
+        "Teaching and research support, Dept. of Applied Economics, UAM (2016–2018)"
+      ],
+      otherExpTitle: "Other experience",
+      otherExperience: [
+        "Full-time professor, Universidad Católica del Norte, Coquimbo, Chile (2011–present)",
+        "Research Fellow, Universidad Autónoma de Madrid, Spain (2016–2018)",
+        "Part-time teaching, INACAP, Universidad del Mar, UCCuyo"
+      ],
+      publicationsTitle: "Publications",
+      publicationsJournalsTitle: "Indexed journals",
+      publicationsChaptersTitle: "Book chapters",
+      projectsTitle: "Research projects",
+      conferencesTitle: "Conference Presentations",
+      conferences: [
+        { title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0, Argentina", year: "2023" }
+      ],
+      skillsTitle: "Skills",
+      skills: {
+        languagesTitle: "Languages",
+        languages: ["Spanish (native)", "English (accredited)", "Portuguese (basic)"],
+        programmingTitle: "Programming & software",
+        programming: ["R", "Gretl", "Mathematica", "GAMS", "Python", "ArGIS", "LaTeX", "MS Office"],
+        otherTitle: "Research interests",
+        other: ["Urban and regional economics","Spatial concentration","Innovation networks","Economic valuation of ecosystems"]
+      },
+      awardsTitle: "Scholarships & Awards",
+      awards: []
     }
-    * { box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: #2c2c2c;
-      line-height: 1.5;
-      font-size: 15px;
+  };
+
+  let currentLang = "es";
+  let pubsCache = [];
+  let presentationsCache = [];
+  let projectsCache = [];
+
+  /* ====== utilidades ya conocidas ====== */
+  function parseBibtex(bibtex) {
+    const entries = [];
+    const raw = bibtex.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
+    for (const chunk of raw) {
+      const typeMatch = chunk.match(/^([a-zA-Z]+)\s*{/);
+      if (!typeMatch) continue;
+      const type = typeMatch[1].toLowerCase();
+      const keyMatch = chunk.match(/^[a-zA-Z]+\s*{\s*([^,]+),/);
+      const key = keyMatch ? keyMatch[1].trim() : "";
+      const body = chunk.substring(chunk.indexOf("{") + 1, chunk.lastIndexOf("}"));
+      const fields = {};
+      const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|"[^"]*")\s*,?/g;
+      let m;
+      while ((m = fieldRegex.exec(body)) !== null) {
+        const name = m[1].toLowerCase();
+        let val = m[2].trim();
+        if ((val.startsWith("{") && val.endsWith("}")) || (val.startsWith('"') && val.endsWith('"'))) {
+          val = val.slice(1, -1);
+        }
+        fields[name] = val.replace(/\s+/g, " ").trim();
+      }
+      entries.push({ type, key, ...fields });
     }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: var(--sidebar-w);
-      height: 100vh;
-      background: linear-gradient(180deg, #5a4a3a 0%, #6b5a47 100%);
-      box-shadow: 2px 0 12px rgba(0,0,0,0.08);
-      padding: 18px 16px 12px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 50;
+    return entries;
+  }
+
+  function formatAuthorsAPA(authStr) {
+    if (!authStr) return "";
+    const parts = authStr.split(/\s+and\s+/i).map(a => a.trim()).filter(Boolean);
+    const formatted = parts.map(a => {
+      if (a.includes(",")) {
+        const [last, firstsRaw] = a.split(",").map(x => x.trim());
+        const initials = (firstsRaw || "").split(/\s+/).filter(Boolean).map(n => n[0].toUpperCase() + ".").join(" ");
+        return `${last}, ${initials}`.trim();
+      } else {
+        const tokens = a.split(/\s+/);
+        const last = tokens.pop();
+        const initials = tokens.map(n => n[0].toUpperCase() + ".").join(" ");
+        return `${last}, ${initials}`.trim();
+      }
+    });
+    if (formatted.length === 1) return formatted[0];
+    if (formatted.length === 2) return formatted.join(" & ");
+    return formatted.slice(0, -1).join(", ") + ", & " + formatted[formatted.length - 1];
+  }
+
+  /* ====== CARGAS que NO lanzan error ====== */
+  async function loadPublicationsFromBib(path = "library.bib") {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) {
+        console.warn("No se pudo leer " + path);
+        return;
+      }
+      const txt = await res.text();
+      pubsCache = parseBibtex(txt);
+    } catch (e) {
+      console.warn("No se pudo obtener library.bib (¿abriste el HTML como file:// ?). Se usarán publicaciones vacías.");
     }
-    .sidebar-photo { display: flex; justify-content: center; margin-bottom: 4px; }
-    .sidebar-photo img {
-      width: 160px; height: 160px; border-radius: 14px; object-fit: cover;
-      border: 4px solid rgba(242, 231, 209, 0.7);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15); background: #ddd;
-    }
-    .sidebar-title { font-size: 1.1rem;
+  }
+
+  async function loadPresentationsFromTex(path = "presentation.tex") {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) {
+        console.warn("No se pudo leer " + path);
