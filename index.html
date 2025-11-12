@@ -246,7 +246,7 @@
           { period: "2021", title: "Sistematización avances Corredor Bioceánico Central", role: "Investigador", funding: "AGCID" }
         ],
         conferences: [
-          { year: "2023", text: "Transformación tecnológica para PYMES del sector agrícola, Seminario Internacional AGRO 5.0, Argentina" }
+          { year: "2023", title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0", place: "Argentina", extra: "" }
         ],
         skills: {
           languagesTitle: "Idiomas",
@@ -272,7 +272,7 @@
         nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
         generalTitle: "General Information",
         generalText: "Affiliation: Universidad Católica del Norte, School of Business Sciences – Institute of Public Policies, Coquimbo, Chile.",
-        summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019).",
+        summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019). Research lines: urban & regional economics, innovation networks, spatial analysis, R for socioeconomic analysis.",
         education: [
           { degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019" },
           { degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Chile", years: "2009 – 2011" }
@@ -299,7 +299,7 @@
           { period: "2022", title: "Fortalece PyME Coquimbo – Digital assistance network", role: "Co-executor", funding: "CORFO / ASOEX" }
         ],
         conferences: [
-          { year: "2023", text: "Technological transformation for agricultural SMEs, International Seminar AGRO 5.0, Argentina" }
+          { year: "2023", title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0", place: "Argentina", extra: "" }
         ],
         skills: {
           languagesTitle: "Languages",
@@ -307,17 +307,17 @@
           programmingTitle: "Programming & software",
           programming: ["R","GAMS","Python","LaTeX","ArGIS"],
           otherTitle: "Research interests",
-          other: ["Urban and regional economics","Innovation networks"]
+          other: ["Urban and regional economics","Innovation networks","Ecosystem valuation"]
         },
         awards: [
-          { year: "2025", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
-          { year: "2024", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
-          { year: "2023", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
-          { year: "2023", text: "Premio a la Innovación docente - “Inclusión de estudiantes ciegos en aula para cursos de economía“, Vicerrectoría Académica - Universidad Católica del Norte" },
-          { year: "2021", text: "Investigador emergente del Campus Guayacán, Vicerrectoría En Investigación y Desarrollo Tecnológico - Universidad Católica del Norte" },
-          { year: "2009", text: "2009 - 2010 Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte" },
-          { year: "2007", text: "2007 - 2009 Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte" },
-          { year: "2006", text: "Beca de estudio de postgrado, Universidad Católica de Cuyo" }
+          { year: "2025", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte" },
+          { year: "2024", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte" },
+          { year: "2023", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte" },
+          { year: "2023", text: "Teaching Innovation Award – “Inclusion of blind students in economics courses”, Academic Vice-Rectory – Universidad Católica del Norte" },
+          { year: "2021", text: "Emerging Researcher, Guayacán Campus – Vice-Rectory for Research and Technological Development – Universidad Católica del Norte" },
+          { year: "2009", text: "2009–2010 Graduate studies scholarship, Department of Economics – Universidad Católica del Norte" },
+          { year: "2007", text: "2007–2009 Graduate studies scholarship, School of Business Engineering – Universidad Católica del Norte" },
+          { year: "2006", text: "Graduate studies scholarship, Universidad Católica de Cuyo" }
         ]
       }
     };
@@ -328,6 +328,18 @@
     let projectsCache = [];
 
     // ====== helpers ======
+    // Convierte \textbf{...} -> <strong>...</strong> (inline simple)
+    function latexBoldToHTML(str) {
+      if (!str) return "";
+      return str.replace(/\\textbf\{([^{}]+)\}/g, "<strong>$1</strong>");
+    }
+
+    // extrae primer año (cuatro dígitos) para ordenar
+    function extractYear(s) {
+      const m = String(s||"").match(/\b(19|20)\d{2}\b/);
+      return m ? parseInt(m[0]) : -1;
+    }
+
     function formatAuthorsAPA(str) {
       if (!str) return "";
       const parts = str.split(/\s+and\s+/i).map(s => s.trim()).filter(Boolean);
@@ -463,7 +475,7 @@
       const list = document.getElementById("projects-list");
       list.innerHTML = "";
       const source = projectsCache.length ? projectsCache : content[lang].projects;
-      const sorted = [...source].sort((a,b)=>(b.period||"").localeCompare(a.period||""));
+      const sorted = [...source].sort((a,b)=> extractYear(b.period) - extractYear(a.period));
       sorted.forEach(p => {
         const li = document.createElement("li");
         li.className = "card-list-item";
@@ -472,8 +484,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bc7d38"><path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/></svg>
           </div>
           <div>
-            <strong>${p.period || ""}</strong> – ${p.title}<br>
-            ${p.role ? p.role + ". " : ""}${p.funding ? p.funding : ""}${p.institution ? " ("+p.institution+")" : ""}
+            <strong>${latexBoldToHTML(p.period) || ""}</strong> – ${latexBoldToHTML(p.title) || ""}<br>
+            ${p.role ? latexBoldToHTML(p.role) + ". " : ""}${p.funding ? latexBoldToHTML(p.funding) : ""}${p.institution ? " ("+latexBoldToHTML(p.institution)+")" : ""}
           </div>
         `;
         list.appendChild(li);
@@ -496,8 +508,8 @@
             </svg>
           </div>
           <div>
-            <strong>${c.year || ""}</strong> – ${c.text || c.title || ""}<br>
-            ${c.event ? c.event : ""}${c.place ? ", " + c.place : ""}${c.extra ? " – " + c.extra : ""}
+            <strong>${latexBoldToHTML(c.year) || ""}</strong> – ${latexBoldToHTML(c.title || c.text || "")}<br>
+            ${c.event ? latexBoldToHTML(c.event) : ""}${c.place ? ", " + latexBoldToHTML(c.place) : ""}${c.extra ? " – " + latexBoldToHTML(c.extra) : ""}
           </div>
         `;
         list.appendChild(li);
@@ -593,16 +605,14 @@
       renderAll(currentLang);
     }
 
-    // ====== intentos de carga externa ======
+    // ====== carga externa ======
     async function tryLoadBib() {
       try {
         const res = await fetch("./library.bib");
         if (!res.ok) return;
         const txt = await res.text();
         pubsCache = parseBibtex(txt);
-      } catch(e) {
-        // silencioso
-      }
+      } catch(e) {}
     }
 
     async function tryLoadPresentations() {
@@ -612,30 +622,21 @@
         let txt = await res.text();
         // quitar \cvsection{...} o \cvsection*{...}
         txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
-        const regex = /\\cvpub\s*{([\s\S]*?)}\s*(?=\\cvpub|\\end\{cvpubs\}|$)/g;
+        // \cventry{year}{title}{event}{place}{extra}
+        const regex = /\\cventry\s*{\s*([^}]*)\s*}\s*{\s*([^}]*)\s*}\s*{\s*([^}]*)\s*}\s*{\s*([^}]*)\s*}\s*{\s*([^}]*)\s*}/g;
         const out = [];
         let m;
         while ((m = regex.exec(txt)) !== null) {
-          const raw = m[1].trim();
-          // casi todas las entradas comienzan con el año y luego una coma
-          const firstComma = raw.indexOf(",");
-          let year = "";
-          let text = raw;
-          if (firstComma > -1) {
-            year = raw.slice(0, firstComma).trim();
-            text = raw.slice(firstComma + 1).trim();
-          }
           out.push({
-            year,
-            text
+            year: latexBoldToHTML(m[1].trim()),
+            title: latexBoldToHTML(m[2].trim()),
+            event: latexBoldToHTML(m[3].trim()),
+            place: latexBoldToHTML(m[4].trim()),
+            extra: latexBoldToHTML(m[5].trim())
           });
         }
-        if (out.length) {
-          presentationsCache = out;
-        }
-      } catch(e) {
-        // seguimos con las internas
-      }
+        if (out.length) presentationsCache = out;
+      } catch(e) {}
     }
 
     async function tryLoadProjects() {
@@ -643,32 +644,27 @@
         const res = await fetch("./project.tex");
         if (!res.ok) return;
         let txt = await res.text();
-        // quitar \cvsection
+        // quitar \cvsection{...} o \cvsection*{...}
         txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
-        const regex = /\\cventry\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
+        // \cvpub{period}{title}{role}{funding}
+        // usar [\s\S]*? para permitir saltos de línea en campos
+        const regex = /\\cvpub\s*{\s*([\s\S]*?)\s*}\s*{\s*([\s\S]*?)\s*}\s*{\s*([\s\S]*?)\s*}\s*{\s*([\s\S]*?)\s*}/g;
         const out = [];
         let m;
         while ((m = regex.exec(txt)) !== null) {
           out.push({
-            institution: m[1].trim(),
-            title: m[2].trim(),
-            role: m[3].trim(),
-            period: m[4].trim(),
-            funding: m[5].trim()
+            period: latexBoldToHTML(m[1].trim()),
+            title: latexBoldToHTML(m[2].trim()),
+            role: latexBoldToHTML(m[3].trim()),
+            funding: latexBoldToHTML(m[4].trim())
           });
         }
-        if (out.length) {
-          projectsCache = out;
-        }
-      } catch(e) {
-        // seguimos con internas
-      }
+        if (out.length) projectsCache = out;
+      } catch(e) {}
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-      // pintar primero
-      renderAll("es");
-      // luego intentar cargar archivos externos
+      renderAll("es"); // pinta primero
       tryLoadBib().then(renderPublications);
       tryLoadPresentations().then(()=>renderConferences(currentLang));
       tryLoadProjects().then(()=>renderProjects(currentLang));
