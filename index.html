@@ -22,6 +22,7 @@
       background: var(--bg);
       color: #2c2c2c;
       line-height: 1.5;
+      font-size: 15px; /* 👈 agrandado */
     }
     /* SIDEBAR FIJA */
     .sidebar {
@@ -44,28 +45,29 @@
       border: 4px solid rgba(242, 231, 209, 0.7);
       box-shadow: 0 6px 18px rgba(0,0,0,0.15); background: #ddd;
     }
-    .sidebar-title { font-size: 1.05rem; font-weight: bold; color: #f5f1e9; text-align: center; line-height: 1.2; }
+    .sidebar-title { font-size: 1.1rem; font-weight: bold; color: #f5f1e9; text-align: center; line-height: 1.2; }
     .sidebar-contact {
-      display: flex; flex-direction: column; gap: 6px; font-size: 0.75rem;
+      display: flex; flex-direction: column; gap: 6px;
+      font-size: 0.8rem; /* 👈 un poco más grande */
       align-items: flex-start; background: rgba(243, 237, 225, 0.08);
       border-radius: 8px; padding: 6px 4px;
     }
-    .contact-icon { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: #f7f4ef; font-size: 0.73rem; }
+    .contact-icon { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: #f7f4ef; font-size: 0.78rem; }
     .contact-icon svg { width: 15px; height: 15px; flex: 0 0 15px; fill: #f7f4ef; }
     .lang-btn {
       margin-top: 4px; padding: 6px 14px; border: none; background: var(--accent); color: white;
-      cursor: pointer; border-radius: 5px; font-size: 0.7rem; align-self: center;
+      cursor: pointer; border-radius: 5px; font-size: 0.75rem; align-self: center;
     }
     nav.sidebar-nav { margin-top: 6px; display: flex; flex-direction: column; gap: 5px; }
     nav.sidebar-nav a {
-      text-decoration: none; color: #f5f1e9; font-weight: 600; font-size: 0.78rem;
+      text-decoration: none; color: #f5f1e9; font-weight: 600; font-size: 0.8rem;
       padding: 6px 10px; border-radius: 6px; transition: background 0.15s ease; background: rgba(245,241,233,0.05);
     }
     nav.sidebar-nav a:hover { background: rgba(245,241,233,0.18); }
 
     /* CONTENIDO */
     .main-content { margin-left: calc(var(--sidebar-w) + 16px); padding: 20px; max-width: 1000px; }
-    .summary-box { background: var(--card); padding: 10px 12px; border-radius: 8px; margin-bottom: 18px; border: 1px solid rgba(0,0,0,0.01); }
+    .summary-box { background: var(--card); padding: 10px 12px; border-radius: 8px; margin-bottom: 18px; border: 1px solid rgba(0,0,0,0.01); font-size: 0.98rem; }
     section { margin-bottom: 28px; }
     h2 { border-bottom: 2px solid rgba(90, 74, 58, 0.55); padding-bottom: 5px; margin-bottom: 15px; color: var(--primary); }
     ul { padding-left: 0; list-style: none; }
@@ -77,39 +79,38 @@
       color: #3a3a2d;
     }
 
-    /* Tarjetas listas */
     .edu-item, .card-list-item {
       display: flex; gap: 10px; background: #f1ede5; margin-bottom: 10px; padding: 10px 12px;
       border-radius: 8px; border: 1px solid rgba(0,0,0,0.015); box-shadow: 0 2px 4px rgba(0,0,0,0.03); align-items: flex-start;
+      font-size: 0.9rem;
     }
     .edu-icon, .card-icon { width: 22px; height: 22px; flex: 0 0 22px; }
-    .edu-content small { color: #6b5b47; font-size: 0.73rem; }
+    .edu-content small { color: #6b5b47; font-size: 0.75rem; }
 
-    /* EXPERIENCIA (limpia, íconos pequeños) */
     .experience-grid { display: flex; gap: 15px; flex-wrap: wrap; }
     .exp-card {
       background: #f1ede5; flex: 1 1 380px; padding: 12px; border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02); border-top: 3px solid rgba(146, 133, 110, 0.55);
+      font-size: 0.9rem;
     }
     .exp-card-header { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
     .exp-card-header svg { width: 16px; height: 16px; fill: #5e7050; flex: 0 0 16px; }
     .exp-card h3 { margin: 0; font-size: 0.9rem; color: #3a3a2d; }
-    .exp-subtitle { font-size: 0.78rem; color: #5d523f; margin-top: 8px; margin-bottom: 4px; font-weight: bold; }
-    .course-list li, .other-exp-list li { display: flex; gap: 5px; align-items: flex-start; margin-bottom: 4px; font-size: 0.78rem; }
+    .exp-subtitle { font-size: 0.8rem; color: #5d523f; margin-top: 8px; margin-bottom: 4px; font-weight: bold; }
+    .course-list li, .other-exp-list li { display: flex; gap: 5px; align-items: flex-start; margin-bottom: 4px; font-size: 0.8rem; }
     .course-list li::before, .other-exp-list li::before { content: "•"; color: #5e7050; font-weight: bold; margin-right: 4px; }
 
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-    .skill-card { background: #f1ede5; border-radius: 8px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .skill-card { background: #f1ede5; border-radius: 8px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); font-size: 0.9rem; }
     .award-item { background: #f1ede5; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #bc7d38; }
 
-    /* abstract sin palabra Resumen */
     .pub-abstract {
       background: rgba(0,0,0,0.03);
       margin-top: 6px;
       padding: 6px 8px;
       border-left: 3px solid #bc7d38;
       border-radius: 4px;
-      font-size: 0.74rem;
+      font-size: 0.78rem;
       color: #3b372f;
     }
 
@@ -125,31 +126,36 @@
     <div class="sidebar-photo"><img src="tu-foto.JPG" alt="Foto personal" /></div>
     <div class="sidebar-title" id="title">Curriullum Vitae Andres Marcelo Vallone</div>
     <div class="sidebar-contact">
+      <!-- MAIL -->
       <a class="contact-icon" href="mailto:avallone@ucn.cl" title="Enviar correo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         avallone@ucn.cl
       </a>
-      <a class="contact-icon" href="https://www.researchgate.net/profile/Tu-Nombre" target="_blank" rel="noopener" title="ResearchGate">
+      <!-- RESEARCHGATE ACTUALIZADO -->
+      <a class="contact-icon" href="https://www.researchgate.net/profile/Andres-Vallone?ev=hdr_xprf" target="_blank" rel="noopener" title="ResearchGate">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
           <circle cx="40" cy="40" r="36" fill="#4aa471" />
           <text x="22" y="48" font-size="25" fill="#fff" font-family="Arial, sans-serif">RG</text>
         </svg>
         ResearchGate
       </a>
-      <a class="contact-icon" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" title="ORCID">
+      <!-- ORCID ACTUALIZADO -->
+      <a class="contact-icon" href="https://orcid.org/0000-0002-9258-2209" target="_blank" rel="noopener" title="ORCID 0000-0002-9258-2209">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14">
           <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
           <path fill="#fff" d="M111 92h14v72h-14V92zm7-30c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9zm26 30h14v40c0 6 1 10 3 13 2 2 5 4 9 4 4 0 7-1 9-4 2-3 3-7 3-13V92h14v40c0 10-2 17-6 22-4 5-10 8-18 8-9 0-15-3-19-9-3-5-5-12-5-21V92z"/>
         </svg>
-        ORCID: 0000-0000-0000-0000
+        ORCID: 0000-0002-9258-2209
       </a>
-      <span class="contact-icon">
+      <!-- Web of Science Researcher ID -->
+      <span class="contact-icon" title="Web of Science Researcher ID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm2 4h12v2H6v-2z"/></svg>
-        Web of Science ID:
+        Web of Science ID: AEI-2718-2022
       </span>
-      <span class="contact-icon">
+      <!-- Scopus ID -->
+      <span class="contact-icon" title="Scopus Author ID">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5zm0 4h14v2H3V9zm0 4h10v2H3v-2zm0 4h6v2H3v-2z"/></svg>
-        Scopus ID:
+        Scopus ID: 56266470300
       </span>
     </div>
     <button class="lang-btn" onclick="toggleLanguage()">English / Español</button>
@@ -214,7 +220,6 @@
       <ul id="publications-journals-list"></ul>
       <h3 class="subsection-title" id="pub-chapters-title">Capítulos de libro</h3>
       <ul id="publications-chapters-list"></ul>
-      <!-- library.bib va en la misma carpeta -->
     </section>
 
     <section id="projects">
@@ -239,6 +244,7 @@
   </main>
 
   <script>
+    /* ==== contenido bilingüe (mismo que teníamos) ==== */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -368,7 +374,6 @@
     let currentLang = "es";
     let pubsCache = [];
 
-    /* ==== parse BibTeX ==== */
     function parseBibtex(bibtex) {
       const entries = [];
       const raw = bibtex.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
@@ -427,7 +432,6 @@
       }
     }
 
-    /* ==== render ==== */
     function renderEducation(lang) {
       const list = document.getElementById("education-list");
       list.innerHTML = "";
@@ -540,18 +544,15 @@
       });
     }
 
-    // publicaciones separadas
     function renderPublications() {
       const journalsList = document.getElementById('publications-journals-list');
       const chaptersList = document.getElementById('publications-chapters-list');
       journalsList.innerHTML = "";
       chaptersList.innerHTML = "";
 
-      // títulos según idioma
       document.getElementById('pub-journals-title').innerText = content[currentLang].publicationsJournalsTitle;
       document.getElementById('pub-chapters-title').innerText = content[currentLang].publicationsChaptersTitle;
 
-      // ordenar por año
       const sorted = [...pubsCache].sort((a,b) => (b.year||"").localeCompare(a.year||""));
 
       sorted.forEach(pub => {
@@ -563,7 +564,6 @@
 
         const icon = document.createElement('div');
         icon.className = 'card-icon';
-        // revista/libro
         icon.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
             <path d="M19 2H8a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h11v-2H8a5 5 0 0 0-3 1V5a1 1 0 0 1 1-1h12v14h2V2z"/>
@@ -574,28 +574,43 @@
         const authorsAPA = formatAuthorsAPA(pub.author);
         const year = pub.year ? `(${pub.year}).` : "(s.f.).";
         const title = pub.title ? pub.title.replace(/\.$/, "") + "." : "";
-        const outlet = pub.journal || pub.booktitle || "";
-        const outletHtml = outlet ? `<em>${outlet}</em>` : "";
-        const volume = pub.volume ? `<em>${pub.volume}</em>` : "";
-        const number = pub.number ? `(${pub.number})` : "";
-        const pages = pub.pages ? `, ${pub.pages}` : "";
-        const doi = pub.doi ? ` https://doi.org/${pub.doi.replace(/^https?:\/\/doi\.org\//, "")}` : (pub.url ? ` ${pub.url}` : "");
         const abstract = pub.abstract ? pub.abstract : "";
-
-        contentDiv.innerHTML = `
-          <div class="pub-meta">
-            ${authorsAPA} ${year} ${title} ${outletHtml}${outletHtml && (volume || number) ? ", " : ""}${volume}${number}${pages}.${doi}
-          </div>
-          ${abstract ? `<div class="pub-abstract">${abstract}</div>` : ""}
-        `;
-
-        li.appendChild(icon);
-        li.appendChild(contentDiv);
+        const doi = pub.doi
+          ? ` https://doi.org/${pub.doi.replace(/^https?:\/\/doi\.org\//, "")}`
+          : (pub.url ? ` ${pub.url}` : "");
 
         if (isChapter) {
+          const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/, "") : "";
+          const publisher = pub.publisher ? pub.publisher : "";
+
+          contentDiv.innerHTML = `
+            <div class="pub-meta">
+              ${authorsAPA} ${year} ${title}
+              ${booktitle ? `En: <em>${booktitle}</em>.` : ""}
+              ${publisher ? ` ${currentLang === "es" ? "Editorial" : "Publisher"}: ${publisher}.` : ""}
+              ${doi}
+            </div>
+            ${abstract ? `<div class="pub-abstract">${abstract}</div>` : ""}
+          `;
+          li.appendChild(icon);
+          li.appendChild(contentDiv);
           chaptersList.appendChild(li);
         } else {
-          // por defecto lo mandamos a revistas
+          const outlet = pub.journal || "";
+          const outletHtml = outlet ? `<em>${outlet}</em>` : "";
+          const volume = pub.volume ? `<em>${pub.volume}</em>` : "";
+          const number = pub.number ? `(${pub.number})` : "";
+          const pages = pub.pages ? `, ${pub.pages}` : "";
+
+          contentDiv.innerHTML = `
+            <div class="pub-meta">
+              ${authorsAPA} ${year} ${title}
+              ${outletHtml}${outletHtml && (volume || number) ? ", " : ""}${volume}${number}${pages}.${doi}
+            </div>
+            ${abstract ? `<div class="pub-abstract">${abstract}</div>` : ""}
+          `;
+          li.appendChild(icon);
+          li.appendChild(contentDiv);
           journalsList.appendChild(li);
         }
       });
