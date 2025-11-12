@@ -70,6 +70,13 @@
     h2 { border-bottom: 2px solid rgba(90, 74, 58, 0.55); padding-bottom: 5px; margin-bottom: 15px; color: var(--primary); }
     ul { padding-left: 0; list-style: none; }
 
+    .subsection-title {
+      margin-top: 12px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #3a3a2d;
+    }
+
     /* Tarjetas listas */
     .edu-item, .card-list-item {
       display: flex; gap: 10px; background: #f1ede5; margin-bottom: 10px; padding: 10px 12px;
@@ -95,7 +102,7 @@
     .skill-card { background: #f1ede5; border-radius: 8px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
     .award-item { background: #f1ede5; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #bc7d38; }
 
-    /* abstract */
+    /* abstract sin palabra Resumen */
     .pub-abstract {
       background: rgba(0,0,0,0.03);
       margin-top: 6px;
@@ -105,7 +112,6 @@
       font-size: 0.74rem;
       color: #3b372f;
     }
-    .pub-meta small { color: #5a4a3a; }
 
     @media (max-width: 900px) {
       .sidebar { position: static; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
@@ -204,8 +210,11 @@
 
     <section id="publications">
       <h2 id="publications-title">Publicaciones</h2>
-      <ul id="publications-list"></ul>
-      <!-- Coloca library.bib en esta carpeta -->
+      <h3 class="subsection-title" id="pub-journals-title">Revistas indexadas</h3>
+      <ul id="publications-journals-list"></ul>
+      <h3 class="subsection-title" id="pub-chapters-title">Capítulos de libro</h3>
+      <ul id="publications-chapters-list"></ul>
+      <!-- library.bib va en la misma carpeta -->
     </section>
 
     <section id="projects">
@@ -230,7 +239,6 @@
   </main>
 
   <script>
-    /* ===== Datos bilingües base ===== */
     const content = {
       es: {
         title: "Curriullum Vitae Andres Marcelo Vallone",
@@ -270,6 +278,8 @@
           "Docencia parcial en INACAP, Universidad del Mar, UCCuyo"
         ],
         publicationsTitle: "Publicaciones",
+        publicationsJournalsTitle: "Revistas indexadas",
+        publicationsChaptersTitle: "Capítulos de libro",
         projectsTitle: "Proyectos de investigación",
         projects: [
           { title: "Fortalece PyME Coquimbo – Red de asistencia digital", role: "Co-ejecutor", period: "2022", funding: "CORFO / ASOEX" },
@@ -333,8 +343,14 @@
           "Part-time teaching, INACAP, Universidad del Mar, UCCuyo"
         ],
         publicationsTitle: "Publications",
+        publicationsJournalsTitle: "Indexed journals",
+        publicationsChaptersTitle: "Book chapters",
         projectsTitle: "Research projects",
         conferencesTitle: "Conference Presentations",
+        conferences: [
+          { title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0, Argentina", year: "2023" },
+          { title: "Water crisis in Chile: micro-level actions", event: "Regional Conversatory", year: "2022" }
+        ],
         skillsTitle: "Skills",
         skills: {
           languagesTitle: "Languages",
@@ -352,7 +368,7 @@
     let currentLang = "es";
     let pubsCache = [];
 
-    /* ===== PARSE BIBTEX ===== */
+    /* ==== parse BibTeX ==== */
     function parseBibtex(bibtex) {
       const entries = [];
       const raw = bibtex.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
@@ -411,7 +427,7 @@
       }
     }
 
-    /* ===== RENDER ===== */
+    /* ==== render ==== */
     function renderEducation(lang) {
       const list = document.getElementById("education-list");
       list.innerHTML = "";
@@ -502,17 +518,52 @@
       });
     }
 
-    // publicaciones con abstract
-    function renderPublications() {
-      document.getElementById("publications-title").innerText = content[currentLang].publicationsTitle;
-      const list = document.getElementById('publications-list');
+    function renderConferences(lang) {
+      document.getElementById("conferences-title").innerText = content[lang].conferencesTitle;
+      const list = document.getElementById("conferences-list");
       list.innerHTML = "";
-      const pubs = [...pubsCache].sort((a,b) => (b.year||"").localeCompare(a.year||""));
-      pubs.forEach(pub => {
+      content[lang].conferences.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
+              <path d="M3 4h18v10H3zM8 18l-3 3h2l2-2 2 2h2l-3-3z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${item.year}</strong> – ${item.title}<br>
+            ${item.event}
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    // publicaciones separadas
+    function renderPublications() {
+      const journalsList = document.getElementById('publications-journals-list');
+      const chaptersList = document.getElementById('publications-chapters-list');
+      journalsList.innerHTML = "";
+      chaptersList.innerHTML = "";
+
+      // títulos según idioma
+      document.getElementById('pub-journals-title').innerText = content[currentLang].publicationsJournalsTitle;
+      document.getElementById('pub-chapters-title').innerText = content[currentLang].publicationsChaptersTitle;
+
+      // ordenar por año
+      const sorted = [...pubsCache].sort((a,b) => (b.year||"").localeCompare(a.year||""));
+
+      sorted.forEach(pub => {
+        const isJournal = pub.type === "article" || pub.journal;
+        const isChapter = pub.type === "incollection" || pub.booktitle;
+
         const li = document.createElement('li');
         li.className = "card-list-item";
+
         const icon = document.createElement('div');
         icon.className = 'card-icon';
+        // revista/libro
         icon.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
             <path d="M19 2H8a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h11v-2H8a5 5 0 0 0-3 1V5a1 1 0 0 1 1-1h12v14h2V2z"/>
@@ -535,34 +586,18 @@
           <div class="pub-meta">
             ${authorsAPA} ${year} ${title} ${outletHtml}${outletHtml && (volume || number) ? ", " : ""}${volume}${number}${pages}.${doi}
           </div>
-          ${abstract ? `<div class="pub-abstract"><strong>${currentLang === "es" ? "Resumen:" : "Abstract:"}</strong> ${abstract}</div>` : ""}
+          ${abstract ? `<div class="pub-abstract">${abstract}</div>` : ""}
         `;
+
         li.appendChild(icon);
         li.appendChild(contentDiv);
-        list.appendChild(li);
-      });
-    }
 
-    // presentaciones de nuevo desde el objeto content
-    function renderConferences(lang) {
-      document.getElementById("conferences-title").innerText = content[lang].conferencesTitle;
-      const list = document.getElementById("conferences-list");
-      list.innerHTML = "";
-      content[lang].conferences.forEach(item => {
-        const li = document.createElement("li");
-        li.className = "card-list-item";
-        li.innerHTML = `
-          <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
-              <path d="M3 4h18v10H3zM8 18l-3 3h2l2-2 2 2h2l-3-3z"/>
-            </svg>
-          </div>
-          <div>
-            <strong>${item.year}</strong> – ${item.title}<br>
-            ${item.event}
-          </div>
-        `;
-        list.appendChild(li);
+        if (isChapter) {
+          chaptersList.appendChild(li);
+        } else {
+          // por defecto lo mandamos a revistas
+          journalsList.appendChild(li);
+        }
       });
     }
 
@@ -596,7 +631,6 @@
       renderAwards(lang);
       renderProjects(lang);
       renderConferences(lang);
-      // publicaciones se vuelven a pintar con el idioma (para el "Resumen:")
       renderPublications();
     }
 
