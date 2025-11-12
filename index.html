@@ -246,7 +246,7 @@
           { period: "2021", title: "Sistematización avances Corredor Bioceánico Central", role: "Investigador", funding: "AGCID" }
         ],
         conferences: [
-          { year: "2023", title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0", place: "Argentina", extra: "" }
+          { year: "2023", text: "Transformación tecnológica para PYMES del sector agrícola, Seminario Internacional AGRO 5.0, Argentina" }
         ],
         skills: {
           languagesTitle: "Idiomas",
@@ -262,8 +262,8 @@
           { year: "2023", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
           { year: "2023", text: "Premio a la Innovación docente - “Inclusión de estudiantes ciegos en aula para cursos de economía“, Vicerrectoría Académica - Universidad Católica del Norte" },
           { year: "2021", text: "Investigador emergente del Campus Guayacán, Vicerrectoría En Investigación y Desarrollo Tecnológico - Universidad Católica del Norte" },
-          { year: "2009 - 2010", text: "Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte" },
-          { year: "2007 - 2008", text: "Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte" },
+          { year: "2009", text: "2009 - 2010 Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte" },
+          { year: "2007", text: "2007 - 2009 Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte" },
           { year: "2006", text: "Beca de estudio de postgrado, Universidad Católica de Cuyo" }
         ]
       },
@@ -299,7 +299,7 @@
           { period: "2022", title: "Fortalece PyME Coquimbo – Digital assistance network", role: "Co-executor", funding: "CORFO / ASOEX" }
         ],
         conferences: [
-          { year: "2023", title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0", place: "", extra: "" }
+          { year: "2023", text: "Technological transformation for agricultural SMEs, International Seminar AGRO 5.0, Argentina" }
         ],
         skills: {
           languagesTitle: "Languages",
@@ -309,7 +309,6 @@
           otherTitle: "Research interests",
           other: ["Urban and regional economics","Innovation networks"]
         },
-        // dejo las becas en español porque las diste así
         awards: [
           { year: "2025", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
           { year: "2024", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte" },
@@ -328,7 +327,7 @@
     let presentationsCache = [];
     let projectsCache = [];
 
-    // ====== formato autores APA ======
+    // ====== helpers ======
     function formatAuthorsAPA(str) {
       if (!str) return "";
       const parts = str.split(/\s+and\s+/i).map(s => s.trim()).filter(Boolean);
@@ -346,10 +345,9 @@
       });
       if (formatted.length === 1) return formatted[0];
       if (formatted.length === 2) return formatted.join(" & ");
-      return formatted.slice(0, -1).join(", ") + ", & " + formatted[formatted.length - 1];
+      return formatted.slice(0,-1).join(", ") + ", & " + formatted[formatted.length-1];
     }
 
-    // ====== parse bib ======
     function parseBibtex(text) {
       const out = [];
       const entries = text.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
@@ -475,7 +473,7 @@
           </div>
           <div>
             <strong>${p.period || ""}</strong> – ${p.title}<br>
-            ${p.role ? p.role + ". " : ""}${p.funding ? p.funding : ""}
+            ${p.role ? p.role + ". " : ""}${p.funding ? p.funding : ""}${p.institution ? " ("+p.institution+")" : ""}
           </div>
         `;
         list.appendChild(li);
@@ -498,8 +496,8 @@
             </svg>
           </div>
           <div>
-            <strong>${c.year || ""}</strong> – ${c.title || ""}<br>
-            ${c.event || ""}${c.place ? ", " + c.place : ""}${c.extra ? " – " + c.extra : ""}
+            <strong>${c.year || ""}</strong> – ${c.text || c.title || ""}<br>
+            ${c.event ? c.event : ""}${c.place ? ", " + c.place : ""}${c.extra ? " – " + c.extra : ""}
           </div>
         `;
         list.appendChild(li);
@@ -573,12 +571,14 @@
       document.getElementById("general-text").innerText = t.generalText;
       document.getElementById("summary-text").innerText = t.summary;
       document.getElementById("education-title").innerText = lang === "es" ? "Educación" : "Education";
-      document.getElementById("experience-title").innerText = t.experienceTitle || (lang === "es" ? "Experiencia" : "Experience");
+      document.getElementById("experience-title").innerText = lang === "es" ? "Experiencia" : "Experience";
       document.getElementById("publications-title").innerText = lang === "es" ? "Publicaciones" : "Publications";
-      document.getElementById("pub-journals-title").innerText = t.publicationsJournalsTitle;
-      document.getElementById("pub-chapters-title").innerText = t.publicationsChaptersTitle;
       document.getElementById("skills-title").innerText = t.skillsTitle;
       document.getElementById("awards-title").innerText = t.awardsTitle;
+      document.getElementById("projects-title").innerText = t.projectsTitle;
+      document.getElementById("conferences-title").innerText = t.conferencesTitle;
+      document.getElementById("pub-journals-title").innerText = t.publicationsJournalsTitle;
+      document.getElementById("pub-chapters-title").innerText = t.publicationsChaptersTitle;
       renderEducation(lang);
       renderExperience(lang);
       renderSkills(lang);
@@ -601,7 +601,7 @@
         const txt = await res.text();
         pubsCache = parseBibtex(txt);
       } catch(e) {
-        // no pasa nada
+        // silencioso
       }
     }
 
@@ -610,24 +610,32 @@
         const res = await fetch("./presentation.tex");
         if (!res.ok) return;
         let txt = await res.text();
-        // ignorar \cvsection o \cvsection*
+        // quitar \cvsection{...} o \cvsection*{...}
         txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
-        const regex = /\\cventry\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
+        const regex = /\\cvpub\s*{([\s\S]*?)}\s*(?=\\cvpub|\\end\{cvpubs\}|$)/g;
         const out = [];
         let m;
         while ((m = regex.exec(txt)) !== null) {
+          const raw = m[1].trim();
+          // casi todas las entradas comienzan con el año y luego una coma
+          const firstComma = raw.indexOf(",");
+          let year = "";
+          let text = raw;
+          if (firstComma > -1) {
+            year = raw.slice(0, firstComma).trim();
+            text = raw.slice(firstComma + 1).trim();
+          }
           out.push({
-            year: m[1].trim(),
-            title: m[2].trim(),
-            event: m[3].trim(),
-            place: m[4].trim(),
-            extra: m[5].trim()
+            year,
+            text
           });
         }
         if (out.length) {
           presentationsCache = out;
         }
-      } catch(e) {}
+      } catch(e) {
+        // seguimos con las internas
+      }
     }
 
     async function tryLoadProjects() {
@@ -635,29 +643,32 @@
         const res = await fetch("./project.tex");
         if (!res.ok) return;
         let txt = await res.text();
-        // ignorar \cvsection o \cvsection*
+        // quitar \cvsection
         txt = txt.replace(/\\cvsection\*?\{[^}]*\}/g, "");
-        const regex = /\\cvpub\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
+        const regex = /\\cventry\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
         const out = [];
         let m;
         while ((m = regex.exec(txt)) !== null) {
           out.push({
-            period: m[1].trim(),
+            institution: m[1].trim(),
             title: m[2].trim(),
             role: m[3].trim(),
-            funding: m[4].trim()
+            period: m[4].trim(),
+            funding: m[5].trim()
           });
         }
         if (out.length) {
           projectsCache = out;
         }
-      } catch(e) {}
+      } catch(e) {
+        // seguimos con internas
+      }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
       // pintar primero
       renderAll("es");
-      // luego intentamos cargar archivos externos
+      // luego intentar cargar archivos externos
       tryLoadBib().then(renderPublications);
       tryLoadPresentations().then(()=>renderConferences(currentLang));
       tryLoadProjects().then(()=>renderProjects(currentLang));
