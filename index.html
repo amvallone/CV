@@ -145,4 +145,475 @@
     <section id="general">
       <h2 id="general-title">Información General</h2>
       <div class="summary-box" id="summary-text">
-        Profesor Asociado en l
+        Profesor Asociado en la Universidad Católica del Norte (Escuela de Ciencias Empresariales / Instituto de Políticas Públicas, Coquimbo, Chile). Especializado en economía regional y urbana, redes de innovación y análisis espacial.
+      </div>
+      <p id="general-text">
+        Afiliación actual: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.
+      </p>
+    </section>
+
+    <section id="education">
+      <h2 id="education-title">Educación</h2>
+      <ul id="education-list"></ul>
+    </section>
+
+    <section id="experience">
+      <h2 id="experience-title">Experiencia</h2>
+      <div class="experience-grid">
+        <div class="exp-card">
+          <h3 id="teaching-exp-title">Experiencia docente</h3>
+          <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
+          <ul id="undergrad-list" class="course-list"></ul>
+          <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
+          <ul id="postgrad-list" class="course-list"></ul>
+        </div>
+        <div class="exp-card">
+          <h3 id="other-exp-title">Otras experiencias</h3>
+          <ul id="other-exp-list" class="other-exp-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2 id="publications-title">Publicaciones</h2>
+      <h3 class="subsection-title" id="pub-journals-title">Revistas indexadas</h3>
+      <ul id="publications-journals-list"></ul>
+      <h3 class="subsection-title" id="pub-chapters-title">Capítulos de libro</h3>
+      <ul id="publications-chapters-list"></ul>
+    </section>
+
+    <section id="projects">
+      <h2 id="projects-title">Proyectos de investigación</h2>
+      <ul id="projects-list"></ul>
+    </section>
+
+    <section id="conferences">
+      <h2 id="conferences-title">Presentaciones en Congresos</h2>
+      <ul id="conferences-list"></ul>
+    </section>
+
+    <section id="skills">
+      <h2 id="skills-title">Capacidades</h2>
+      <div class="skills-grid" id="skills-grid"></div>
+    </section>
+
+    <section id="awards">
+      <h2 id="awards-title">Becas y Premios</h2>
+      <div id="awards-list"></div>
+    </section>
+  </main>
+
+  <script>
+    // ====== 1. datos base (para que SIEMPRE pinte) ======
+    const content = {
+      es: {
+        title: "Curriullum Vitae Andres Marcelo Vallone",
+        nav: ["Información General","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Capacidades","Becas y Premios"],
+        generalTitle: "Información General",
+        generalText: "Afiliación: Universidad Católica del Norte, Escuela de Ciencias Empresariales - Instituto de Políticas Públicas, Coquimbo, Chile.",
+        summary: "Profesor Asociado UCN. Doctor en Economía y Empresa (UAM, 2019). Líneas: economía urbana y regional, redes de innovación, concentración espacial, R para análisis socioeconómicos.",
+        education: [
+          { degree: "Doctor en Economía y Empresa", institution: "Universidad Autónoma de Madrid, España", years: "2015 – 2019" },
+          { degree: "Magíster en Ciencia Regional", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011" },
+          { degree: "MBA – Master en Administración", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009" },
+          { degree: "Magíster en Economía y Administración Estratégica de Negocios", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2009" },
+          { degree: "Licenciado en Economía", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004" }
+        ],
+        undergradCourses: [
+          "Macroeconomía II – UCN, Coquimbo (2011–Presente)",
+          "Microeconomía I – UCN, Coquimbo (2011–Presente)",
+          "Microeconomía II – UCN, Coquimbo (2011–Presente)",
+          "Visión del Entorno Económico y Social – UCN",
+          "Introducción a la Economía – UCN"
+        ],
+        postgradCourses: [
+          "Apoyo a docencia e investigación, Departamento de Economía Aplicada, UAM (2016–2018)"
+        ],
+        otherExperience: [
+          "Profesor jornada completa, Universidad Católica del Norte, Coquimbo, Chile (2011–presente)",
+          "Personal Investigador en Formación, Universidad Autónoma de Madrid, España (2016–2018)"
+        ],
+        publicationsJournalsTitle: "Revistas indexadas",
+        publicationsChaptersTitle: "Capítulos de libro",
+        projectsTitle: "Proyectos de investigación",
+        conferencesTitle: "Presentaciones en Congresos",
+        skillsTitle: "Capacidades",
+        awardsTitle: "Becas y Premios",
+        projects: [
+          { period: "2022", title: "Fortalece PyME Coquimbo – Red de asistencia digital", role: "Co-ejecutor", funding: "CORFO / ASOEX" },
+          { period: "2021", title: "Sistematización avances Corredor Bioceánico Central", role: "Investigador", funding: "AGCID" }
+        ],
+        conferences: [
+          { year: "2023", title: "Transformación tecnológica para PYMES del sector agrícola", event: "Seminario Internacional AGRO 5.0", place: "Argentina", extra: "" }
+        ],
+        skills: {
+          languagesTitle: "Idiomas",
+          languages: ["Español (nativo)", "Inglés (avalado)"],
+          programmingTitle: "Programación y software",
+          programming: ["R","GAMS","Python","LaTeX"],
+          otherTitle: "Áreas de interés",
+          other: ["Economía urbana y regional","Redes de innovación"]
+        }
+      },
+      en: {
+        title: "Curriculum Vitae Andres Marcelo Vallone",
+        nav: ["General Information","Education","Experience","Publications","Research Projects","Conference Presentations","Skills","Scholarships & Awards"],
+        generalTitle: "General Information",
+        generalText: "Affiliation: Universidad Católica del Norte, School of Business Sciences – Institute of Public Policies, Coquimbo, Chile.",
+        summary: "Associate Professor at UCN. PhD in Economics and Business (UAM, 2019).",
+        education: [
+          { degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019" },
+          { degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Chile", years: "2009 – 2011" }
+        ],
+        undergradCourses: [
+          "Macroeconomics II – UCN (2011–Present)",
+          "Microeconomics I – UCN (2011–Present)"
+        ],
+        postgradCourses: [
+          "Teaching and research support, UAM (2016–2018)"
+        ],
+        otherExperience: [
+          "Full-time professor, Universidad Católica del Norte (2011–present)"
+        ],
+        publicationsJournalsTitle: "Indexed journals",
+        publicationsChaptersTitle: "Book chapters",
+        projectsTitle: "Research projects",
+        conferencesTitle: "Conference Presentations",
+        skillsTitle: "Skills",
+        awardsTitle: "Scholarships & Awards",
+        projects: [
+          { period: "2022", title: "Fortalece PyME Coquimbo – Digital assistance network", role: "Co-executor", funding: "CORFO / ASOEX" }
+        ],
+        conferences: [
+          { year: "2023", title: "Technological transformation for agricultural SMEs", event: "International Seminar AGRO 5.0", place: "", extra: "" }
+        ],
+        skills: {
+          languagesTitle: "Languages",
+          languages: ["Spanish (native)","English"],
+          programmingTitle: "Programming & software",
+          programming: ["R","GAMS","Python","LaTeX"],
+          otherTitle: "Research interests",
+          other: ["Urban and regional economics","Innovation networks"]
+        }
+      }
+    };
+
+    let currentLang = "es";
+    let pubsCache = [];
+    let presentationsCache = [];
+    let projectsCache = [];
+
+    // ====== helpers ======
+    function formatAuthorsAPA(str) {
+      if (!str) return "";
+      const parts = str.split(/\s+and\s+/i).map(s => s.trim()).filter(Boolean);
+      const f = parts.map(a => {
+        if (a.includes(",")) {
+          const [last, first] = a.split(",").map(x => x.trim());
+          const initials = (first || "").split(/\s+/).map(n => n[0]?.toUpperCase() + ".").join(" ");
+          return `${last}, ${initials}`.trim();
+        } else {
+          const tok = a.split(/\s+/);
+          const last = tok.pop();
+          const initials = tok.map(n => n[0]?.toUpperCase() + ".").join(" ");
+          return `${last}, ${initials}`.trim();
+        }
+      });
+      if (f.length === 1) return f[0];
+      if (f.length === 2) return f.join(" & ");
+      return f.slice(0,-1).join(", ") + ", & " + f[f.length-1];
+    }
+
+    function parseBibtex(text) {
+      const out = [];
+      const entries = text.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
+      entries.forEach(chunk => {
+        const typeMatch = chunk.match(/^([a-zA-Z]+)\s*{/);
+        if (!typeMatch) return;
+        const type = typeMatch[1].toLowerCase();
+        const keyMatch = chunk.match(/^[a-zA-Z]+\s*{\s*([^,]+),/);
+        const key = keyMatch ? keyMatch[1].trim() : "";
+        const body = chunk.substring(chunk.indexOf("{") + 1, chunk.lastIndexOf("}"));
+        const fields = {};
+        const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|"[^"]*")\s*,?/g;
+        let m;
+        while ((m = fieldRegex.exec(body)) !== null) {
+          const name = m[1].toLowerCase();
+          let val = m[2].trim();
+          if ((val.startsWith("{") && val.endsWith("}")) || (val.startsWith('"') && val.endsWith('"'))) {
+            val = val.slice(1, -1);
+          }
+          fields[name] = val.replace(/\s+/g, " ").trim();
+        }
+        out.push({ type, key, ...fields });
+      });
+      return out;
+    }
+
+    // ====== render funcs ======
+    function renderEducation(lang) {
+      const ul = document.getElementById("education-list");
+      ul.innerHTML = "";
+      content[lang].education.forEach(e => {
+        const li = document.createElement("li");
+        li.className = "edu-item";
+        li.innerHTML = `
+          <div class="edu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050"><path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/></svg>
+          </div>
+          <div>
+            <strong>${e.degree}</strong> – ${e.institution}<br><small>${e.years}</small>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderExperience(lang) {
+      // docente
+      document.getElementById("teaching-exp-title").innerText =
+        lang === "es" ? "Experiencia docente" : "Teaching experience";
+      document.getElementById("undergrad-title").innerText =
+        lang === "es" ? "Pregrado" : "Undergraduate";
+      document.getElementById("postgrad-title").innerText =
+        lang === "es" ? "Postgrado" : "Postgraduate";
+
+      const ug = document.getElementById("undergrad-list");
+      const pg = document.getElementById("postgrad-list");
+      ug.innerHTML = "";
+      pg.innerHTML = "";
+      content[lang].undergradCourses.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c;
+        ug.appendChild(li);
+      });
+      content[lang].postgradCourses.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c;
+        pg.appendChild(li);
+      });
+
+      // otras
+      document.getElementById("other-exp-title").innerText =
+        lang === "es" ? "Otras experiencias" : "Other experience";
+      const o = document.getElementById("other-exp-list");
+      o.innerHTML = "";
+      content[lang].otherExperience.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c;
+        o.appendChild(li);
+      });
+    }
+
+    function renderSkills(lang) {
+      const box = document.getElementById("skills-grid");
+      box.innerHTML = "";
+      const s = content[lang].skills;
+      const card1 = document.createElement("div");
+      card1.className = "skill-card";
+      card1.innerHTML = `<h3>${s.languagesTitle}</h3><ul>${s.languages.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+      const card2 = document.createElement("div");
+      card2.className = "skill-card";
+      card2.innerHTML = `<h3>${s.programmingTitle}</h3><ul>${s.programming.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+      const card3 = document.createElement("div");
+      card3.className = "skill-card";
+      card3.innerHTML = `<h3>${s.otherTitle}</h3><ul>${s.other.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+      box.appendChild(card1); box.appendChild(card2); box.appendChild(card3);
+    }
+
+    function renderProjects(lang) {
+      document.getElementById("projects-title").innerText =
+        lang === "es" ? "Proyectos de investigación" : "Research projects";
+      const list = document.getElementById("projects-list");
+      list.innerHTML = "";
+      const source = projectsCache.length ? projectsCache : content[lang].projects;
+      source.sort((a,b) => (b.period||"").localeCompare(a.period||""));
+      source.forEach(p => {
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bc7d38"><path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/></svg>
+          </div>
+          <div>
+            <strong>${p.period || ""}</strong> – ${p.title}<br>
+            ${p.role ? p.role + ". " : ""}${p.funding ? p.funding : ""}
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function renderConferences(lang) {
+      document.getElementById("conferences-title").innerText =
+        lang === "es" ? "Presentaciones en Congresos" : "Conference Presentations";
+      const list = document.getElementById("conferences-list");
+      list.innerHTML = "";
+      const source = presentationsCache.length ? presentationsCache : content[lang].conferences;
+      source.forEach(c => {
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        li.innerHTML = `
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050">
+              <path d="M3 4h18v10H3zM8 18l-3 3h2l2-2 2 2h2l-3-3z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${c.year || ""}</strong> – ${c.title || ""}<br>
+            ${c.event || ""}${c.place ? ", " + c.place : ""}${c.extra ? " – " + c.extra : ""}
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function renderPublications() {
+      const journalsList = document.getElementById("publications-journals-list");
+      const chaptersList = document.getElementById("publications-chapters-list");
+      journalsList.innerHTML = "";
+      chaptersList.innerHTML = "";
+      // si no hay bib, no rompe
+      const sorted = pubsCache.length ? [...pubsCache].sort((a,b)=>(b.year||"").localeCompare(a.year||"")) : [];
+      sorted.forEach(pub => {
+        const isChapter = pub.type === "incollection" || pub.booktitle;
+        const li = document.createElement("li");
+        li.className = "card-list-item";
+        const icon = document.createElement("div");
+        icon.className = "card-icon";
+        icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050"><path d="M19 2H8a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h11v-2H8a5 5 0 0 0-3 1V5a1 1 0 0 1 1-1h12v14h2V2z"/></svg>`;
+        const cdiv = document.createElement("div");
+        const authors = formatAuthorsAPA(pub.author);
+        const year = pub.year ? `(${pub.year}).` : "";
+        const title = pub.title ? pub.title.replace(/\.$/, "") + "." : "";
+        const abstract = pub.abstract ? `<div class="pub-abstract">${pub.abstract}</div>` : "";
+        const doi = pub.doi ? ` https://doi.org/${pub.doi.replace(/^https?:\/\/doi\.org\//,"")}` : (pub.url ? " " + pub.url : "");
+
+        if (isChapter) {
+          const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/,"") : "";
+          const publisher = pub.publisher ? pub.publisher : "";
+          cdiv.innerHTML = `
+            <div class="pub-meta">
+              ${authors} ${year} ${title}
+              ${booktitle ? `En: <em>${booktitle}</em>.` : ""}
+              ${publisher ? ` ${currentLang === "es" ? "Editorial" : "Publisher"}: ${publisher}.` : ""}
+              ${doi}
+            </div>
+            ${abstract}
+          `;
+          li.appendChild(icon); li.appendChild(cdiv);
+          chaptersList.appendChild(li);
+        } else {
+          const outlet = pub.journal ? `<em>${pub.journal}</em>` : "";
+          const volume = pub.volume ? `<em>${pub.volume}</em>` : "";
+          const number = pub.number ? `(${pub.number})` : "";
+          const pages = pub.pages ? `, ${pub.pages}` : "";
+          cdiv.innerHTML = `
+            <div class="pub-meta">
+              ${authors} ${year} ${title}
+              ${outlet}${outlet && (volume || number) ? ", " : ""}${volume}${number}${pages}.${doi}
+            </div>
+            ${abstract}
+          `;
+          li.appendChild(icon); li.appendChild(cdiv);
+          journalsList.appendChild(li);
+        }
+      });
+    }
+
+    function renderAll(lang) {
+      const t = content[lang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("nav-general").innerText = t.nav[0];
+      document.getElementById("nav-education").innerText = t.nav[1];
+      document.getElementById("nav-experience").innerText = t.nav[2];
+      document.getElementById("nav-publications").innerText = t.nav[3];
+      document.getElementById("nav-projects").innerText = t.nav[4];
+      document.getElementById("nav-conferences").innerText = t.nav[5];
+      document.getElementById("nav-skills").innerText = t.nav[6];
+      document.getElementById("nav-awards").innerText = t.nav[7];
+      document.getElementById("general-title").innerText = t.generalTitle;
+      document.getElementById("general-text").innerText = t.generalText;
+      document.getElementById("summary-text").innerText = t.summary;
+      document.getElementById("education-title").innerText = lang === "es" ? "Educación" : "Education";
+      document.getElementById("experience-title").innerText = t.experienceTitle;
+      document.getElementById("publications-title").innerText = lang === "es" ? "Publicaciones" : "Publications";
+      document.getElementById("pub-journals-title").innerText = t.publicationsJournalsTitle;
+      document.getElementById("pub-chapters-title").innerText = t.publicationsChaptersTitle;
+      document.getElementById("skills-title").innerText = t.skillsTitle;
+      document.getElementById("awards-title").innerText = t.awardsTitle;
+      renderEducation(lang);
+      renderExperience(lang);
+      renderSkills(lang);
+      renderProjects(lang);
+      renderConferences(lang);
+      renderPublications(); // si no hay bib no pasa nada
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "es" ? "en" : "es";
+      renderAll(currentLang);
+    }
+
+    // ====== intentos de carga externa ======
+    async function tryLoadBib() {
+      try {
+        const res = await fetch("./library.bib");
+        if (!res.ok) return;
+        const txt = await res.text();
+        pubsCache = parseBibtex(txt);
+      } catch(e) {
+        // silencioso
+      }
+    }
+    async function tryLoadPresentations() {
+      try {
+        const res = await fetch("./presentation.tex");
+        if (!res.ok) return;
+        const txt = await res.text();
+        const regex = /\\cventry\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
+        const out = [];
+        let m;
+        while ((m = regex.exec(txt)) !== null) {
+          out.push({
+            year: m[1].trim(),
+            title: m[2].trim(),
+            event: m[3].trim(),
+            place: m[4].trim(),
+            extra: m[5].trim()
+          });
+        }
+        if (out.length) presentationsCache = out;
+      } catch(e) {}
+    }
+    async function tryLoadProjects() {
+      try {
+        const res = await fetch("./project.tex");
+        if (!res.ok) return;
+        const txt = await res.text();
+        const regex = /\\cvpub\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}\s*{([^}]*)}/g;
+        const out = [];
+        let m;
+        while ((m = regex.exec(txt)) !== null) {
+          out.push({
+            period: m[1].trim(),
+            title: m[2].trim(),
+            role: m[3].trim(),
+            funding: m[4].trim()
+          });
+        }
+        if (out.length) projectsCache = out;
+      } catch(e) {}
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. pinta inmediatamente
+      renderAll("es");
+      // 2. luego intenta cargar archivos (si está en GitHub Pages y los archivos están, se actualizará)
+      tryLoadBib().then(renderPublications);
+      tryLoadPresentations().then(function(){ renderConferences(currentLang); });
+      tryLoadProjects().then(function(){ renderProjects(currentLang); });
+    });
+  </script>
+</body>
+</html>
