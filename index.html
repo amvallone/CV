@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrés Marcelo Vallone — Curriculum Vitae</title>
+  <title>Curriculum Vitae — Andrés Marcelo Vallone</title>
   <style>
     :root {
       --bg: #f4f1e8;
@@ -23,16 +23,12 @@
       padding: 0;
     }
 
-    html, body {
-      min-height: 100%;
-    }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg);
       color: var(--primary);
       line-height: 1.7;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     /* SIDEBAR */
@@ -313,44 +309,25 @@
 
     /* PUBLICATIONS */
     .pub-item {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 16px;
       background: var(--card);
       padding: 16px 20px;
       border-radius: 10px;
       margin-bottom: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,.04);
       border-left: 4px solid var(--accent);
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .pub-item:hover {
-      transform: translateX(4px);
       box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    }
-
-    .pub-year-badge {
-      align-self: flex-start;
-      background: linear-gradient(135deg, #e7efe6 0%, #d4e4d1 100%);
-      color: var(--green);
-      border: 2px solid var(--green);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      text-align: center;
-      min-width: 60px;
-    }
-
-    .pub-content {
-      min-width: 0;
     }
 
     .pub-authors {
       font-weight: 600;
       color: var(--primary);
-      margin-bottom: 4px;
+    }
+
+    .pub-year {
+      font-weight: 600;
     }
 
     .pub-title {
@@ -502,7 +479,7 @@
     }
 
     .award-year {
-      font-weight: 400; /* sin negrita en las fechas */
+      font-weight: 700;
       color: var(--green);
       min-width: 60px;
     }
@@ -530,10 +507,6 @@
       }
 
       .talk-item {
-        grid-template-columns: 60px 1fr;
-      }
-
-      .pub-item {
         grid-template-columns: 60px 1fr;
       }
     }
@@ -566,9 +539,7 @@
       <img src="tu-foto.JPG" alt="Andrés Marcelo Vallone">
     </div>
     <div class="sidebar-title">Andrés Marcelo Vallone</div>
-    <div class="sidebar-subtitle" id="affil-line">
-      Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas
-    </div>
+    <div class="sidebar-subtitle" id="affil-line"></div>
 
     <div class="sidebar-contact">
       <!-- Email -->
@@ -629,87 +600,73 @@
     <div class="sidebar-divider"></div>
 
     <nav class="sidebar-nav">
-      <a href="#general" id="nav-general">Acerca de mí</a>
-      <a href="#education" id="nav-education">Educación</a>
-      <a href="#experience" id="nav-experience">Experiencia</a>
-      <a href="#publications" id="nav-publications">Publicaciones</a>
-      <a href="#projects" id="nav-projects">Proyectos</a>
-      <a href="#conferences" id="nav-conferences">Presentaciones</a>
-      <a href="#awards" id="nav-awards">Becas y Premios</a>
+      <a href="#general" id="nav-general"></a>
+      <a href="#education" id="nav-education"></a>
+      <a href="#experience" id="nav-experience"></a>
+      <a href="#publications" id="nav-publications"></a>
+      <a href="#projects" id="nav-projects"></a>
+      <a href="#conferences" id="nav-conferences"></a>
+      <a href="#awards" id="nav-awards"></a>
     </nav>
   </aside>
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
     <section id="general">
-      <h2 id="general-title">Acerca de mí</h2>
-      <div class="summary-box" id="general-box">
-        <p>Economista argentino nacido en San Juan. Actualmente Profesor Asociado en la Escuela de Ciencias Empresariales de la Universidad Católica del Norte, Chile. Mi formación académica se desarrolló en Argentina, Chile y España.</p>
-        <p>Mi investigación se centra en fenómenos sociales espaciales, con énfasis en procesos espacio-temporales. Mis áreas de interés incluyen econometría espacial, desarrollo regional, análisis de redes de colaboración científica y procesos de innovación a través del estudio de patentes. Trabajo con programación en R para análisis de datos y modelización espacial.</p>
-        <p>He publicado en revistas internacionales sobre temas como dinámicas urbanas, sostenibilidad, redes de co-invención de patentes, uso de pesticidas y competitividad exportadora. Participo en proyectos de investigación sobre desarrollo territorial, economía pesquera, huella de carbono y gestión de residuos en salud.</p>
-        <p>Fuera del ámbito académico, practico fotografía y toco guitarra. Mi gusto musical incluye a Pearl Jam, Tool, Jimi Hendrix, B.B. King, Gary Clark Jr., Incubus, Mozart y Paco de Lucía.
-          <a href="https://www.eyeem.com/u/25320134" target="_blank" rel="noopener" class="eyeem-link" aria-label="EyeEm">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"></path>
-            </svg>
-          </a>
-        </p>
-      </div>
+      <h2 id="general-title"></h2>
+      <div class="summary-box" id="general-box"></div>
     </section>
 
     <section id="education">
-      <h2 id="education-title">Educación</h2>
+      <h2 id="education-title"></h2>
       <div id="education-list"></div>
     </section>
 
     <section id="experience">
-      <h2 id="experience-title">Experiencia</h2>
+      <h2 id="experience-title"></h2>
       <div class="experience-grid">
         <div class="exp-card">
-          <h3 id="pro-exp-title">Experiencia profesional</h3>
+          <h3 id="pro-exp-title"></h3>
           <ul id="pro-exp-list" class="pro-exp-list"></ul>
         </div>
         <div class="exp-card">
-          <h3 id="teaching-exp-title">Experiencia docente</h3>
-          <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
+          <h3 id="teaching-exp-title"></h3>
+          <div class="exp-subtitle" id="undergrad-title"></div>
           <ul id="undergrad-list" class="course-list"></ul>
-          <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
+          <div class="exp-subtitle" id="postgrad-title"></div>
           <ul id="postgrad-list" class="course-list"></ul>
         </div>
       </div>
     </section>
 
     <section id="publications">
-      <h2 id="publications-title">Publicaciones</h2>
+      <h2 id="publications-title"></h2>
       <div class="loading">Cargando publicaciones...</div>
-      <h3 class="subsection-title" id="pub-journals-title">Revistas indexadas</h3>
+      <h3 class="subsection-title" id="pub-journals-title"></h3>
       <div id="publications-journals-list"></div>
-      <h3 class="subsection-title" id="pub-chapters-title">Capítulos de libro</h3>
+      <h3 class="subsection-title" id="pub-chapters-title"></h3>
       <div id="publications-chapters-list"></div>
     </section>
 
     <section id="projects">
-      <h2 id="projects-title">Proyectos de investigación</h2>
+      <h2 id="projects-title"></h2>
       <div class="loading">Cargando proyectos...</div>
       <div id="projects-list" class="proj-list"></div>
     </section>
 
     <section id="conferences">
-      <h2 id="conferences-title">Presentaciones en Congresos</h2>
+      <h2 id="conferences-title"></h2>
       <div class="loading">Cargando presentaciones...</div>
       <div id="conferences-list" class="talk-list"></div>
     </section>
 
     <section id="awards">
-      <h2 id="awards-title">Becas y Premios</h2>
+      <h2 id="awards-title"></h2>
       <div id="awards-list"></div>
     </section>
   </main>
 
   <script>
-    console.log("CV script cargado");
-
     const CONTENT = {
       es: {
         affil: "Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas",
@@ -882,8 +839,6 @@
     let presentationsCache = [];
     let projectsCache = [];
 
-    /* ===== UTILIDADES TEX/BIB ===== */
-
     function stripComments(text) {
       return text.replace(/\r\n?/g, '\n').replace(/(^|[^\\])%.*$/gm, '$1');
     }
@@ -908,36 +863,9 @@
       return null;
     }
 
-    function parseLatexCommand(text, cmdName, minArgs, maxArgs) {
-      const results = [];
-      const pattern = new RegExp(`\\\\${cmdName}\\*?(?:\\[[^\\]]*\\])?\\s*\\{`, 'g');
-      let match;
-
-      while ((match = pattern.exec(text)) !== null) {
-        let idx = match.index + match[0].length - 1;
-        const args = [];
-
-        for (let k = 0; k < maxArgs; k++) {
-          while (idx < text.length && /\s/.test(text[idx])) idx++;
-          if (text[idx] !== '{') break;
-
-          const block = readBraced(text, idx);
-          if (!block) break;
-
-          args.push(block.value.trim());
-          idx = block.end + 1;
-        }
-
-        if (args.length >= minArgs) results.push(args);
-      }
-
-      return results;
-    }
-
     function cleanLatex(str) {
       if (!str) return '';
       let s = str;
-
       const boldPattern = /\\textbf\s*\{/g;
       let m;
       while ((m = boldPattern.exec(s)) !== null) {
@@ -946,7 +874,6 @@
         if (!block) break;
         s = s.slice(0, m.index) + '<strong>' + block.value + '</strong>' + s.slice(block.end + 1);
       }
-
       s = s.replace(/\\textit\{([^}]+)\}/g, '<em>$1</em>');
       s = s.replace(/\\_/g, '_');
       s = s.replace(/\\\\/g, '<br>');
@@ -961,7 +888,6 @@
     function parseBibtex(text) {
       const entries = [];
       const chunks = text.split(/@(?=[a-zA-Z]+)/).filter(Boolean);
-
       chunks.forEach(chunk => {
         const typeMatch = chunk.match(/^([a-zA-Z]+)\s*{/);
         if (!typeMatch) return;
@@ -970,9 +896,8 @@
         const key = keyMatch ? keyMatch[1].trim() : '';
         const body = chunk.substring(chunk.indexOf('{') + 1, chunk.lastIndexOf('}'));
         const fields = {};
-        const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|"[^"]*")\s*,?/g;
+        const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|\"[^\"]*\")\s*,?/g;
         let m;
-
         while ((m = fieldRegex.exec(body)) !== null) {
           const name = m[1].toLowerCase();
           let value = m[2].trim();
@@ -981,10 +906,8 @@
           }
           fields[name] = value.replace(/\s+/g, ' ').trim();
         }
-
         entries.push({ type, key, ...fields });
       });
-
       return entries;
     }
 
@@ -994,33 +917,52 @@
       const formatted = parts.map(author => {
         if (author.includes(',')) {
           const [last, first] = author.split(',').map(x => x.trim());
-          const initials = (first || '')
-            .split(/\s+/)
-            .map(n => (n[0] ? n[0].toUpperCase() + '.' : ''))
-            .join(' ');
+          const initials = (first || '').split(/\s+/).map(n => n[0] ? n[0].toUpperCase() + '.' : '').join(' ');
           return `${last}, ${initials}`.trim();
         } else {
           const tokens = author.split(/\s+/);
           const last = tokens.pop();
-          const initials = tokens
-            .map(n => (n[0] ? n[0].toUpperCase() + '.' : ''))
-            .join(' ');
+          const initials = tokens.map(n => n[0] ? n[0].toUpperCase() + '.' : '').join(' ');
           return `${last}, ${initials}`.trim();
         }
       });
-
       if (formatted.length === 1) return formatted[0];
       if (formatted.length === 2) return formatted.join(' & ');
       return formatted.slice(0, -1).join(', ') + ', & ' + formatted[formatted.length - 1];
     }
 
-    /* ===== RENDER ===== */
+    function parsePresentations(text) {
+      text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
+      const out = [];
+      const re = /\\cventry\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}/g;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        const [, event, title, place, year, extra] = m;
+        out.push({ event, title, place, year, extra });
+      }
+      return out;
+    }
+
+    function parseProjects(text) {
+      text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
+      const out = [];
+      const re = /\\cvpub\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}/g;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        const [, funding, title, role, period, amount] = m;
+        out.push({ funding, title, role, period, amount });
+      }
+      return out;
+    }
 
     function renderGeneral(lang) {
       const c = CONTENT[lang];
-      document.getElementById('general-title').textContent = c.generalTitle;
-      document.getElementById('general-box').innerHTML = c.generalHTML;
-      document.getElementById('affil-line').textContent = c.affil;
+      const generalTitle = document.getElementById('general-title');
+      const generalBox = document.getElementById('general-box');
+      const affilLine = document.getElementById('affil-line');
+      if (generalTitle) generalTitle.textContent = c.generalTitle;
+      if (generalBox) generalBox.innerHTML = c.generalHTML;
+      if (affilLine) affilLine.textContent = c.affil;
     }
 
     function renderEducation(lang) {
@@ -1032,7 +974,7 @@
         item.className = 'edu-item';
         item.innerHTML = `
           <div class="edu-icon">
-            <svg viewBox="0 0 64 64" fill="#5e7050">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050">
               <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
             </svg>
           </div>
@@ -1045,15 +987,14 @@
     }
 
     function renderExperience(lang) {
-      const c = CONTENT[lang];
-      document.getElementById('pro-exp-title').textContent = c.proExpTitle;
-      document.getElementById('teaching-exp-title').textContent = c.teachingExpTitle;
-      document.getElementById('undergrad-title').textContent = c.undergradTitle;
-      document.getElementById('postgrad-title').textContent = c.postgradTitle;
+      document.getElementById('pro-exp-title').textContent = CONTENT[lang].proExpTitle;
+      document.getElementById('teaching-exp-title').textContent = CONTENT[lang].teachingExpTitle;
+      document.getElementById('undergrad-title').textContent = CONTENT[lang].undergradTitle;
+      document.getElementById('postgrad-title').textContent = CONTENT[lang].postgradTitle;
 
       const proList = document.getElementById('pro-exp-list');
       proList.innerHTML = '';
-      c.proExperience.forEach(exp => {
+      CONTENT[lang].proExperience.forEach(exp => {
         const li = document.createElement('li');
         li.innerHTML = `<strong>${exp.period}</strong> — ${exp.text}`;
         proList.appendChild(li);
@@ -1061,7 +1002,7 @@
 
       const ugList = document.getElementById('undergrad-list');
       ugList.innerHTML = '';
-      c.undergradCourses.forEach(course => {
+      CONTENT[lang].undergradCourses.forEach(course => {
         const li = document.createElement('li');
         li.textContent = course;
         ugList.appendChild(li);
@@ -1069,7 +1010,7 @@
 
       const pgList = document.getElementById('postgrad-list');
       pgList.innerHTML = '';
-      c.postgradCourses.forEach(course => {
+      CONTENT[lang].postgradCourses.forEach(course => {
         const li = document.createElement('li');
         li.textContent = course;
         pgList.appendChild(li);
@@ -1080,35 +1021,29 @@
       const journalsList = document.getElementById('publications-journals-list');
       const chaptersList = document.getElementById('publications-chapters-list');
       if (!journalsList || !chaptersList) return;
-
       journalsList.innerHTML = '';
       chaptersList.innerHTML = '';
       if (publicationsCache.length === 0) return;
 
       const sorted = [...publicationsCache].sort((a, b) => (b.year || '').localeCompare(a.year || ''));
-
       sorted.forEach(pub => {
         const isChapter = pub.type === 'incollection' || !!pub.booktitle;
-        const authors = formatAuthorsAPA(pub.author);
-        const year = pub.year ? pub.year : '';
-        const yearDisplay = year || '—';
-        const title = pub.title ? pub.title.replace(/\.$/, '') + '.' : '';
-
         const item = document.createElement('div');
         item.className = 'pub-item';
+
+        const authors = formatAuthorsAPA(pub.author);
+        const year = pub.year ? `(${pub.year}).` : '';
+        const title = pub.title ? pub.title.replace(/\.$/, '') + '.' : '';
 
         if (isChapter) {
           const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/, '') : '';
           const publisher = pub.publisher || '';
-
           item.innerHTML = `
-            <div class="pub-year-badge">${yearDisplay}</div>
-            <div class="pub-content">
-              <div class="pub-authors">${authors}</div>
-              <div class="pub-title">${title}</div>
-              ${booktitle ? `<div class="pub-journal">En: <em>${booktitle}</em></div>` : ''}
-              ${publisher ? `<div style="color: var(--muted);">Editorial: ${publisher}</div>` : ''}
-            </div>`;
+            <div class="pub-authors">${authors}</div>
+            <div class="pub-year">${year}</div>
+            <div class="pub-title">${title}</div>
+            ${booktitle ? `<div class="pub-journal">En: <em>${booktitle}</em></div>` : ''}
+            ${publisher ? `<div style="color: var(--muted);">Editorial: ${publisher}</div>` : ''}`;
           chaptersList.appendChild(item);
         } else {
           const journal = pub.journal ? `<em>${pub.journal}</em>` : '';
@@ -1116,20 +1051,13 @@
           const number = pub.number ? `(${pub.number})` : '';
           const pages = pub.pages ? `, ${pub.pages}` : '';
           const doiCore = pub.doi ? pub.doi.replace(/^https?:\/\/doi\.org\//, '') : '';
-          const doi = doiCore
-            ? `<div class="pub-doi"><a href="https://doi.org/${doiCore}" target="_blank" rel="noopener">https://doi.org/${doiCore}</a></div>`
-            : '';
-
+          const doi = doiCore ? `<div class="pub-doi"><a href="https://doi.org/${doiCore}" target="_blank" rel="noopener">https://doi.org/${doiCore}</a></div>` : '';
           item.innerHTML = `
-            <div class="pub-year-badge">${yearDisplay}</div>
-            <div class="pub-content">
-              <div class="pub-authors">${authors}</div>
-              <div class="pub-title">${title}</div>
-              <div class="pub-journal">
-                ${journal}${journal && (volume || number) ? ', ' : ''}${volume}${number}${pages}.
-              </div>
-              ${doi}
-            </div>`;
+            <div class="pub-authors">${authors}</div>
+            <div class="pub-year">${year}</div>
+            <div class="pub-title">${title}</div>
+            <div class="pub-journal">${journal}${journal && (volume || number) ? ', ' : ''}${volume}${number}${pages}.</div>
+            ${doi}`;
           journalsList.appendChild(item);
         }
       });
@@ -1142,18 +1070,15 @@
       if (presentationsCache.length === 0) return;
 
       const sorted = [...presentationsCache].sort((a, b) => extractYear(b.year) - extractYear(a.year));
-
       sorted.forEach(conf => {
-        const year = String(conf.year || '').replace(/<[^>]+>/g, '') || '—';
+        const year = String(conf.year || '').replace(/<[^>]+>/g, '');
         const item = document.createElement('div');
         item.className = 'talk-item';
         item.innerHTML = `
           <div class="year-badge">${year}</div>
           <div class="talk-content">
             <strong>${cleanLatex(conf.title || conf.text || '')}</strong>
-            <div class="talk-meta">
-              ${cleanLatex(conf.event || '')}${conf.place ? ', ' + cleanLatex(conf.place) : ''}
-            </div>
+            <div class="talk-meta">${cleanLatex(conf.event || '')}${conf.place ? ', ' + cleanLatex(conf.place) : ''}</div>
           </div>`;
         container.appendChild(item);
       });
@@ -1166,7 +1091,6 @@
       if (projectsCache.length === 0) return;
 
       const sorted = [...projectsCache].sort((a, b) => extractYear(b.period) - extractYear(a.period));
-
       sorted.forEach(proj => {
         const item = document.createElement('div');
         item.className = 'proj-item';
@@ -1188,15 +1112,11 @@
       const container = document.getElementById('awards-list');
       if (!container) return;
       container.innerHTML = '';
-
       const sorted = [...CONTENT[lang].awards].sort((a, b) => extractYear(b.year) - extractYear(a.year));
-
       sorted.forEach(award => {
         const item = document.createElement('div');
         item.className = 'award-item';
-        item.innerHTML = `
-          <div class="award-year">${award.year}</div>
-          <div>${award.text}</div>`;
+        item.innerHTML = `<div class="award-year">${award.year}</div><div>${award.text}</div>`;
         container.appendChild(item);
       });
     }
@@ -1237,8 +1157,6 @@
       renderAll(currentLang);
     }
 
-    /* ===== LOADERS TEX/BIB COMO TU CÓDIGO ===== */
-
     async function loadBibtex() {
       const loading = document.querySelector('#publications .loading');
       try {
@@ -1249,11 +1167,9 @@
         }
         const text = await response.text();
         publicationsCache = parseBibtex(text);
-        console.log('Publicaciones cargadas:', publicationsCache.length);
         renderPublications();
         if (loading) loading.style.display = 'none';
-      } catch (error) {
-        console.error('Error cargando publicaciones:', error);
+      } catch (err) {
         if (loading) loading.textContent = 'Error al cargar publicaciones';
       }
     }
@@ -1266,37 +1182,11 @@
           if (loading) loading.textContent = 'No se pudo cargar presentation.tex';
           return;
         }
-        let text = await response.text();
-        text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}/g, '');
-
-        // Primero intentamos \cvpub (por si usas ese comando)
-        let entries = parseLatexCommand(text, 'cvpub', 1, 5);
-
-        if (entries.length > 0) {
-          presentationsCache = entries.map(args => ({
-            year: args[0] || '',
-            title: args[1] || (args.length > 1 ? args.join(', ') : args[0]),
-            event: args[2] || '',
-            place: args[3] || '',
-            extra: args[4] || ''
-          }));
-        } else {
-          // Fallback a \cventry
-          entries = parseLatexCommand(text, 'cventry', 4, 6);
-          presentationsCache = entries.map(args => ({
-            year: args[3] || '',
-            title: args[1] || '',
-            event: args[0] || '',
-            place: args[2] || '',
-            extra: ''
-          }));
-        }
-
-        console.log('Presentaciones cargadas:', presentationsCache.length);
+        const text = await response.text();
+        presentationsCache = parsePresentations(text);
         renderConferences();
         if (loading) loading.style.display = 'none';
-      } catch (error) {
-        console.error('Error cargando presentaciones:', error);
+      } catch (err) {
         if (loading) loading.textContent = 'Error al cargar presentaciones';
       }
     }
@@ -1309,32 +1199,16 @@
           if (loading) loading.textContent = 'No se pudo cargar project.tex';
           return;
         }
-        let text = await response.text();
-        text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}/g, '');
-
-        // Proyectos como \cventry{funding}{title}{role}{period}{amount}
-        const entries = parseLatexCommand(text, 'cventry', 4, 6);
-
-        projectsCache = entries.map(args => ({
-          funding: args[0] || '',
-          title: args[1] || '',
-          role: args[2] || '',
-          period: args[3] || '',
-          amount: args[4] || ''
-        }));
-
-        console.log('Proyectos cargados:', projectsCache.length);
+        const text = await response.text();
+        projectsCache = parseProjects(text);
         renderProjects();
         if (loading) loading.style.display = 'none';
-      } catch (error) {
-        console.error('Error cargando proyectos:', error);
+      } catch (err) {
         if (loading) loading.textContent = 'Error al cargar proyectos';
       }
     }
 
-    /* ===== INIT ===== */
-
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       renderAll('es');
       loadBibtex();
       loadPresentations();
