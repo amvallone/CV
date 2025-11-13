@@ -23,6 +23,10 @@
       padding: 0;
     }
 
+    html, body {
+      min-height: 100%;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg);
@@ -539,7 +543,9 @@
       <img src="tu-foto.JPG" alt="Andrés Marcelo Vallone">
     </div>
     <div class="sidebar-title">Andrés Marcelo Vallone</div>
-    <div class="sidebar-subtitle" id="affil-line"></div>
+    <div class="sidebar-subtitle" id="affil-line">
+      Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas
+    </div>
 
     <div class="sidebar-contact">
       <!-- Email -->
@@ -600,73 +606,87 @@
     <div class="sidebar-divider"></div>
 
     <nav class="sidebar-nav">
-      <a href="#general" id="nav-general"></a>
-      <a href="#education" id="nav-education"></a>
-      <a href="#experience" id="nav-experience"></a>
-      <a href="#publications" id="nav-publications"></a>
-      <a href="#projects" id="nav-projects"></a>
-      <a href="#conferences" id="nav-conferences"></a>
-      <a href="#awards" id="nav-awards"></a>
+      <a href="#general" id="nav-general">Acerca de mí</a>
+      <a href="#education" id="nav-education">Educación</a>
+      <a href="#experience" id="nav-experience">Experiencia</a>
+      <a href="#publications" id="nav-publications">Publicaciones</a>
+      <a href="#projects" id="nav-projects">Proyectos</a>
+      <a href="#conferences" id="nav-conferences">Presentaciones</a>
+      <a href="#awards" id="nav-awards">Becas y Premios</a>
     </nav>
   </aside>
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
     <section id="general">
-      <h2 id="general-title"></h2>
-      <div class="summary-box" id="general-box"></div>
+      <h2 id="general-title">Acerca de mí</h2>
+      <div class="summary-box" id="general-box">
+        <p>Economista argentino nacido en San Juan. Actualmente Profesor Asociado en la Escuela de Ciencias Empresariales de la Universidad Católica del Norte, Chile. Mi formación académica se desarrolló en Argentina, Chile y España.</p>
+        <p>Mi investigación se centra en fenómenos sociales espaciales, con énfasis en procesos espacio-temporales. Mis áreas de interés incluyen econometría espacial, desarrollo regional, análisis de redes de colaboración científica y procesos de innovación a través del estudio de patentes. Trabajo con programación en R para análisis de datos y modelización espacial.</p>
+        <p>He publicado en revistas internacionales sobre temas como dinámicas urbanas, sostenibilidad, redes de co-invención de patentes, uso de pesticidas y competitividad exportadora. Participo en proyectos de investigación sobre desarrollo territorial, economía pesquera, huella de carbono y gestión de residuos en salud.</p>
+        <p>Fuera del ámbito académico, practico fotografía y toco guitarra. Mi gusto musical incluye a Pearl Jam, Tool, Jimi Hendrix, B.B. King, Gary Clark Jr., Incubus, Mozart y Paco de Lucía.
+          <a href="https://www.eyeem.com/u/25320134" target="_blank" rel="noopener" class="eyeem-link" aria-label="EyeEm">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"></path>
+            </svg>
+          </a>
+        </p>
+      </div>
     </section>
 
     <section id="education">
-      <h2 id="education-title"></h2>
+      <h2 id="education-title">Educación</h2>
       <div id="education-list"></div>
     </section>
 
     <section id="experience">
-      <h2 id="experience-title"></h2>
+      <h2 id="experience-title">Experiencia</h2>
       <div class="experience-grid">
         <div class="exp-card">
-          <h3 id="pro-exp-title"></h3>
+          <h3 id="pro-exp-title">Experiencia profesional</h3>
           <ul id="pro-exp-list" class="pro-exp-list"></ul>
         </div>
         <div class="exp-card">
-          <h3 id="teaching-exp-title"></h3>
-          <div class="exp-subtitle" id="undergrad-title"></div>
+          <h3 id="teaching-exp-title">Experiencia docente</h3>
+          <div class="exp-subtitle" id="undergrad-title">Pregrado</div>
           <ul id="undergrad-list" class="course-list"></ul>
-          <div class="exp-subtitle" id="postgrad-title"></div>
+          <div class="exp-subtitle" id="postgrad-title">Postgrado</div>
           <ul id="postgrad-list" class="course-list"></ul>
         </div>
       </div>
     </section>
 
     <section id="publications">
-      <h2 id="publications-title"></h2>
+      <h2 id="publications-title">Publicaciones</h2>
       <div class="loading">Cargando publicaciones...</div>
-      <h3 class="subsection-title" id="pub-journals-title"></h3>
+      <h3 class="subsection-title" id="pub-journals-title">Revistas indexadas</h3>
       <div id="publications-journals-list"></div>
-      <h3 class="subsection-title" id="pub-chapters-title"></h3>
+      <h3 class="subsection-title" id="pub-chapters-title">Capítulos de libro</h3>
       <div id="publications-chapters-list"></div>
     </section>
 
     <section id="projects">
-      <h2 id="projects-title"></h2>
+      <h2 id="projects-title">Proyectos de investigación</h2>
       <div class="loading">Cargando proyectos...</div>
       <div id="projects-list" class="proj-list"></div>
     </section>
 
     <section id="conferences">
-      <h2 id="conferences-title"></h2>
+      <h2 id="conferences-title">Presentaciones en Congresos</h2>
       <div class="loading">Cargando presentaciones...</div>
       <div id="conferences-list" class="talk-list"></div>
     </section>
 
     <section id="awards">
-      <h2 id="awards-title"></h2>
+      <h2 id="awards-title">Becas y Premios</h2>
       <div id="awards-list"></div>
     </section>
   </main>
 
   <script>
+    console.log("CV script cargado");
+
     const CONTENT = {
       es: {
         affil: "Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas",
@@ -957,12 +977,9 @@
 
     function renderGeneral(lang) {
       const c = CONTENT[lang];
-      const generalTitle = document.getElementById('general-title');
-      const generalBox = document.getElementById('general-box');
-      const affilLine = document.getElementById('affil-line');
-      if (generalTitle) generalTitle.textContent = c.generalTitle;
-      if (generalBox) generalBox.innerHTML = c.generalHTML;
-      if (affilLine) affilLine.textContent = c.affil;
+      document.getElementById('general-title').textContent = c.generalTitle;
+      document.getElementById('general-box').innerHTML = c.generalHTML;
+      document.getElementById('affil-line').textContent = c.affil;
     }
 
     function renderEducation(lang) {
@@ -974,7 +991,7 @@
         item.className = 'edu-item';
         item.innerHTML = `
           <div class="edu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050">
+            <svg viewBox="0 0 64 64" fill="#5e7050">
               <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
             </svg>
           </div>
@@ -987,14 +1004,15 @@
     }
 
     function renderExperience(lang) {
-      document.getElementById('pro-exp-title').textContent = CONTENT[lang].proExpTitle;
-      document.getElementById('teaching-exp-title').textContent = CONTENT[lang].teachingExpTitle;
-      document.getElementById('undergrad-title').textContent = CONTENT[lang].undergradTitle;
-      document.getElementById('postgrad-title').textContent = CONTENT[lang].postgradTitle;
+      const c = CONTENT[lang];
+      document.getElementById('pro-exp-title').textContent = c.proExpTitle;
+      document.getElementById('teaching-exp-title').textContent = c.teachingExpTitle;
+      document.getElementById('undergrad-title').textContent = c.undergradTitle;
+      document.getElementById('postgrad-title').textContent = c.postgradTitle;
 
       const proList = document.getElementById('pro-exp-list');
       proList.innerHTML = '';
-      CONTENT[lang].proExperience.forEach(exp => {
+      c.proExperience.forEach(exp => {
         const li = document.createElement('li');
         li.innerHTML = `<strong>${exp.period}</strong> — ${exp.text}`;
         proList.appendChild(li);
@@ -1002,7 +1020,7 @@
 
       const ugList = document.getElementById('undergrad-list');
       ugList.innerHTML = '';
-      CONTENT[lang].undergradCourses.forEach(course => {
+      c.undergradCourses.forEach(course => {
         const li = document.createElement('li');
         li.textContent = course;
         ugList.appendChild(li);
@@ -1010,7 +1028,7 @@
 
       const pgList = document.getElementById('postgrad-list');
       pgList.innerHTML = '';
-      CONTENT[lang].postgradCourses.forEach(course => {
+      c.postgradCourses.forEach(course => {
         const li = document.createElement('li');
         li.textContent = course;
         pgList.appendChild(li);
