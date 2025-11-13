@@ -171,7 +171,7 @@
           {degree:"Magíster en Economía y Administración Estratégica de Negocios",institution:"Universidad Católica de Cuyo, Argentina",years:"2006 – 2009"},
           {degree:"Licenciado en Economía",institution:"Universidad Católica de Cuyo, Argentina",years:"1997 – 2004"}
         ],
-        // === Experiencia profesional (desde PDF)
+        // === Experiencia profesional (del PDF)
         proExperience: [
           {period:"2011 – Presente", text:"Profesor Asociado, Escuela de Ciencias Empresariales, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2016 – 2018", text:"Personal Investigador en Formación (P.I.F.), Departamento de Econometría Aplicada, Universidad Autónoma de Madrid, Madrid, España"},
@@ -179,7 +179,7 @@
           {period:"2007 – 2008", text:"Profesor hora, Escuela de Ingeniería Comercial, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2005 – 2007", text:"Profesor tiempo parcial, Facultad de Ciencias Económicas, Universidad Católica de Cuyo, San Juan, Argentina"}
         ],
-        // === Docencia (desde PDF)
+        // === Docencia (del PDF)
         undergradCourses:[
           "Introducción a la Economía — Universidad Católica del Norte, Chile",
           "Microeconomía I — Universidad Católica del Norte, Chile",
@@ -239,7 +239,6 @@
           {degree:"Master in Economics and Strategic Business Administration",institution:"Universidad Católica de Cuyo, Argentina",years:"2006 – 2009"},
           {degree:"Bachelor's in Economics",institution:"Universidad Católica de Cuyo, Argentina",years:"1997 – 2004"}
         ],
-        // === Professional experience (from PDF)
         proExperience: [
           {period:"2011 – Present", text:"Associate Professor, School of Business Sciences, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2016 – 2018", text:"Research Fellow (P.I.F.), Department of Applied Econometrics, Universidad Autónoma de Madrid, Madrid, Spain"},
@@ -247,7 +246,6 @@
           {period:"2007 – 2008", text:"Adjunct Professor, School of Business Engineering, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2005 – 2007", text:"Part-time Lecturer, Faculty of Economic Sciences, Universidad Católica de Cuyo, San Juan, Argentina"}
         ],
-        // === Teaching (from PDF)
         undergradCourses:[
           "Introduction to Economics — Universidad Católica del Norte, Chile",
           "Microeconomics I — Universidad Católica del Norte, Chile",
@@ -314,12 +312,13 @@
       }
       return null;
     }
+    // Acepta: \cmd{...}  |  \cmd*{...}  |  \cmd[opciones]{...}
     function parseCommandArgsRange(text, cmdName, minArgs, maxArgs){
       const out = [];
-      const pattern = new RegExp("\\\\" + cmdName + "\\s*\\{","g");
+      const pattern = new RegExp("\\\\"+cmdName+"\\*?(?:\\[[^\\]]*\\])?\\s*\\{","g");
       let m;
       while((m = pattern.exec(text)) !== null){
-        let idx = m.index + m[0].length - 1;
+        let idx = m.index + m[0].length - 1; // apunta al '{'
         const args = [];
         for(let k=0;k<maxArgs;k++){
           while(idx < text.length && /\s/.test(text[idx])) idx++;
@@ -346,7 +345,6 @@
         const inner  = block.value;
         const after  = s.slice(block.end + 1);
         s = before + "<strong>" + inner + "</strong>" + after;
-        bf.lastIndex = (before + "<strong>" + inner + "</strong>").length;
       }
       return s;
     }
@@ -414,11 +412,11 @@
       document.getElementById("undergrad-title").innerText   = lang==="es"?"Pregrado":"Undergraduate";
       document.getElementById("postgrad-title").innerText    = lang==="es"?"Postgrado":"Postgraduate";
 
-      // Profesional (lista con formato: periodo — texto)
+      // Profesional (periodo — texto)
       const pro = document.getElementById("pro-exp-list"); pro.innerHTML="";
       content[lang].proExperience.forEach(item=>{
         const li = document.createElement("li");
-        li.innerHTML = `<strong>${item.period}</strong> — ${item.text}`;
+        li.innerHTML = `${item.period} — ${item.text}`;
         pro.appendChild(li);
       });
 
@@ -444,7 +442,8 @@
       awards.forEach(a=>{
         const div=document.createElement("div");
         div.className="award-item";
-        div.innerHTML=`<strong>${a.year}</strong> – ${a.text}`;
+        // FECHA SIN NEGRITA
+        div.innerHTML=`${a.year} — ${a.text}`;
         list.appendChild(div);
       });
     }
@@ -574,21 +573,25 @@
 
     function toggleLanguage(){ currentLang = currentLang==="es" ? "en" : "es"; renderAll(currentLang); }
 
-    // ========================= Carga externa =========================
+    // ========================= Carga externa (con logs) =========================
     async function tryLoadBib(){
       try{
         const res = await fetch("./library.bib?nocache="+Date.now());
-        if(!res.ok) return;
+        if(!res.ok){ console.warn("library.bib fetch no-OK:", res.status); return; }
         const txt = await res.text();
         pubsCache = parseBibtex(txt);
-      }catch(e){}
+        console.log("BibTeX cargado, entradas:", pubsCache.length);
+      }catch(e){ console.error("Error cargando library.bib:", e); }
     }
 
     async function tryLoadPresentations(){
       try{
-        let txt = await (await fetch("./presentation.tex?nocache="+Date.now())).text();
+        const res = await fetch("./presentation.tex?nocache="+Date.now());
+        if(!res.ok){ console.warn("presentation.tex fetch no-OK:", res.status); return; }
+        let txt = await res.text();
+        console.log("presentation.tex bytes:", txt.length);
         txt = stripCommentsAndNormalize(txt).replace(/\\cvsection\*?\{[^}]*\}/g,"");
-        // cventry 4-6 args
+        // cventry 4-6 args (acepta *, [opciones])
         let rows = parseCommandArgsRange(txt,"cventry",4,6).map(a=>{
           const [a0,a1,a2,a3,a4,a5] = a;
           return {
@@ -601,6 +604,7 @@
         });
         // fallback cvpub 3-5 args
         if(rows.length===0){
+          console.warn("No se detectó \\cventry en presentation.tex, probando \\cvpub...");
           rows = parseCommandArgsRange(txt,"cvpub",3,5).map(a=>{
             const [p0,p1,p2,p3] = a;
             return {
@@ -612,15 +616,19 @@
             };
           });
         }
+        console.log("Presentaciones parseadas:", rows.length, rows.slice(0,2));
         if(rows.length) presentationsCache = rows;
-      }catch(e){}
+      }catch(e){ console.error("Error procesando presentation.tex:", e); }
     }
 
     async function tryLoadProjects(){
       try{
-        let txt = await (await fetch("./project.tex?nocache="+Date.now())).text();
+        const res = await fetch("./project.tex?nocache="+Date.now());
+        if(!res.ok){ console.warn("project.tex fetch no-OK:", res.status); return; }
+        let txt = await res.text();
+        console.log("project.tex bytes:", txt.length);
         txt = stripCommentsAndNormalize(txt).replace(/\\cvsection\*?\{[^}]*\}/g,"");
-        // cvpub 3-5 args
+        // cvpub 3-5 args (acepta *, [opciones])
         let rows = parseCommandArgsRange(txt,"cvpub",3,5).map(a=>{
           const [q0,q1,q2,q3] = a;
           return {
@@ -632,6 +640,7 @@
         });
         // fallback cventry 4-6 args
         if(rows.length===0){
+          console.warn("No se detectó \\cvpub en project.tex, probando \\cventry...");
           rows = parseCommandArgsRange(txt,"cventry",4,6).map(a=>{
             const [a0,a1,a2,a3,a4] = a;
             return {
@@ -642,8 +651,9 @@
             };
           });
         }
+        console.log("Proyectos parseados:", rows.length, rows.slice(0,2));
         if(rows.length) projectsCache = rows;
-      }catch(e){}
+      }catch(e){ console.error("Error procesando project.tex:", e); }
     }
 
     // ========================= Inicio =========================
