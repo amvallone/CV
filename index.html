@@ -7,6 +7,7 @@
   <style>
     :root{
       --bg:#dfddcf;--primary:#3a3a2d;--accent:#bc7d38;--card:#f5f1e9;--sidebar:#5a4a3a;--sidebar-w:320px;
+      --ink:#3a3a2d;--muted:#5d523f;--green:#5e7050;--paper:#f1ede5;
     }
     *{box-sizing:border-box}
     body{font-family:Arial, sans-serif;margin:0;background:var(--bg);color:#2c2c2c;line-height:1.6;font-size:17px}
@@ -28,25 +29,44 @@
     h2{border-bottom:2px solid rgba(90,74,58,.55);padding-bottom:6px;margin-bottom:14px;color:var(--primary)}
     ul{padding-left:0;list-style:none}
     .subsection-title{margin-top:12px;margin-bottom:10px;color:#3a3a2d}
-    .edu-item,.card-list-item{display:flex;gap:10px;background:#f1ede5;margin-bottom:10px;padding:10px 12px;border-radius:8px;align-items:flex-start}
+    .edu-item,.card-list-item{display:flex;gap:10px;background:var(--paper);margin-bottom:10px;padding:10px 12px;border-radius:8px;align-items:flex-start}
     .edu-icon,.card-icon{width:22px;height:22px;flex:0 0 22px}
     .experience-grid{display:flex;gap:15px;flex-wrap:wrap}
-    .exp-card{background:#f1ede5;flex:1 1 420px;padding:12px;border-radius:10px;border-top:3px solid rgba(146,133,110,.55)}
-    .exp-subtitle{color:#5d523f;margin-top:8px;margin-bottom:4px;font-weight:bold}
+    .exp-card{background:var(--paper);flex:1 1 420px;padding:12px;border-radius:10px;border-top:3px solid rgba(146,133,110,.55)}
+    .exp-subtitle{color:var(--muted);margin-top:8px;margin-bottom:4px;font-weight:bold}
     .course-list li,.pro-exp-list li{margin-bottom:6px}
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-    .skill-card{background:#f1ede5;border-radius:8px;padding:12px}
-    .award-item{background:#f1ede5;padding:10px 12px;border-radius:6px;margin-bottom:10px;border-left:4px solid #bc7d38}
-    .pub-abstract{background:rgba(0,0,0,.03);margin-top:6px;padding:6px 8px;border-left:3px solid #bc7d38;border-radius:4px;color:#3b372f}
-    .ext-icon-link svg{width:18px;height:18px;vertical-align:-3px}
+    .skill-card{background:var(--paper);border-radius:8px;padding:12px}
+    .award-item{background:var(--paper);padding:10px 12px;border-radius:6px;margin-bottom:10px;border-left:4px solid var(--accent)}
+    .pub-abstract{background:rgba(0,0,0,.03);margin-top:6px;padding:6px 8px;border-left:3px solid var(--accent);border-radius:4px;color:#3b372f}
+
+    /* ---- NUEVO: estilo “PDF-like” para Presentaciones y Proyectos ---- */
+    .talk-list{display:flex;flex-direction:column;gap:10px}
+    .talk-item{display:grid;grid-template-columns:64px 1fr;gap:10px;background:var(--paper);padding:10px 12px;border-radius:10px;border-left:4px solid var(--green)}
+    .year-badge{align-self:flex-start;background:#e7efe6;color:var(--green);border:1px solid #c7d4c6;border-radius:6px;padding:4px 8px;font-weight:700;min-width:52px;text-align:center}
+    .talk-title{color:var(--ink)}
+    .talk-meta{color:#4d4637;font-size:.95rem}
+
+    .proj-list{display:flex;flex-direction:column;gap:12px}
+    .proj-item{background:var(--paper);padding:12px 14px;border-radius:10px;border-left:4px solid var(--accent)}
+    .proj-top{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+    .proj-title{font-weight:700;color:var(--ink)}
+    .proj-role{color:var(--muted)}
+    .proj-meta{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:6px;color:#4d4637}
+    .proj-funder{font-weight:600}
+    .proj-period{opacity:.9}
+    .proj-amount{opacity:.95}
+
     @media (max-width: 900px){
       .sidebar{position:static;width:100%;height:auto;flex-direction:row;flex-wrap:wrap}
       .main-content{margin-left:0}
       nav.sidebar-nav{flex-direction:row;flex-wrap:wrap}
+      .talk-item{grid-template-columns:56px 1fr}
     }
   </style>
 </head>
 <body>
+  <!-- ==== SIDEBAR (igual a la versión anterior) ==== -->
   <aside class="sidebar">
     <div class="sidebar-photo"><img src="tu-foto.JPG" alt="Foto personal"></div>
     <div class="sidebar-title" id="title">Andres Marcelo Vallone</div>
@@ -92,6 +112,7 @@
     </nav>
   </aside>
 
+  <!-- ==== MAIN ==== -->
   <main class="main-content">
     <section id="general">
       <h2 id="general-title">Información General</h2>
@@ -130,12 +151,12 @@
 
     <section id="projects">
       <h2 id="projects-title">Proyectos de investigación</h2>
-      <ul id="projects-list"></ul>
+      <ul id="projects-list" class="proj-list"></ul>
     </section>
 
     <section id="conferences">
       <h2 id="conferences-title">Presentaciones en Congresos</h2>
-      <ul id="conferences-list"></ul>
+      <ul id="conferences-list" class="talk-list"></ul>
     </section>
 
     <section id="skills">
@@ -150,7 +171,7 @@
   </main>
 
   <script>
-    // ========================= Contenido ES/EN =========================
+    /* ======= Texto ES/EN (resumen, educación, experiencia, skills, premios) ======= */
     const content = {
       es: {
         affil: "Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas",
@@ -171,7 +192,6 @@
           {degree:"Magíster en Economía y Administración Estratégica de Negocios",institution:"Universidad Católica de Cuyo, Argentina",years:"2006 – 2009"},
           {degree:"Licenciado en Economía",institution:"Universidad Católica de Cuyo, Argentina",years:"1997 – 2004"}
         ],
-        // === Experiencia profesional (del PDF)
         proExperience: [
           {period:"2011 – Presente", text:"Profesor Asociado, Escuela de Ciencias Empresariales, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2016 – 2018", text:"Personal Investigador en Formación (P.I.F.), Departamento de Econometría Aplicada, Universidad Autónoma de Madrid, Madrid, España"},
@@ -179,7 +199,6 @@
           {period:"2007 – 2008", text:"Profesor hora, Escuela de Ingeniería Comercial, Universidad Católica del Norte, Coquimbo, Chile"},
           {period:"2005 – 2007", text:"Profesor tiempo parcial, Facultad de Ciencias Económicas, Universidad Católica de Cuyo, San Juan, Argentina"}
         ],
-        // === Docencia (del PDF)
         undergradCourses:[
           "Introducción a la Economía — Universidad Católica del Norte, Chile",
           "Microeconomía I — Universidad Católica del Norte, Chile",
@@ -206,7 +225,7 @@
         conferencesTitle:"Presentaciones en Congresos",
         skillsTitle:"Capacidades",
         awardsTitle:"Becas y Premios",
-        projectsFallback:[{period:"2022",title:"Fortalece PyME Coquimbo – Red de asistencia digital",role:"Co-ejecutor",funding:"CORFO / ASOEX"}],
+        projectsFallback:[{period:"2022",title:"Fortalece PyME Coquimbo – Red de asistencia digital",role:"Co-ejecutor",funding:"CORFO / ASOEX",amount:""}],
         conferencesFallback:[{year:"2023",title:"Transformación tecnológica para PYMES del sector agrícola",event:"Seminario Internacional AGRO 5.0",place:"Argentina",extra:""}],
         skills:{languagesTitle:"Idiomas",languages:["Español (nativo)","Inglés (avalado)","Portugués (básico)"],programmingTitle:"Programación y software",programming:["R","GAMS","Python","LaTeX","ArcGIS"],otherTitle:"Áreas de interés",other:["Economía urbana y regional","Redes de innovación","Valoración económica de ecosistemas"]},
         awards:[
@@ -272,7 +291,7 @@
         conferencesTitle:"Conference Presentations",
         skillsTitle:"Skills",
         awardsTitle:"Scholarships & Awards",
-        projectsFallback:[{period:"2022",title:"Fortalece PyME Coquimbo – Digital assistance network",role:"Co-executor",funding:"CORFO / ASOEX"}],
+        projectsFallback:[{period:"2022",title:"Fortalece PyME Coquimbo – Digital assistance network",role:"Co-executor",funding:"CORFO / ASOEX",amount:""}],
         conferencesFallback:[{year:"2023",title:"Technological transformation for agricultural SMEs",event:"International Seminar AGRO 5.0",place:"Argentina",extra:""}],
         skills:{languagesTitle:"Languages",languages:["Spanish (native)","English (proficient)","Portuguese (basic)"],programmingTitle:"Programming & software",programming:["R","GAMS","Python","LaTeX","ArcGIS"],otherTitle:"Research interests",other:["Urban and regional economics","Innovation networks","Ecosystem valuation"]},
         awards:[
@@ -293,7 +312,7 @@
     let presentationsCache = [];
     let projectsCache = [];
 
-    // ========================= Utilidades LaTeX =========================
+    /* ======= Utilidades LaTeX / Bib ======= */
     function stripCommentsAndNormalize(text){
       return text.replace(/\r\n?/g,"\n").replace(/(^|[^\\])%.*$/gm,"$1");
     }
@@ -312,13 +331,13 @@
       }
       return null;
     }
-    // Acepta: \cmd{...}  |  \cmd*{...}  |  \cmd[opciones]{...}
+    // \cmd{..}  |\cmd*{..}  |\cmd[opt]{..}
     function parseCommandArgsRange(text, cmdName, minArgs, maxArgs){
       const out = [];
       const pattern = new RegExp("\\\\"+cmdName+"\\*?(?:\\[[^\\]]*\\])?\\s*\\{","g");
       let m;
       while((m = pattern.exec(text)) !== null){
-        let idx = m.index + m[0].length - 1; // apunta al '{'
+        let idx = m.index + m[0].length - 1;
         const args = [];
         for(let k=0;k<maxArgs;k++){
           while(idx < text.length && /\s/.test(text[idx])) idx++;
@@ -341,10 +360,7 @@
         const start = m.index + m[0].length - 1;
         const block = readBraced(s, start);
         if(!block) break;
-        const before = s.slice(0, m.index);
-        const inner  = block.value;
-        const after  = s.slice(block.end + 1);
-        s = before + "<strong>" + inner + "</strong>" + after;
+        s = s.slice(0,m.index) + "<strong>"+ block.value +"</strong>" + s.slice(block.end+1);
       }
       return s;
     }
@@ -353,7 +369,6 @@
       return m ? parseInt(m[0]) : -1;
     }
 
-    // ========================= BibTeX =========================
     function parseBibtex(text){
       const out=[]; const entries=text.split(/@(?=[a-zA-Z]+)/g).filter(Boolean);
       entries.forEach(chunk=>{
@@ -390,7 +405,7 @@
       return formatted.slice(0,-1).join(", ")+", & "+formatted[formatted.length-1];
     }
 
-    // ========================= Render =========================
+    /* ======= Render Educación/Experiencia/Skills/Premios ======= */
     function renderEducation(lang){
       const ul=document.getElementById("education-list"); ul.innerHTML="";
       content[lang].education.forEach(e=>{
@@ -398,35 +413,29 @@
         li.className="edu-item";
         li.innerHTML=`
           <div class="edu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050"><path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="${'#5e7050'}"><path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/></svg>
           </div>
           <div><strong>${e.degree}</strong> – ${e.institution}<br><small>${e.years}</small></div>`;
         ul.appendChild(li);
       });
     }
-
     function renderExperience(lang){
-      // Títulos
       document.getElementById("pro-exp-title").innerText = lang==="es"?"Experiencia profesional":"Professional experience";
       document.getElementById("teaching-exp-title").innerText = lang==="es"?"Experiencia docente":"Teaching experience";
       document.getElementById("undergrad-title").innerText   = lang==="es"?"Pregrado":"Undergraduate";
       document.getElementById("postgrad-title").innerText    = lang==="es"?"Postgrado":"Postgraduate";
 
-      // Profesional (periodo — texto)
       const pro = document.getElementById("pro-exp-list"); pro.innerHTML="";
       content[lang].proExperience.forEach(item=>{
         const li = document.createElement("li");
         li.innerHTML = `${item.period} — ${item.text}`;
         pro.appendChild(li);
       });
-
-      // Docencia
       const ug=document.getElementById("undergrad-list"); ug.innerHTML="";
       const pg=document.getElementById("postgrad-list");  pg.innerHTML="";
       content[lang].undergradCourses.forEach(c=>{const li=document.createElement("li"); li.textContent=c; ug.appendChild(li);});
       content[lang].postgradCourses.forEach(c=>{const li=document.createElement("li"); li.textContent=c; pg.appendChild(li);});
     }
-
     function renderSkills(lang){
       document.getElementById("skills-title").innerText = content[lang].skillsTitle;
       const box=document.getElementById("skills-grid"); box.innerHTML="";
@@ -434,7 +443,6 @@
       const card=(title,arr)=>`<div class="skill-card"><h3>${title}</h3><ul>${arr.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
       box.innerHTML = card(s.languagesTitle,s.languages)+card(s.programmingTitle,s.programming)+card(s.otherTitle,s.other);
     }
-
     function renderAwards(lang){
       document.getElementById("awards-title").innerText = content[lang].awardsTitle;
       const list=document.getElementById("awards-list"); list.innerHTML="";
@@ -442,52 +450,12 @@
       awards.forEach(a=>{
         const div=document.createElement("div");
         div.className="award-item";
-        // FECHA SIN NEGRITA
-        div.innerHTML=`${a.year} — ${a.text}`;
+        div.innerHTML=`${a.year} — ${a.text}`; // sin negrita en fecha
         list.appendChild(div);
       });
     }
 
-    function renderProjects(lang){
-      document.getElementById("projects-title").innerText = content[lang].projectsTitle;
-      const list=document.getElementById("projects-list"); list.innerHTML="";
-      const fallback = lang==="es" ? content.es.projectsFallback : content.en.projectsFallback;
-      const source = projectsCache.length ? projectsCache : fallback;
-      const sorted=[...source].sort((a,b)=>extractYear(b.period)-extractYear(a.period));
-      sorted.forEach(p=>{
-        const li=document.createElement("li");
-        li.className="card-list-item";
-        li.innerHTML = `
-          <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bc7d38"><path d="M9 2h6v2h3v18H6V4h3V2zm2 2v1h2V4h-2z"/></svg>
-          </div>
-          <div>
-            <strong>${latexBoldToHTML(p.period)||""}</strong> – ${latexBoldToHTML(p.title)||""}<br>
-            ${p.role? latexBoldToHTML(p.role)+". ": ""}${p.funding? latexBoldToHTML(p.funding):""}
-          </div>`;
-        list.appendChild(li);
-      });
-    }
-
-    function renderConferences(lang){
-      document.getElementById("conferences-title").innerText = content[lang].conferencesTitle;
-      const list=document.getElementById("conferences-list"); list.innerHTML="";
-      const fallback = lang==="es" ? content.es.conferencesFallback : content.en.conferencesFallback;
-      const source = presentationsCache.length ? presentationsCache : fallback;
-      source.forEach(c=>{
-        const li=document.createElement("li"); li.className="card-list-item";
-        li.innerHTML=`
-          <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050"><path d="M3 4h18v10H3zM8 18l-3 3h2l2-2 2 2h2l-3-3z"/></svg>
-          </div>
-          <div>
-            <strong>${latexBoldToHTML(c.year)||""}</strong> — ${latexBoldToHTML(c.title||c.text||"")}<br>
-            ${c.event? latexBoldToHTML(c.event):""}${c.place? ", "+latexBoldToHTML(c.place):""}${c.extra? " — "+latexBoldToHTML(c.extra):""}
-          </div>`;
-        list.appendChild(li);
-      });
-    }
-
+    /* ======= Render Publicaciones (BibTeX) ======= */
     function renderPublications(){
       const jl=document.getElementById("publications-journals-list");
       const cl=document.getElementById("publications-chapters-list");
@@ -496,7 +464,7 @@
       sorted.forEach(pub=>{
         const isChapter = pub.type==="incollection" || pub.booktitle;
         const li=document.createElement("li"); li.className="card-list-item";
-        const icon=`<div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5e7050"><path d="M19 2H8a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h11v-2H8a5 5 0 0 0-3 1V5a1 1 0 0 1 1-1h12v14h2V2z"/></svg></div>`;
+        const icon=`<div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${'#5e7050'}"><path d="M19 2H8a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h11v-2H8a5 5 0 0 0-3 1V5a1 1 0 0 1 1-1h12v14h2V2z"/></svg></div>`;
         const authors=formatAuthorsAPA(pub.author);
         const year=pub.year?`(${pub.year}).`:"";
         const title=pub.title?pub.title.replace(/\.$/,"")+"." :"";
@@ -530,15 +498,66 @@
       });
     }
 
+    /* ======= NUEVO: Render Presentaciones y Proyectos con layout “PDF” ======= */
+    function renderConferences(lang){
+      document.getElementById("conferences-title").innerText = content[lang].conferencesTitle;
+      const list=document.getElementById("conferences-list"); list.innerHTML="";
+      const fallback = lang==="es" ? content.es.conferencesFallback : content.en.conferencesFallback;
+      const source = presentationsCache.length ? presentationsCache : fallback;
+
+      source
+        .sort((a,b)=>extractYear(b.year)-extractYear(a.year))
+        .forEach(c=>{
+          const year = (c.year || "").toString().replace(/<[^>]+>/g,"");
+          const li=document.createElement("li"); li.className="talk-item";
+          li.innerHTML=`
+            <div class="year-badge">${year||""}</div>
+            <div>
+              <div class="talk-title">${latexBoldToHTML(c.title||c.text||"")}${c.extra? " — "+latexBoldToHTML(c.extra):""}</div>
+              <div class="talk-meta">${[c.event,c.place].filter(Boolean).map(latexBoldToHTML).join(", ")}</div>
+            </div>`;
+          list.appendChild(li);
+        });
+    }
+
+    function renderProjects(lang){
+      document.getElementById("projects-title").innerText = content[lang].projectsTitle;
+      const list=document.getElementById("projects-list"); list.innerHTML="";
+      const fallback = lang==="es" ? content.es.projectsFallback : content.en.projectsFallback;
+      const source = projectsCache.length ? projectsCache : fallback;
+
+      source
+        .sort((a,b)=>extractYear(b.period)-extractYear(a.period))
+        .forEach(p=>{
+          const li=document.createElement("li"); li.className="proj-item";
+          const title = latexBoldToHTML(p.title||"");
+          const role  = latexBoldToHTML(p.role||"");
+          const fund  = latexBoldToHTML(p.funding||"");
+          const per   = (p.period||"").replace(/[–—-]/g,"–");
+          const amt   = (p.amount||"").trim();
+
+          li.innerHTML = `
+            <div class="proj-top">
+              <div class="proj-title">${title}</div>
+              ${role? `<div class="proj-role"> — ${role}</div>`:""}
+            </div>
+            <div class="proj-meta">
+              <div class="proj-funder">${fund}</div>
+              <div class="proj-period">${per}</div>
+              ${amt? `<div class="proj-amount">${amt}</div>`:""}
+            </div>`;
+          list.appendChild(li);
+        });
+    }
+
+    /* ======= Toggle idioma + General ======= */
     function renderGeneral(lang){
       document.getElementById("general-title").innerText = content[lang].generalTitle;
       document.getElementById("general-box").innerHTML = content[lang].generalHTML;
       document.getElementById("affil-line").innerText = content[lang].affil;
     }
-
     function renderAll(lang){
       const t=content[lang];
-      // nav / labels
       document.getElementById("nav-general").innerText=t.nav[0];
       document.getElementById("nav-education").innerText=t.nav[1];
       document.getElementById("nav-experience").innerText=t.nav[2];
@@ -554,10 +573,7 @@
       document.getElementById("skills-title").innerText=t.skillsTitle;
       document.getElementById("awards-title").innerText=t.awardsTitle;
 
-      // cabecera + general
       renderGeneral(lang);
-
-      // otras secciones
       document.getElementById("education-title").innerText = lang==="es"?"Educación":"Education";
       document.getElementById("experience-title").innerText = lang==="es"?"Experiencia":"Experience";
       document.getElementById("publications-title").innerText = lang==="es"?"Publicaciones":"Publications";
@@ -570,10 +586,9 @@
       renderConferences(lang);
       renderPublications();
     }
-
     function toggleLanguage(){ currentLang = currentLang==="es" ? "en" : "es"; renderAll(currentLang); }
 
-    // ========================= Carga externa (con logs) =========================
+    /* ======= Carga de archivos externos ======= */
     async function tryLoadBib(){
       try{
         const res = await fetch("./library.bib?nocache="+Date.now());
@@ -583,7 +598,6 @@
         console.log("BibTeX cargado, entradas:", pubsCache.length);
       }catch(e){ console.error("Error cargando library.bib:", e); }
     }
-
     async function tryLoadPresentations(){
       try{
         const res = await fetch("./presentation.tex?nocache="+Date.now());
@@ -591,36 +605,28 @@
         let txt = await res.text();
         console.log("presentation.tex bytes:", txt.length);
         txt = stripCommentsAndNormalize(txt).replace(/\\cvsection\*?\{[^}]*\}/g,"");
-        // cventry 4-6 args (acepta *, [opciones])
+        // \cventry: 4-6 args (acepta *, [opciones])
         let rows = parseCommandArgsRange(txt,"cventry",4,6).map(a=>{
           const [a0,a1,a2,a3,a4,a5] = a;
           return {
-            year: latexBoldToHTML(a0||""),
-            title: latexBoldToHTML(a1||""),
-            event: latexBoldToHTML(a2||""),
-            place: latexBoldToHTML(a3||""),
-            extra: latexBoldToHTML([a4,a5].filter(Boolean).join(" — "))
+            year: a0||"",
+            title: a1||"",
+            event: a2||"",
+            place: a3||"",
+            extra: [a4,a5].filter(Boolean).join(" — ")
           };
         });
-        // fallback cvpub 3-5 args
+        // fallback \cvpub: 3-5 args
         if(rows.length===0){
-          console.warn("No se detectó \\cventry en presentation.tex, probando \\cvpub...");
           rows = parseCommandArgsRange(txt,"cvpub",3,5).map(a=>{
-            const [p0,p1,p2,p3] = a;
-            return {
-              year: latexBoldToHTML(p0||""),
-              title: latexBoldToHTML(p1||""),
-              event: latexBoldToHTML(p2||""),
-              place: "",
-              extra: latexBoldToHTML(p3||"")
-            };
+            const [p0,p1,p2,p3,p4] = a;
+            return { year:p0||"", title:p1||"", event:p2||"", place:"", extra:[p3,p4].filter(Boolean).join(" — ") };
           });
         }
+        presentationsCache = rows;
         console.log("Presentaciones parseadas:", rows.length, rows.slice(0,2));
-        if(rows.length) presentationsCache = rows;
       }catch(e){ console.error("Error procesando presentation.tex:", e); }
     }
-
     async function tryLoadProjects(){
       try{
         const res = await fetch("./project.tex?nocache="+Date.now());
@@ -628,37 +634,26 @@
         let txt = await res.text();
         console.log("project.tex bytes:", txt.length);
         txt = stripCommentsAndNormalize(txt).replace(/\\cvsection\*?\{[^}]*\}/g,"");
-        // cvpub 3-5 args (acepta *, [opciones])
+        // \cvpub: periodo, titulo, rol, fondo/agencia, (opcional) monto
         let rows = parseCommandArgsRange(txt,"cvpub",3,5).map(a=>{
-          const [q0,q1,q2,q3] = a;
-          return {
-            period: latexBoldToHTML(q0||""),
-            title:  latexBoldToHTML(q1||""),
-            role:   latexBoldToHTML(q2||""),
-            funding:latexBoldToHTML(q3||"")
-          };
+          const [q0,q1,q2,q3,q4] = a;
+          return { period:q0||"", title:q1||"", role:q2||"", funding:q3||"", amount:q4||"" };
         });
-        // fallback cventry 4-6 args
+        // fallback \cventry: periodo, titulo, evento/lugar/rol, lugar/rol, funding, (monto)
         if(rows.length===0){
-          console.warn("No se detectó \\cvpub en project.tex, probando \\cventry...");
           rows = parseCommandArgsRange(txt,"cventry",4,6).map(a=>{
-            const [a0,a1,a2,a3,a4] = a;
-            return {
-              period: latexBoldToHTML(a0||""),
-              title:  latexBoldToHTML(a1||""),
-              role:   latexBoldToHTML(a3||a2||""),
-              funding:latexBoldToHTML(a4||"")
-            };
+            const [a0,a1,a2,a3,a4,a5] = a;
+            return { period:a0||"", title:a1||"", role:a3||a2||"", funding:a4||"", amount:a5||"" };
           });
         }
+        projectsCache = rows;
         console.log("Proyectos parseados:", rows.length, rows.slice(0,2));
-        if(rows.length) projectsCache = rows;
       }catch(e){ console.error("Error procesando project.tex:", e); }
     }
 
-    // ========================= Inicio =========================
+    /* ======= Inicio ======= */
     document.addEventListener("DOMContentLoaded", async function(){
-      renderAll("es"); // pinta base
+      renderAll("es");
       await tryLoadBib();           renderPublications();
       await tryLoadPresentations(); renderConferences(currentLang);
       await tryLoadProjects();      renderProjects(currentLang);
