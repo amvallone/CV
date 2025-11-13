@@ -417,3 +417,950 @@
       border-radius: 8px;
       padding: 6px 10px;
       font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      min-width: 60px;
+    }
+
+    .talk-content strong {
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .talk-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* PROJECTS */
+    .proj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .proj-item {
+      background: var(--card);
+      padding: 18px 22px;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .proj-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .proj-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .proj-role {
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .proj-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .proj-funding {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .proj-amount {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* AWARDS */
+    .award-item {
+      background: var(--card);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,.04);
+      display: flex;
+      gap: 12px;
+    }
+
+    .award-year {
+      font-weight: 700;
+      color: var(--green);
+      min-width: 60px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 24px 20px;
+      }
+
+      .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .talk-item {
+        grid-template-columns: 60px 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .proj-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .proj-meta {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    /* LOADING STATE */
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-photo">
+      <img src="tu-foto.JPG" alt="Andrés Marcelo Vallone">
+    </div>
+    <div class="sidebar-title">Andrés Marcelo Vallone</div>
+    <div class="sidebar-subtitle" id="affil-line"></div>
+
+    <div class="sidebar-contact">
+      <!-- Email -->
+      <a class="contact-icon" href="mailto:avallone@ucn.cl">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        avallone@ucn.cl
+      </a>
+
+      <!-- GitHub -->
+      <a class="contact-icon" href="https://github.com/amvallone" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.84 1.32 3.53 1.01.11-.79.42-1.32.76-1.63-2.67-.31-5.47-1.34-5.47-5.98 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.69.24 2.94.12 3.25.77.84 1.24 1.91 1.24 3.23 0 4.65-2.8 5.66-5.48 5.97.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5z"/>
+        </svg>
+        GitHub
+      </a>
+
+      <!-- ResearchGate -->
+      <a class="contact-icon" href="https://www.researchgate.net/profile/Andres-Vallone" target="_blank" rel="noopener">
+        <svg viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="36" />
+          <text x="22" y="48" font-size="25" fill="#fff" font-family="Arial, sans-serif">RG</text>
+        </svg>
+        ResearchGate
+      </a>
+
+      <!-- ORCID -->
+      <a class="contact-icon" href="https://orcid.org/0000-0002-9258-2209" target="_blank" rel="noopener">
+        <svg viewBox="0 0 256 256">
+          <circle cx="128" cy="128" r="120" fill="#A6CE39"/>
+          <path fill="#fff" d="M111 92h14v72h-14V92zm7-30c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9zm26 30h14v40c0 6 1 10 3 13 2 2 5 4 9 4 4 0 7-1 9-4 2-3 3-7 3-13V92h14v40c0 10-2 17-6 22-4 5-10 8-18 8-9 0-15-3-19-9-3-5-5-12-5-21V92z"/>
+        </svg>
+        ORCID: 0000-0002-9258-2209
+      </a>
+
+      <!-- Scopus ID -->
+      <a class="contact-icon" href="https://www.scopus.com/authid/detail.uri?authorId=56266470300" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <text x="7" y="16" font-size="9" fill="#f4f1e8" font-family="Arial, sans-serif">Sc</text>
+        </svg>
+        Scopus ID: 56266470300
+      </a>
+
+      <!-- Web of Science ResearcherID -->
+      <a class="contact-icon" href="https://www.webofscience.com/wos/author/record/AEI-2718-2022" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="3" />
+          <text x="5.5" y="16" font-size="9" fill="#f4f1e8" font-family="Arial, sans-serif">WoS</text>
+        </svg>
+        ResearcherID: AEI-2718-2022
+      </a>
+    </div>
+
+    <button class="lang-btn" id="lang-btn">English / Español</button>
+
+    <div class="sidebar-divider"></div>
+
+    <nav class="sidebar-nav">
+      <a href="#general" id="nav-general"></a>
+      <a href="#education" id="nav-education"></a>
+      <a href="#experience" id="nav-experience"></a>
+      <a href="#publications" id="nav-publications"></a>
+      <a href="#projects" id="nav-projects"></a>
+      <a href="#conferences" id="nav-conferences"></a>
+      <a href="#awards" id="nav-awards"></a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <section id="general">
+      <h2 id="general-title"></h2>
+      <div class="summary-box" id="general-box"></div>
+    </section>
+
+    <section id="education">
+      <h2 id="education-title"></h2>
+      <div id="education-list"></div>
+    </section>
+
+    <section id="experience">
+      <h2 id="experience-title"></h2>
+      <div class="experience-grid">
+        <div class="exp-card">
+          <h3 id="pro-exp-title"></h3>
+          <ul id="pro-exp-list" class="pro-exp-list"></ul>
+        </div>
+        <div class="exp-card">
+          <h3 id="teaching-exp-title"></h3>
+          <div class="exp-subtitle" id="undergrad-title"></div>
+          <ul id="undergrad-list" class="course-list"></ul>
+          <div class="exp-subtitle" id="postgrad-title"></div>
+          <ul id="postgrad-list" class="course-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2 id="publications-title"></h2>
+      <div class="loading">Cargando publicaciones...</div>
+      <h3 class="subsection-title" id="pub-journals-title"></h3>
+      <div id="publications-journals-list"></div>
+      <h3 class="subsection-title" id="pub-chapters-title"></h3>
+      <div id="publications-chapters-list"></div>
+    </section>
+
+    <section id="projects">
+      <h2 id="projects-title"></h2>
+      <div class="loading">Cargando proyectos...</div>
+      <div id="projects-list" class="proj-list"></div>
+    </section>
+
+    <section id="conferences">
+      <h2 id="conferences-title"></h2>
+      <div class="loading">Cargando presentaciones...</div>
+      <div id="conferences-list" class="talk-list"></div>
+    </section>
+
+    <section id="awards">
+      <h2 id="awards-title"></h2>
+      <div id="awards-list"></div>
+    </section>
+  </main>
+
+  <script>
+    const CONTENT = {
+      es: {
+        affil: "Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas",
+        nav: [
+          "Acerca de mí",
+          "Educación",
+          "Experiencia",
+          "Publicaciones",
+          "Proyectos",
+          "Presentaciones",
+          "Becas y Premios"
+        ],
+        generalTitle: "Acerca de mí",
+        generalHTML: `
+          <p>Economista argentino nacido en San Juan. Actualmente Profesor Asociado en la Escuela de Ciencias Empresariales de la Universidad Católica del Norte, Chile. Mi formación académica se desarrolló en Argentina, Chile y España.</p>
+          <p>Mi investigación se centra en fenómenos sociales espaciales, con énfasis en procesos espacio-temporales. Mis áreas de interés incluyen econometría espacial, desarrollo regional, análisis de redes de colaboración científica y procesos de innovación a través del estudio de patentes. Trabajo con programación en R para análisis de datos y modelización espacial.</p>
+          <p>He publicado en revistas internacionales sobre temas como dinámicas urbanas, sostenibilidad, redes de co-invención de patentes, uso de pesticidas y competitividad exportadora. Participo en proyectos de investigación sobre desarrollo territorial, economía pesquera, huella de carbono y gestión de residuos en salud.</p>
+          <p>Fuera del ámbito académico, practico fotografía y toco guitarra. Mi gusto musical incluye a Pearl Jam, Tool, Jimi Hendrix, B.B. King, Gary Clark Jr., Incubus, Mozart y Paco de Lucía.
+            <a href="https://www.eyeem.com/u/25320134" target="_blank" rel="noopener" class="eyeem-link" aria-label="EyeEm">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"></path>
+              </svg>
+            </a>
+          </p>
+        `,
+        educationTitle: "Educación",
+        experienceTitle: "Experiencia",
+        publicationsTitle: "Publicaciones",
+        projectsTitle: "Proyectos de investigación",
+        conferencesTitle: "Presentaciones en Congresos",
+        awardsTitle: "Becas y Premios",
+        publicationsJournalsTitle: "Revistas indexadas",
+        publicationsChaptersTitle: "Capítulos de libro",
+        proExpTitle: "Experiencia profesional",
+        teachingExpTitle: "Experiencia docente",
+        undergradTitle: "Pregrado",
+        postgradTitle: "Postgrado",
+        education: [
+          {degree: "Doctor en Economía y Empresa", institution: "Universidad Autónoma de Madrid, España", years: "2015 – 2019"},
+          {degree: "Magíster en Ciencia Regional", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011"},
+          {degree: "MBA – Master en Administración", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009"},
+          {degree: "Magíster en Economía y Administración Estratégica de Negocios", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2008"},
+          {degree: "Licenciado en Economía", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004"}
+        ],
+        proExperience: [
+          {period: "2011 – Presente", text: "Profesor Asociado, Escuela de Ciencias Empresariales, Universidad Católica del Norte, Coquimbo, Chile"},
+          {period: "2016 – 2018", text: "Personal Investigador en Formación (P.I.F.), Departamento de Econometría Aplicada, Universidad Autónoma de Madrid, Madrid, España"},
+          {period: "2008 – 2010", text: "Académico planta especial, Departamento de Economía, Universidad Católica del Norte, Antofagasta, Chile"},
+          {period: "2007 – 2008", text: "Profesor hora, Escuela de Ingeniería Comercial, Universidad Católica del Norte, Coquimbo, Chile"},
+          {period: "2005 – 2007", text: "Profesor tiempo parcial, Facultad de Ciencias Económicas, Universidad Católica de Cuyo, San Juan, Argentina"}
+        ],
+        undergradCourses: [
+          "Introducción a la Economía — Universidad Católica del Norte, Chile",
+          "Microeconomía I — Universidad Católica del Norte, Chile",
+          "Microeconomía II — Universidad Católica del Norte, Chile",
+          "Organización Industrial — Universidad Católica del Norte, Chile",
+          "Macroeconomía II — Universidad Católica del Norte, Chile",
+          "Optimización — Universidad Católica del Norte, Chile",
+          "Econometría — Universidad Autónoma de Madrid, España",
+          "Microeconomía II — Universidad Católica de Cuyo, Argentina",
+          "Economía Internacional I — Universidad Católica de Cuyo, Argentina",
+          "Economía Internacional II — Universidad Católica de Cuyo, Argentina"
+        ],
+        postgradCourses: [
+          "Valoración de activos ambientales — Doctorado en Biología y Ecología Aplicada, Universidad Católica del Norte, Chile",
+          "Análisis Económico — Maestría en Administración de Negocios, Universidad Católica del Norte, Chile",
+          "Teoría Microeconómica — Maestría en Ciencias Empresariales, Universidad Católica del Norte, Chile",
+          "Introducción a la programación en R — Maestría en Ciencias Empresariales, Universidad Católica del Norte, Chile",
+          "Métodos Cuantitativos de gestión — Máster en Administración y Dirección de Empresas, Universidad Autónoma de Madrid, España",
+          "Modelos Econométricos Espaciales — Máster en Data Science & Business Analytics (con R), Universidad de Castilla-La Mancha, España"
+        ],
+        awards: [
+          {year: "2025", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte"},
+          {year: "2024", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte"},
+          {year: "2023", text: "Profesor mejor evaluado de la Maestría en Ciencias Empresariales - Escuela de Ciencias Empresariales - Universidad Católica del Norte"},
+          {year: "2023", text: "Premio a la Innovación docente - \"Inclusión de estudiantes ciegos en aula para cursos de economía\", Vicerrectoría Académica - Universidad Católica del Norte"},
+          {year: "2021", text: "Investigador emergente del Campus Guayacán, Vicerrectoría En Investigación y Desarrollo Tecnológico - Universidad Católica del Norte"},
+          {year: "2009-2010", text: "Beca de estudio de postgrado, Departamento de Economía - Universidad Católica del Norte"},
+          {year: "2007-2009", text: "Beca de estudio de postgrado, Escuela de Ingeniería Comercial - Universidad Católica del Norte"},
+          {year: "2006", text: "Beca de estudio de postgrado, Universidad Católica de Cuyo"}
+        ]
+      },
+      en: {
+        affil: "Universidad Católica del Norte — School of Business Sciences — Institute of Public Policy",
+        nav: [
+          "About me",
+          "Education",
+          "Experience",
+          "Publications",
+          "Projects",
+          "Presentations",
+          "Scholarships & Awards"
+        ],
+        generalTitle: "About me",
+        generalHTML: `
+          <p>Argentinian economist born in San Juan. Currently Associate Professor at the School of Business Sciences, Universidad Católica del Norte (Chile). My academic training took place in Argentina, Chile, and Spain.</p>
+          <p>My research focuses on spatial social phenomena with an emphasis on space–time processes. Interests include spatial econometrics, regional development, collaboration networks in science, and innovation through patent analysis. I work with R for data analysis and spatial modeling.</p>
+          <p>I have published on urban dynamics, sustainability, patent co-invention networks, pesticide use, and export competitiveness. I participate in research on territorial development, fisheries economics, carbon footprint, and healthcare waste management.</p>
+          <p>Beyond academia, I practice photography and play guitar. I enjoy Pearl Jam, Tool, Jimi Hendrix, B.B. King, Gary Clark Jr., Incubus, Mozart, and Paco de Lucía.
+            <a href="https://www.eyeem.com/u/25320134" target="_blank" rel="noopener" class="eyeem-link" aria-label="EyeEm">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"></path>
+              </svg>
+            </a>
+          </p>
+        `,
+        educationTitle: "Education",
+        experienceTitle: "Experience",
+        publicationsTitle: "Publications",
+        projectsTitle: "Research Projects",
+        conferencesTitle: "Conference Presentations",
+        awardsTitle: "Scholarships & Awards",
+        publicationsJournalsTitle: "Indexed journals",
+        publicationsChaptersTitle: "Book chapters",
+        proExpTitle: "Professional experience",
+        teachingExpTitle: "Teaching experience",
+        undergradTitle: "Undergraduate",
+        postgradTitle: "Postgraduate",
+        education: [
+          {degree: "PhD in Economics and Business", institution: "Universidad Autónoma de Madrid, Spain", years: "2015 – 2019"},
+          {degree: "Master in Regional Science", institution: "Universidad Católica del Norte, Antofagasta, Chile", years: "2009 – 2011"},
+          {degree: "MBA – Master in Business Administration", institution: "Universidad Católica del Norte, Coquimbo, Chile", years: "2007 – 2009"},
+          {degree: "Master in Economics and Strategic Business Administration", institution: "Universidad Católica de Cuyo, Argentina", years: "2006 – 2008"},
+          {degree: "Bachelor's in Economics", institution: "Universidad Católica de Cuyo, Argentina", years: "1997 – 2004"}
+        ],
+        proExperience: [
+          {period: "2011 – Present", text: "Associate Professor, School of Business Sciences, Universidad Católica del Norte, Coquimbo, Chile"},
+          {period: "2016 – 2018", text: "Research Fellow (P.I.F.), Department of Applied Econometrics, Universidad Autónoma de Madrid, Madrid, Spain"},
+          {period: "2008 – 2010", text: "Faculty (Special Track), Department of Economics, Universidad Católica del Norte, Antofagasta, Chile"},
+          {period: "2007 – 2008", text: "Adjunct Professor, School of Business Engineering, Universidad Católica del Norte, Coquimbo, Chile"},
+          {period: "2005 – 2007", text: "Part-time Lecturer, Faculty of Economic Sciences, Universidad Católica de Cuyo, San Juan, Argentina"}
+        ],
+        undergradCourses: [
+          "Introduction to Economics — Universidad Católica del Norte, Chile",
+          "Microeconomics I — Universidad Católica del Norte, Chile",
+          "Microeconomics II — Universidad Católica del Norte, Chile",
+          "Industrial Organization — Universidad Católica del Norte, Chile",
+          "Macroeconomics II — Universidad Católica del Norte, Chile",
+          "Optimization — Universidad Católica del Norte, Chile",
+          "Econometrics — Universidad Autónoma de Madrid, Spain",
+          "Microeconomics II — Universidad Católica de Cuyo, Argentina",
+          "International Economics I — Universidad Católica de Cuyo, Argentina",
+          "International Economics II — Universidad Católica de Cuyo, Argentina"
+        ],
+        postgradCourses: [
+          "Environmental Asset Valuation — PhD in Biology and Applied Ecology, Universidad Católica del Norte, Chile",
+          "Economic Analysis — MBA, Universidad Católica del Norte, Chile",
+          "Microeconomic Theory — Master in Business Sciences, Universidad Católica del Norte, Chile",
+          "Introduction to R Programming — Master in Business Sciences, Universidad Católica del Norte, Chile",
+          "Quantitative Management Methods — Master in Business Administration, Universidad Autónoma de Madrid, Spain",
+          "Spatial Econometric Models — Master in Data Science & Business Analytics (with R), Universidad de Castilla-La Mancha, Spain"
+        ],
+        awards: [
+          {year: "2025", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte"},
+          {year: "2024", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte"},
+          {year: "2023", text: "Best evaluated professor, Master in Business Sciences – School of Business Sciences – Universidad Católica del Norte"},
+          {year: "2023", text: "Teaching Innovation Award – \"Inclusion of blind students in economics courses\", Academic Vice-Rectory – Universidad Católica del Norte"},
+          {year: "2021", text: "Emerging Researcher, Guayacán Campus – Vice-Rectory for Research and Technological Development – Universidad Católica del Norte"},
+          {year: "2009-2010", text: "Graduate studies scholarship, Department of Economics – Universidad Católica del Norte"},
+          {year: "2007-2009", text: "Graduate studies scholarship, School of Business Engineering – Universidad Católica del Norte"},
+          {year: "2006", text: "Graduate studies scholarship, Universidad Católica de Cuyo"}
+        ]
+      }
+    };
+
+    const ABSTRACT_LABELS = {
+      es: { show: 'Ver resumen', hide: 'Ocultar resumen' },
+      en: { show: 'Show abstract', hide: 'Hide abstract' }
+    };
+
+    let currentLang = 'es';
+    let publicationsCache = [];
+    let presentationsCache = [];
+    let projectsCache = [];
+
+    function stripComments(text) {
+      return text.replace(/\r\n?/g, '\n').replace(/(^|[^\\])%.*$/gm, '$1');
+    }
+
+    function readBraced(text, startIdx) {
+      let i = startIdx;
+      if (text[i] !== '{') return null;
+      let depth = 0, value = '';
+      for (; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '{') {
+          depth++;
+          if (depth > 1) value += ch;
+        } else if (ch === '}') {
+          depth--;
+          if (depth === 0) return { value, end: i };
+          value += ch;
+        } else {
+          value += ch;
+        }
+      }
+      return null;
+    }
+
+    function parseLatexCommand(text, cmdName, minArgs, maxArgs) {
+      const results = [];
+      const pattern = new RegExp('\\\\' + cmdName + '\\*?(?:\\[[^\\]]*\\])?\\s*\\{', 'g');
+      let match;
+      while ((match = pattern.exec(text)) !== null) {
+        let idx = match.index + match[0].length - 1;
+        const args = [];
+        for (let k = 0; k < maxArgs; k++) {
+          while (idx < text.length && /\s/.test(text[idx])) idx++;
+          if (text[idx] !== '{') break;
+          const block = readBraced(text, idx);
+          if (!block) break;
+          args.push(block.value.trim());
+          idx = block.end + 1;
+        }
+        if (args.length >= minArgs) results.push(args);
+      }
+      return results;
+    }
+
+    function cleanLatex(str) {
+      if (!str) return '';
+      let s = str;
+      const boldPattern = /\\textbf\s*\{/g;
+      let m;
+      while ((m = boldPattern.exec(s)) !== null) {
+        const start = m.index + m[0].length - 1;
+        const block = readBraced(s, start);
+        if (!block) break;
+        s = s.slice(0, m.index) + '<strong>' + block.value + '</strong>' + s.slice(block.end + 1);
+      }
+      s = s.replace(/\\textit\{([^}]+)\}/g, '<em>$1</em>');
+      s = s.replace(/\\_/g, '_');
+      s = s.replace(/\\\\/g, '<br>');
+      return s;
+    }
+
+    function extractYear(str) {
+      const match = String(str || '').match(/\b(19|20)\d{2}\b/);
+      return match ? parseInt(match[0]) : -1;
+    }
+
+    function parseBibtex(text) {
+      const entries = [];
+      const chunks = text.split(/@(?=[a-zA-Z]+)/).filter(Boolean);
+      chunks.forEach(chunk => {
+        const typeMatch = chunk.match(/^([a-zA-Z]+)\s*{/);
+        if (!typeMatch) return;
+        const type = typeMatch[1].toLowerCase();
+        const keyMatch = chunk.match(/^[a-zA-Z]+\s*{\s*([^,]+),/);
+        const key = keyMatch ? keyMatch[1].trim() : '';
+        const body = chunk.substring(chunk.indexOf('{') + 1, chunk.lastIndexOf('}'));
+        const fields = {};
+        const fieldRegex = /(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|\"[^\"]*\")\s*,?/g;
+        let m;
+        while ((m = fieldRegex.exec(body)) !== null) {
+          const name = m[1].toLowerCase();
+          let value = m[2].trim();
+          if ((value.startsWith('{') && value.endsWith('}')) || (value.startsWith('"') && value.endsWith('"'))) {
+            value = value.slice(1, -1);
+          }
+          fields[name] = value.replace(/\s+/g, ' ').trim();
+        }
+        entries.push({ type, key, ...fields });
+      });
+      return entries;
+    }
+
+    function formatAuthorsAPA(str) {
+      if (!str) return '';
+      const parts = str.split(/\s+and\s+/i).map(s => s.trim()).filter(Boolean);
+      const formatted = parts.map(author => {
+        if (author.includes(',')) {
+          const [last, first] = author.split(',').map(x => x.trim());
+          const initials = (first || '').split(/\s+/).map(n => n[0] ? n[0].toUpperCase() + '.' : '').join(' ');
+          return `${last}, ${initials}`.trim();
+        } else {
+          const tokens = author.split(/\s+/);
+          const last = tokens.pop();
+          const initials = tokens.map(n => n[0] ? n[0].toUpperCase() + '.' : '').join(' ');
+          return `${last}, ${initials}`.trim();
+        }
+      });
+      if (formatted.length === 1) return formatted[0];
+      if (formatted.length === 2) return formatted.join(' & ');
+      return formatted.slice(0, -1).join(', ') + ', & ' + formatted[formatted.length - 1];
+    }
+
+    function parsePresentations(text) {
+      text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
+      const out = [];
+      let entries = parseLatexCommand(text, 'cventry', 4, 6);
+      if (entries.length) {
+        entries.forEach(args => {
+          let yearIndex = -1;
+          for (let i = 0; i < args.length; i++) {
+            if (/\b(19|20)\d{2}\b/.test(args[i])) {
+              yearIndex = i;
+              break;
+            }
+          }
+          const year = yearIndex >= 0 ? args[yearIndex] : (args[0] || '');
+          const parts = args.filter((_, idx) => idx !== yearIndex);
+          out.push({ year, parts });
+        });
+      } else {
+        // Fallback: cvpub{year}{title}{event}{place}{extra}
+        entries = parseLatexCommand(text, 'cvpub', 2, 6);
+        entries.forEach(args => {
+          const year = args[0] || '';
+          const parts = args.slice(1);
+          out.push({ year, parts });
+        });
+      }
+      return out;
+    }
+
+    // *** FUNCIÓN PROYECTOS AJUSTADA SÓLO A \cventru ***
+    function parseProjects(text) {
+      // Limpia comentarios y posibles secciones
+      text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
+
+      // Cada entrada: \cventru{Origen del fondo}{Título}{Rol}{Años de ejecución}{Monto}
+      const entries = parseLatexCommand(text, 'cventru', 5, 5);
+
+      return entries.map(args => ({
+        funding: args[0] || '',
+        title: args[1] || '',
+        role: args[2] || '',
+        period: args[3] || '',
+        amount: args[4] || ''
+      }));
+    }
+
+    function formatApaReference(pub, lang) {
+      const authors = formatAuthorsAPA(pub.author);
+      const year = pub.year ? ` (${pub.year}).` : '.';
+      const title = pub.title ? ` ${pub.title.replace(/\s+/g, ' ').trim().replace(/\.$/, '')}.` : '';
+      const doiCore = pub.doi ? pub.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, '') : '';
+      let ref = '';
+
+      if (authors) {
+        ref += authors;
+      }
+      ref += year;
+      ref += title;
+
+      if (pub.type === 'incollection' || pub.booktitle) {
+        const inWord = lang === 'es' ? ' En ' : ' In ';
+        if (pub.booktitle) {
+          ref += inWord + `<em>${pub.booktitle.replace(/\.$/, '')}</em>`;
+        }
+        if (pub.pages) {
+          ref += ` (pp. ${pub.pages}).`;
+        } else if (pub.booktitle) {
+          ref += '.';
+        }
+        if (pub.publisher) {
+          ref += ` ${pub.publisher}.`;
+        }
+      } else {
+        if (pub.journal) {
+          ref += ` <em>${pub.journal}</em>`;
+          if (pub.volume) {
+            ref += `, <em>${pub.volume}</em>`;
+            if (pub.number) ref += `(${pub.number})`;
+          } else if (pub.number) {
+            ref += `, (${pub.number})`;
+          }
+          if (pub.pages) {
+            ref += `, ${pub.pages}`;
+          }
+          ref += '.';
+        } else if (pub.pages) {
+          ref += ` ${pub.pages}.`;
+        }
+      }
+
+      if (doiCore) {
+        ref += ` <span class="pub-doi"><a href="https://doi.org/${doiCore}" target="_blank" rel="noopener">https://doi.org/${doiCore}</a></span>`;
+      }
+
+      return ref;
+    }
+
+    function renderGeneral(lang) {
+      const c = CONTENT[lang];
+      const generalTitle = document.getElementById('general-title');
+      const generalBox = document.getElementById('general-box');
+      const affilLine = document.getElementById('affil-line');
+      if (generalTitle) generalTitle.textContent = c.generalTitle;
+      if (generalBox) generalBox.innerHTML = c.generalHTML;
+      if (affilLine) affilLine.textContent = c.affil;
+    }
+
+    function renderEducation(lang) {
+      const container = document.getElementById('education-list');
+      if (!container) return;
+      container.innerHTML = '';
+      CONTENT[lang].education.forEach(edu => {
+        const item = document.createElement('div');
+        item.className = 'edu-item';
+        item.innerHTML = `
+          <div class="edu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#5e7050">
+              <path d="M32 6 2 20l30 14 30-14L32 6zm0 30.6L10 26v12l22 10 22-10V26L32 36.6z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>${edu.degree}</strong> – ${edu.institution}<br>
+            <small style="color: var(--muted);">${edu.years}</small>
+          </div>`;
+        container.appendChild(item);
+      });
+    }
+
+    function renderExperience(lang) {
+      document.getElementById('pro-exp-title').textContent = CONTENT[lang].proExpTitle;
+      document.getElementById('teaching-exp-title').textContent = CONTENT[lang].teachingExpTitle;
+      document.getElementById('undergrad-title').textContent = CONTENT[lang].undergradTitle;
+      document.getElementById('postgrad-title').textContent = CONTENT[lang].postgradTitle;
+
+      const proList = document.getElementById('pro-exp-list');
+      proList.innerHTML = '';
+      CONTENT[lang].proExperience.forEach(exp => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${exp.period}</strong> — ${exp.text}`;
+        proList.appendChild(li);
+      });
+
+      const ugList = document.getElementById('undergrad-list');
+      ugList.innerHTML = '';
+      CONTENT[lang].undergradCourses.forEach(course => {
+        const li = document.createElement('li');
+        li.textContent = course;
+        ugList.appendChild(li);
+      });
+
+      const pgList = document.getElementById('postgrad-list');
+      pgList.innerHTML = '';
+      CONTENT[lang].postgradCourses.forEach(course => {
+        const li = document.createElement('li');
+        li.textContent = course;
+        pgList.appendChild(li);
+      });
+    }
+
+    function renderPublications(lang) {
+      const journalsList = document.getElementById('publications-journals-list');
+      const chaptersList = document.getElementById('publications-chapters-list');
+      if (!journalsList || !chaptersList) return;
+      journalsList.innerHTML = '';
+      chaptersList.innerHTML = '';
+      if (publicationsCache.length === 0) return;
+
+      const sorted = [...publicationsCache].sort((a, b) => (b.year || '').localeCompare(a.year || ''));
+      sorted.forEach(pub => {
+        const isChapter = pub.type === 'incollection' || !!pub.booktitle;
+        const item = document.createElement('div');
+        item.className = 'pub-item';
+
+        const refHTML = formatApaReference(pub, lang);
+        const hasAbstract = !!pub.abstract;
+        const abstractHTML = hasAbstract
+          ? `
+            <button type="button" class="abstract-toggle">${ABSTRACT_LABELS[lang].show}</button>
+            <div class="pub-abstract">${cleanLatex(pub.abstract)}</div>
+          `
+          : '';
+
+        item.innerHTML = `<div class="pub-ref">${refHTML}</div>${abstractHTML}`;
+
+        if (isChapter) {
+          chaptersList.appendChild(item);
+        } else {
+          journalsList.appendChild(item);
+        }
+      });
+    }
+
+    function renderConferences() {
+      const container = document.getElementById('conferences-list');
+      if (!container) return;
+      container.innerHTML = '';
+      if (presentationsCache.length === 0) return;
+
+      const sorted = [...presentationsCache].sort((a, b) => extractYear(b.year) - extractYear(a.year));
+      sorted.forEach(conf => {
+        const year = String(conf.year || '').replace(/<[^>]+>/g, '');
+        const parts = conf.parts || [];
+        const restText = parts.join(' — ');
+        const fullText = [year, restText].filter(Boolean).join(' — ');
+
+        const item = document.createElement('div');
+        item.className = 'talk-item';
+        item.innerHTML = `
+          <div class="year-badge">${year}</div>
+          <div class="talk-content">
+            <strong>${cleanLatex(fullText)}</strong>
+          </div>`;
+        container.appendChild(item);
+      });
+    }
+
+    function renderProjects() {
+      const container = document.getElementById('projects-list');
+      if (!container) return;
+      container.innerHTML = '';
+      if (projectsCache.length === 0) return;
+
+      const sorted = [...projectsCache].sort((a, b) => extractYear(b.period) - extractYear(a.period));
+
+      sorted.forEach(proj => {
+        const item = document.createElement('div');
+        item.className = 'proj-item';
+        item.innerHTML = `
+          <div class="proj-header">
+            <div class="proj-period">${proj.period || ''}</div>
+          </div>
+          <div class="proj-title">${cleanLatex(proj.title || '')}</div>
+          <div class="proj-meta">
+            <div class="proj-funding">${cleanLatex(proj.funding || '')}</div>
+            ${proj.role ? `<div class="proj-role">${cleanLatex(proj.role)}</div>` : ''}
+          </div>`;
+        container.appendChild(item);
+      });
+    }
+
+    function renderAwards(lang) {
+      const container = document.getElementById('awards-list');
+      if (!container) return;
+      container.innerHTML = '';
+      const sorted = [...CONTENT[lang].awards].sort((a, b) => extractYear(b.year) - extractYear(a.year));
+      sorted.forEach(award => {
+        const item = document.createElement('div');
+        item.className = 'award-item';
+        item.innerHTML = `<div class="award-year">${award.year}</div><div>${award.text}</div>`;
+        container.appendChild(item);
+      });
+    }
+
+    function updateNavigation(lang) {
+      const nav = CONTENT[lang].nav;
+      document.getElementById('nav-general').textContent = nav[0];
+      document.getElementById('nav-education').textContent = nav[1];
+      document.getElementById('nav-experience').textContent = nav[2];
+      document.getElementById('nav-publications').textContent = nav[3];
+      document.getElementById('nav-projects').textContent = nav[4];
+      document.getElementById('nav-conferences').textContent = nav[5];
+      document.getElementById('nav-awards').textContent = nav[6];
+
+      document.getElementById('education-title').textContent = CONTENT[lang].educationTitle;
+      document.getElementById('experience-title').textContent = CONTENT[lang].experienceTitle;
+      document.getElementById('publications-title').textContent = CONTENT[lang].publicationsTitle;
+      document.getElementById('projects-title').textContent = CONTENT[lang].projectsTitle;
+      document.getElementById('conferences-title').textContent = CONTENT[lang].conferencesTitle;
+      document.getElementById('awards-title').textContent = CONTENT[lang].awardsTitle;
+      document.getElementById('pub-journals-title').textContent = CONTENT[lang].publicationsJournalsTitle;
+      document.getElementById('pub-chapters-title').textContent = CONTENT[lang].publicationsChaptersTitle;
+    }
+
+    function renderAll(lang) {
+      updateNavigation(lang);
+      renderGeneral(lang);
+      renderEducation(lang);
+      renderExperience(lang);
+      renderAwards(lang);
+      renderPublications(lang);
+      renderConferences();
+      renderProjects();
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      renderAll(currentLang);
+    }
+
+    async function loadBibtex() {
+      const loading = document.querySelector('#publications .loading');
+      try {
+        const response = await fetch('./library.bib?t=' + Date.now());
+        if (!response.ok) {
+          if (loading) loading.textContent = 'No se pudo cargar library.bib';
+          return;
+        }
+        const text = await response.text();
+        publicationsCache = parseBibtex(text);
+        renderPublications(currentLang);
+        if (loading) loading.style.display = 'none';
+      } catch (err) {
+        if (loading) loading.textContent = 'Error al cargar publicaciones';
+      }
+    }
+
+    async function loadPresentations() {
+      const loading = document.querySelector('#conferences .loading');
+
+      async function tryLoad(name) {
+        try {
+          const resp = await fetch(`./${name}?t=` + Date.now());
+          if (!resp.ok) return null;
+          return await resp.text();
+        } catch {
+          return null;
+        }
+      }
+
+      let text = await tryLoad('presentations.tex');
+      if (!text) {
+        text = await tryLoad('presentation.tex');
+      }
+
+      if (!text) {
+        if (loading) loading.textContent = 'No se pudo cargar presentations.tex/presentation.tex';
+        return;
+      }
+
+      presentationsCache = parsePresentations(text);
+      renderConferences();
+      if (loading) loading.style.display = 'none';
+    }
+
+    async function loadProjects() {
+      const loading = document.querySelector('#projects .loading');
+      try {
+        const response = await fetch('./project.tex?t=' + Date.now());
+        if (!response.ok) {
+          if (loading) loading.textContent = 'No se pudo cargar project.tex';
+          return;
+        }
+        const text = await response.text();
+        projectsCache = parseProjects(text);
+        renderProjects();
+        if (loading) loading.style.display = 'none';
+      } catch (err) {
+        if (loading) loading.textContent = 'Error al cargar proyectos';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      currentLang = 'es';
+      renderAll('es');
+      loadBibtex();
+      loadPresentations();
+      loadProjects();
+
+      const btn = document.getElementById('lang-btn');
+      if (btn) btn.addEventListener('click', toggleLanguage);
+
+      // Delegación para botones de abstract
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('abstract-toggle')) {
+          const btn = e.target;
+          const abs = btn.nextElementSibling;
+          if (!abs) return;
+          const isHidden = abs.style.display === '' || abs.style.display === 'none';
+          abs.style.display = isHidden ? 'block' : 'none';
+          btn.textContent = isHidden
+            ? ABSTRACT_LABELS[currentLang].hide
+            : ABSTRACT_LABELS[currentLang].show;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
