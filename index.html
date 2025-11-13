@@ -321,6 +321,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,.08);
     }
 
+    .pub-ref {
+      text-align: justify;
+    }
+
     .pub-authors {
       font-weight: 600;
       color: var(--primary);
@@ -353,6 +357,32 @@
 
     .pub-doi a:hover {
       text-decoration: underline;
+    }
+
+    .abstract-toggle {
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--green);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--green);
+    }
+
+    .abstract-toggle:hover {
+      background: #e7efe6;
+    }
+
+    .pub-abstract {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f7f3ea;
+      font-size: 0.95rem;
+      color: var(--primary);
+      text-align: justify;
     }
 
     /* PRESENTATIONS */
@@ -834,6 +864,11 @@
       }
     };
 
+    const ABSTRACT_LABELS = {
+      es: { show: 'Ver resumen', hide: 'Ocultar resumen' },
+      en: { show: 'Show abstract', hide: 'Hide abstract' }
+    };
+
     let currentLang = 'es';
     let publicationsCache = [];
     let presentationsCache = [];
@@ -861,6 +896,26 @@
         }
       }
       return null;
+    }
+
+    function parseLatexCommand(text, cmdName, minArgs, maxArgs) {
+      const results = [];
+      const pattern = new RegExp('\\\\' + cmdName + '\\*?(?:\\[[^\\]]*\\])?\\s*\\{', 'g');
+      let match;
+      while ((match = pattern.exec(text)) !== null) {
+        let idx = match.index + match[0].length - 1;
+        const args = [];
+        for (let k = 0; k < maxArgs; k++) {
+          while (idx < text.length && /\s/.test(text[idx])) idx++;
+          if (text[idx] !== '{') break;
+          const block = readBraced(text, idx);
+          if (!block) break;
+          args.push(block.value.trim());
+          idx = block.end + 1;
+        }
+        if (args.length >= minArgs) results.push(args);
+      }
+      return results;
     }
 
     function cleanLatex(str) {
@@ -934,25 +989,116 @@
     function parsePresentations(text) {
       text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
       const out = [];
-      const re = /\\cventry\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}/g;
-      let m;
-      while ((m = re.exec(text)) !== null) {
-        const [, event, title, place, year, extra] = m;
-        out.push({ event, title, place, year, extra });
+      let entries = parseLatexCommand(text, 'cventry', 4, 6);
+      if (entries.length) {
+        entries.forEach(args => {
+          let yearIndex = -1;
+          for (let i = 0; i < args.length; i++) {
+            if (/\b(19|20)\d{2}\b/.test(args[i])) {
+              yearIndex = i;
+              break;
+            }
+          }
+          const year = yearIndex >= 0 ? args[yearIndex] : (args[0] || '');
+          const parts = args.filter((_, idx) => idx !== yearIndex);
+          out.push({ year, parts });
+        });
+      } else {
+        // Fallback: cvpub style: {year}{title}{event}{place}{extra}
+        entries = parseLatexCommand(text, 'cvpub', 2, 6);
+        entries.forEach(args => {
+          const year = args[0] || '';
+          const parts = args.slice(1);
+          out.push({ year, parts });
+        });
       }
       return out;
     }
 
     function parseProjects(text) {
       text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
-      const out = [];
-      const re = /\\cvpub\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}/g;
-      let m;
-      while ((m = re.exec(text)) !== null) {
-        const [, funding, title, role, period, amount] = m;
-        out.push({ funding, title, role, period, amount });
+      let out = [];
+      // First try cvpub{funding}{title}{role}{period}{amount}
+      let entries = parseLatexCommand(text, 'cvpub', 5, 5);
+      if (entries.length) {
+        out = entries.map(args => ({
+          funding: args[0] || '',
+          title: args[1] || '',
+          role: args[2] || '',
+          period: args[3] || '',
+          amount: args[4] || ''
+        }));
+      } else {
+        // Fallback: cventry with generic mapping
+        entries = parseLatexCommand(text, 'cventry', 4, 6);
+        out = entries.map(args => {
+          let periodIndex = -1;
+          for (let i = 0; i < args.length; i++) {
+            if (/\b(19|20)\d{2}/.test(args[i])) {
+              periodIndex = i;
+              break;
+            }
+          }
+          const period = periodIndex >= 0 ? args[periodIndex] : (args[0] || '');
+          const title = args[1] || args[0] || '';
+          const role = args[2] || '';
+          const funding = args[3] || '';
+          const amount = args[4] || '';
+          return { funding, title, role, period, amount };
+        });
       }
       return out;
+    }
+
+    function formatApaReference(pub, lang) {
+      const authors = formatAuthorsAPA(pub.author);
+      const year = pub.year ? ` (${pub.year}).` : '.';
+      const title = pub.title ? ` ${pub.title.replace(/\s+/g, ' ').trim().replace(/\.$/, '')}.` : '';
+      const doiCore = pub.doi ? pub.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, '') : '';
+      let ref = '';
+
+      if (authors) {
+        ref += authors;
+      }
+      ref += year;
+      ref += title;
+
+      if (pub.type === 'incollection' || pub.booktitle) {
+        const inWord = lang === 'es' ? ' En ' : ' In ';
+        if (pub.booktitle) {
+          ref += inWord + `<em>${pub.booktitle.replace(/\.$/, '')}</em>`;
+        }
+        if (pub.pages) {
+          ref += ` (pp. ${pub.pages}).`;
+        } else if (pub.booktitle) {
+          ref += '.';
+        }
+        if (pub.publisher) {
+          ref += ` ${pub.publisher}.`;
+        }
+      } else {
+        if (pub.journal) {
+          ref += ` <em>${pub.journal}</em>`;
+          if (pub.volume) {
+            ref += `, <em>${pub.volume}</em>`;
+            if (pub.number) ref += `(${pub.number})`;
+          } else if (pub.number) {
+            ref += `, (${pub.number})`;
+          }
+          if (pub.pages) {
+            ref += `, ${pub.pages}`;
+          }
+          ref += '.';
+        } else if (pub.pages) {
+          ref += ` ${pub.pages}.`;
+        }
+      }
+
+      if (doiCore) {
+        ref += ` <span class="pub-doi"><a href="https://doi.org/${doiCore}" target="_blank" rel="noopener">https://doi.org/${doiCore}</a></span>`;
+      }
+
+      return ref;
     }
 
     function renderGeneral(lang) {
@@ -1017,7 +1163,7 @@
       });
     }
 
-    function renderPublications() {
+    function renderPublications(lang) {
       const journalsList = document.getElementById('publications-journals-list');
       const chaptersList = document.getElementById('publications-chapters-list');
       if (!journalsList || !chaptersList) return;
@@ -1031,33 +1177,20 @@
         const item = document.createElement('div');
         item.className = 'pub-item';
 
-        const authors = formatAuthorsAPA(pub.author);
-        const year = pub.year ? `(${pub.year}).` : '';
-        const title = pub.title ? pub.title.replace(/\.$/, '') + '.' : '';
+        const refHTML = formatApaReference(pub, lang);
+        const hasAbstract = !!pub.abstract;
+        const abstractHTML = hasAbstract
+          ? `
+            <button type="button" class="abstract-toggle">${ABSTRACT_LABELS[lang].show}</button>
+            <div class="pub-abstract">${cleanLatex(pub.abstract)}</div>
+          `
+          : '';
+
+        item.innerHTML = `<div class="pub-ref">${refHTML}</div>${abstractHTML}`;
 
         if (isChapter) {
-          const booktitle = pub.booktitle ? pub.booktitle.replace(/\.$/, '') : '';
-          const publisher = pub.publisher || '';
-          item.innerHTML = `
-            <div class="pub-authors">${authors}</div>
-            <div class="pub-year">${year}</div>
-            <div class="pub-title">${title}</div>
-            ${booktitle ? `<div class="pub-journal">En: <em>${booktitle}</em></div>` : ''}
-            ${publisher ? `<div style="color: var(--muted);">Editorial: ${publisher}</div>` : ''}`;
           chaptersList.appendChild(item);
         } else {
-          const journal = pub.journal ? `<em>${pub.journal}</em>` : '';
-          const volume = pub.volume ? `<em>${pub.volume}</em>` : '';
-          const number = pub.number ? `(${pub.number})` : '';
-          const pages = pub.pages ? `, ${pub.pages}` : '';
-          const doiCore = pub.doi ? pub.doi.replace(/^https?:\/\/doi\.org\//, '') : '';
-          const doi = doiCore ? `<div class="pub-doi"><a href="https://doi.org/${doiCore}" target="_blank" rel="noopener">https://doi.org/${doiCore}</a></div>` : '';
-          item.innerHTML = `
-            <div class="pub-authors">${authors}</div>
-            <div class="pub-year">${year}</div>
-            <div class="pub-title">${title}</div>
-            <div class="pub-journal">${journal}${journal && (volume || number) ? ', ' : ''}${volume}${number}${pages}.</div>
-            ${doi}`;
           journalsList.appendChild(item);
         }
       });
@@ -1072,13 +1205,15 @@
       const sorted = [...presentationsCache].sort((a, b) => extractYear(b.year) - extractYear(a.year));
       sorted.forEach(conf => {
         const year = String(conf.year || '').replace(/<[^>]+>/g, '');
+        const titlePart = conf.parts[0] || '';
+        const restParts = conf.parts.slice(1).join(' — ');
         const item = document.createElement('div');
         item.className = 'talk-item';
         item.innerHTML = `
           <div class="year-badge">${year}</div>
           <div class="talk-content">
-            <strong>${cleanLatex(conf.title || conf.text || '')}</strong>
-            <div class="talk-meta">${cleanLatex(conf.event || '')}${conf.place ? ', ' + cleanLatex(conf.place) : ''}</div>
+            <strong>${cleanLatex(titlePart)}</strong>
+            ${restParts ? `<div class="talk-meta">${cleanLatex(restParts)}</div>` : ''}
           </div>`;
         container.appendChild(item);
       });
@@ -1147,7 +1282,7 @@
       renderEducation(lang);
       renderExperience(lang);
       renderAwards(lang);
-      renderPublications();
+      renderPublications(lang);
       renderConferences();
       renderProjects();
     }
@@ -1167,7 +1302,7 @@
         }
         const text = await response.text();
         publicationsCache = parseBibtex(text);
-        renderPublications();
+        renderPublications(currentLang);
         if (loading) loading.style.display = 'none';
       } catch (err) {
         if (loading) loading.textContent = 'Error al cargar publicaciones';
@@ -1209,12 +1344,28 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      currentLang = 'es';
       renderAll('es');
       loadBibtex();
       loadPresentations();
       loadProjects();
+
       const btn = document.getElementById('lang-btn');
       if (btn) btn.addEventListener('click', toggleLanguage);
+
+      // Delegación para botones de abstract
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('abstract-toggle')) {
+          const btn = e.target;
+          const abs = btn.nextElementSibling;
+          if (!abs) return;
+          const isHidden = abs.style.display === '' || abs.style.display === 'none';
+          abs.style.display = isHidden ? 'block' : 'none';
+          btn.textContent = isHidden
+            ? ABSTRACT_LABELS[currentLang].hide
+            : ABSTRACT_LABELS[currentLang].show;
+        }
+      });
     });
   </script>
 </body>
