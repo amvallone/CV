@@ -1004,7 +1004,7 @@
           out.push({ year, parts });
         });
       } else {
-        // Fallback: cvpub style: {year}{title}{event}{place}{extra}
+        // Fallback: cvpub{year}{title}{event}{place}{extra}
         entries = parseLatexCommand(text, 'cvpub', 2, 6);
         entries.forEach(args => {
           const year = args[0] || '';
@@ -1018,7 +1018,6 @@
     function parseProjects(text) {
       text = stripComments(text).replace(/\\cvsection\*?\{[^}]*\}.*$/gm, '');
       let out = [];
-      // First try cvpub{funding}{title}{role}{period}{amount}
       let entries = parseLatexCommand(text, 'cvpub', 5, 5);
       if (entries.length) {
         out = entries.map(args => ({
@@ -1029,7 +1028,6 @@
           amount: args[4] || ''
         }));
       } else {
-        // Fallback: cventry with generic mapping
         entries = parseLatexCommand(text, 'cventry', 4, 6);
         out = entries.map(args => {
           let periodIndex = -1;
@@ -1205,15 +1203,16 @@
       const sorted = [...presentationsCache].sort((a, b) => extractYear(b.year) - extractYear(a.year));
       sorted.forEach(conf => {
         const year = String(conf.year || '').replace(/<[^>]+>/g, '');
-        const titlePart = conf.parts[0] || '';
-        const restParts = conf.parts.slice(1).join(' — ');
+        const parts = conf.parts || [];
+        const restText = parts.join(' — ');
+        const fullText = [year, restText].filter(Boolean).join(' — ');
+
         const item = document.createElement('div');
         item.className = 'talk-item';
         item.innerHTML = `
           <div class="year-badge">${year}</div>
           <div class="talk-content">
-            <strong>${cleanLatex(titlePart)}</strong>
-            ${restParts ? `<div class="talk-meta">${cleanLatex(restParts)}</div>` : ''}
+            <strong>${cleanLatex(fullText)}</strong>
           </div>`;
         container.appendChild(item);
       });
@@ -1311,19 +1310,30 @@
 
     async function loadPresentations() {
       const loading = document.querySelector('#conferences .loading');
-      try {
-        const response = await fetch('./presentation.tex?t=' + Date.now());
-        if (!response.ok) {
-          if (loading) loading.textContent = 'No se pudo cargar presentation.tex';
-          return;
+
+      async function tryLoad(name) {
+        try {
+          const resp = await fetch(`./${name}?t=` + Date.now());
+          if (!resp.ok) return null;
+          return await resp.text();
+        } catch {
+          return null;
         }
-        const text = await response.text();
-        presentationsCache = parsePresentations(text);
-        renderConferences();
-        if (loading) loading.style.display = 'none';
-      } catch (err) {
-        if (loading) loading.textContent = 'Error al cargar presentaciones';
       }
+
+      let text = await tryLoad('presentations.tex');
+      if (!text) {
+        text = await tryLoad('presentation.tex');
+      }
+
+      if (!text) {
+        if (loading) loading.textContent = 'No se pudo cargar presentations.tex/presentation.tex';
+        return;
+      }
+
+      presentationsCache = parsePresentations(text);
+      renderConferences();
+      if (loading) loading.style.display = 'none';
     }
 
     async function loadProjects() {
