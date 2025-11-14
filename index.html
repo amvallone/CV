@@ -1,56 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andrés Marcelo Vallone — CV</title>
+
   <style>
     :root{
-      --bg:#0f172a; --card:#111827; --muted:#9CA3AF; --accent:#60A5FA; --accent-2:#818CF8; --ink:#F3F4F6;
-      --chip:#1F2937; --chip-2:#374151;
+      --bg: #0a0f1e;
+      --ink: #E5E7EB;
+      --muted: #9CA3AF;
+      --accent: #60A5FA;
+      --accent-2:#818CF8;
+      --card:#0f172a;
+      --line:#1f2937;
+      --chip:#172031;
+      --chip-2:#263248;
+      --shadow: 0 8px 25px rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(135deg, #0b1022 0%, #0f172a 40%, #0b1022 100%);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}
-    a{color:var(--accent)}
-    .layout{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1200px;margin:0 auto;padding:24px}
-    aside{position:sticky;top:24px;height:max-content;background:rgba(17,24,39,0.7);backdrop-filter:blur(8px);border:1px solid #1f2937;border-radius:18px;padding:18px}
-    .avatar{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-    .name{font-size:1.1rem;font-weight:700;line-height:1.2}
-    .affil{font-size:.9rem;color:var(--muted)}
-    .sidebar-divider{height:1px;background:#1f2937;margin:14px 0}
-    .sidebar-nav a{display:block;padding:8px 10px;border-radius:10px;color:#d1d5db;text-decoration:none;margin:4px 0}
-    .sidebar-nav a:hover{background:#1f2937}
-    .lang-btn{margin-top:8px;width:100%;border:1px solid #374151;background:#0f172a;color:#e5e7eb;padding:8px 10px;border-radius:10px;cursor:pointer}
-    main{display:grid;gap:28px}
-    section{background:rgba(17,24,39,0.55);border:1px solid #1f2937;border-radius:18px;padding:22px}
-    h2{margin:0 0 12px;font-size:1.3rem}
-    .subsection-title{margin:14px 0 6px;color:#cbd5e1;font-size:1.02rem}
-    .loading{color:#9ca3af;font-size:.95rem}
+    html,body{
+      margin:0; padding:0;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(21,42,112,.25), transparent 60%),
+        radial-gradient(900px 500px at 115% 20%, rgba(56,189,248,.12), transparent 60%),
+        linear-gradient(135deg, #080c18 0%, #0b1222 40%, #070b15 100%);
+      color:var(--ink);
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .layout{
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    aside{
+      position: sticky; top: 24px;
+      align-self: start;
+      background: rgba(15,23,42,.7);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .avatar{
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 12px; align-items: center;
+    }
+    .avatar img{
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 2px solid #1f2937; object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,.35);
+      background: #0b1222;
+    }
+    .name{ font-size: 1.1rem; font-weight: 700; line-height: 1.2; }
+    .affil{ color: var(--muted); font-size: .9rem; }
+
+    .sidebar-divider{ height:1px; background: var(--line); margin: 14px 0; }
+
+    .sidebar-nav a{
+      display:block; padding:8px 10px; margin:4px 0;
+      border-radius: 10px; color: #d1d5db; text-decoration: none;
+    }
+    .sidebar-nav a:hover{ background: #111827; }
+
+    .lang-btn{
+      width: 100%; margin-top: 8px;
+      border: 1px solid #374151; background: #0f172a;
+      color: #e5e7eb; padding: 8px 10px; border-radius: 10px; cursor: pointer;
+    }
+
+    main{ display:grid; gap: 28px; }
+    section{
+      background: rgba(15,23,42,.55);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    h2{ margin: 0 0 12px; font-size: 1.28rem; }
+
+    .summary-box{
+      background: linear-gradient(180deg, rgba(23,32,49,.55), rgba(11,17,32,.5));
+      border: 1px solid #273143; border-radius: 14px; padding: 14px; line-height: 1.6;
+    }
+    .kchips{ display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .chip{
+      font-size: .85rem;
+      background: linear-gradient(180deg, rgba(32,41,64,.7), rgba(18,24,42,.7));
+      border: 1px solid #2b364c; border-radius: 999px;
+      padding: 6px 10px; color: #c9d6e6;
+    }
+
+    .grid-two{
+      display:grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+
+    /* Education & Experience entries */
+    .entry{
+      background: linear-gradient(180deg, rgba(32,41,64,.45), rgba(18,24,42,.45));
+      border: 1px solid #273143;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .entry h3{ margin:0 0 6px; font-size: 1rem; }
+    .entry .meta{ color:#cbd5e1; font-size:.93rem; }
+    .entry .desc{ margin-top:6px; color:#d6dced; }
+
     /* Publications */
-    .pub-item{background:linear-gradient(180deg, rgba(31,41,55,.7), rgba(17,24,39,.7));border:1px solid #273143;border-radius:14px;padding:14px;margin:10px 0}
-    .pub-ref{line-height:1.5}
-    .pub-abstract{display:none;margin-top:10px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(20,25,40,.7), rgba(10,14,24,.7));border:1px solid #273143;color:#c9d6e6}
-    .abstract-toggle{all:unset;cursor:pointer;font-size:.9rem;padding:6px 10px;border-radius:999px;background:#1f2937}
+    .pub-item{
+      background: linear-gradient(180deg, rgba(31,41,55,.68), rgba(17,24,39,.65));
+      border: 1px solid #273143; border-radius: 14px; padding: 14px; margin: 10px 0;
+    }
+    .pub-ref{ line-height: 1.5; }
+    .pub-abstract{
+      display:none; margin-top:10px; padding:12px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(20,25,40,.7), rgba(10,14,24,.7));
+      border: 1px solid #273143; color:#c9d6e6;
+    }
+    .abstract-toggle{
+      all:unset; cursor:pointer; font-size:.9rem; padding:6px 10px; border-radius:999px; background:#1f2937
+    }
+    .subsection-title{ margin: 14px 0 6px; color:#cbd5e1; font-size: 1.02rem; }
+
     /* Projects */
-    .proj-list{display:grid;gap:12px}
-    .proj-item{border:1px solid #273143;border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(31,41,55,.45), rgba(17,24,39,.45))}
-    .proj-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-    .proj-period{font-size:.9rem;color:#cbd5e1;background:#1f2937;padding:4px 10px;border-radius:999px}
-    .proj-title{font-weight:700}
-    .proj-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-    .proj-funding,.proj-role{font-size:.94rem;color:#9ca3af}
+    .proj-list{ display:grid; gap: 12px; }
+    .proj-item{
+      border:1px solid #273143; border-radius:14px; padding:14px;
+      background: linear-gradient(180deg, rgba(31,41,55,.45), rgba(17,24,39,.45));
+    }
+    .proj-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+    .proj-period{ font-size:.9rem; color:#cbd5e1; background:#1f2937; padding:4px 10px; border-radius:999px; }
+    .proj-title{ font-weight:700; }
+    .proj-meta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    .proj-funding,.proj-role{ font-size:.94rem; color:#9ca3af; }
+
     /* Talks */
-    .talk-list{display:grid;gap:12px}
-    .talk-item{display:flex;gap:12px;align-items:flex-start;border:1px solid #273143;border-radius:14px;padding:12px;background:linear-gradient(180deg, rgba(31,41,55,.45), rgba(17,24,39,.45))}
-    .year-badge{min-width:58px;text-align:center;background:#1f2937;border-radius:10px;padding:6px 8px;color:#cbd5e1}
-    .talk-content{line-height:1.5}
-    @media (max-width:900px){.layout{grid-template-columns:1fr;padding:16px}aside{position:static}}
+    .talk-list{ display:grid; gap:12px; }
+    .talk-item{
+      display:flex; gap:12px; align-items:flex-start;
+      border:1px solid #273143; border-radius:14px; padding:12px;
+      background: linear-gradient(180deg, rgba(31,41,55,.45), rgba(17,24,39,.45));
+    }
+    .year-badge{
+      min-width:58px; text-align:center; background:#1f2937; border-radius:10px; padding:6px 8px; color:#cbd5e1
+    }
+    .talk-content{ line-height:1.5; }
+
+    @media (max-width: 980px){
+      .layout{ grid-template-columns: 1fr; padding: 16px; }
+      aside{ position: static; }
+      .grid-two{ grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="layout">
     <aside>
       <div class="avatar">
+        <img src="tu-foto.JPG" alt="Andrés Marcelo Vallone" />
         <div>
           <div class="name">Andrés Marcelo Vallone</div>
           <div class="affil" id="affil"></div>
@@ -76,16 +194,17 @@
       <section id="general">
         <h2 id="general-title"></h2>
         <div class="summary-box" id="general-box"></div>
+        <div class="kchips" id="skills-chips"></div>
       </section>
 
       <section id="education">
         <h2 id="education-title"></h2>
-        <div id="education-list"></div>
+        <div class="grid-two" id="education-list"></div>
       </section>
 
       <section id="experience">
         <h2 id="experience-title"></h2>
-        <div id="experience-list"></div>
+        <div class="grid-two" id="experience-list"></div>
       </section>
 
       <section id="publications">
@@ -111,282 +230,7 @@
 
       <section id="awards">
         <h2 id="awards-title"></h2>
-        <div id="awards-list"></div>
+        <div id="awards-list" class="grid-two"></div>
       </section>
     </main>
   </div>
-
-  <script>
-    /* ====== Texto básico (ES/EN) ====== */
-    const CONTENT = {
-      es: {
-        affil: "Universidad Católica del Norte — Escuela de Ciencias Empresariales — Instituto de Políticas Públicas",
-        nav: ["Acerca de mí","Educación","Experiencia","Publicaciones","Proyectos","Presentaciones","Becas y Premios"],
-        generalTitle: "Acerca de mí",
-        generalHTML: `
-          <p>Economista argentino. Profesor Asociado en la Escuela de Ciencias Empresariales, Universidad Católica del Norte (Chile).</p>
-          <p>Trabajo en econometría espacial, desarrollo regional, redes de colaboración científica e innovación.</p>
-        `,
-        educationTitle: "Educación",
-        experienceTitle: "Experiencia",
-        publicationsTitle: "Publicaciones",
-        projectsTitle: "Proyectos de investigación",
-        conferencesTitle: "Presentaciones en Congresos",
-        awardsTitle: "Becas y Premios",
-        publicationsJournalsTitle: "Revistas indexadas",
-        publicationsChaptersTitle: "Capítulos de libro"
-      },
-      en: {
-        affil: "Universidad Católica del Norte — School of Business — Public Policy Institute",
-        nav: ["About me","Education","Experience","Publications","Projects","Conference talks","Grants & Awards"],
-        generalTitle: "About me",
-        generalHTML: `
-          <p>Argentinian economist. Associate Professor at Escuela de Ciencias Empresariales, Universidad Católica del Norte (Chile).</p>
-          <p>Research in spatial econometrics, regional development, scientific collaboration networks and innovation.</p>
-        `,
-        educationTitle: "Education",
-        experienceTitle: "Experience",
-        publicationsTitle: "Publications",
-        projectsTitle: "Research Projects",
-        conferencesTitle: "Conference Presentations",
-        awardsTitle: "Grants & Awards",
-        publicationsJournalsTitle: "Journal articles",
-        publicationsChaptersTitle: "Book chapters"
-      }
-    };
-
-    const ABSTRACT_LABELS = {
-      es: { show: "Ver resumen", hide: "Ocultar resumen" },
-      en: { show: "Show abstract", hide: "Hide abstract" }
-    };
-
-    let currentLang = 'es';
-    let publicationsCache = [];
-
-    /* ====== Utilidades ====== */
-    function stripComments(text) { return text.replace(/\r\n?/g, '\n').replace(/(^|[^\\])%.*$/gm, '$1'); }
-    function readBraced(text, startIdx){
-      let i = startIdx; if (text[i] !== '{') return null;
-      let depth=0, value=''; for (; i<text.length; i++){ const ch=text[i];
-        if (ch==='{'){ depth++; if (depth>1) value+=ch; }
-        else if (ch==='}'){ depth--; if (depth===0) return {value,end:i}; value+=ch; }
-        else value+=ch;
-      } return null;
-    }
-    function cleanLatex(str){
-      if(!str) return '';
-      let s = String(str);
-      const boldPattern=/\\textbf\s*\{/g; let m;
-      while((m=boldPattern.exec(s))!==null){
-        const start=m.index+m[0].length-1; const block=readBraced(s,start); if(!block) break;
-        s = s.slice(0,m.index) + '<strong>' + block.value + '</strong>' + s.slice(block.end+1);
-      }
-      s = s.replace(/\\textit\{([^}]+)\}/g,'<em>$1</em>').replace(/\\_/g,'_').replace(/\\\\/g,'<br>');
-      return s;
-    }
-    function extractYear(str){ const match = String(str||'').match(/\b(19|20)\d{2}\b/); return match? parseInt(match[0]) : -1; }
-
-    /* ====== BIBTEX (único “render” que queda) ====== */
-    function parseBibtex(text){
-      const entries=[]; const chunks=text.split(/@(?=[a-zA-Z]+)/).filter(Boolean);
-      chunks.forEach(chunk=>{
-        const typeMatch=chunk.match(/^([a-zA-Z]+)\s*{/); if(!typeMatch) return;
-        const type=typeMatch[1].toLowerCase();
-        const keyMatch=chunk.match(/^[a-zA-Z]+\s*{\s*([^,]+),/); const key=keyMatch? keyMatch[1].trim():'';
-        const body=chunk.substring(chunk.indexOf('{')+1, chunk.lastIndexOf('}'));
-        const fields={};
-        const fieldRegex=/(\w+)\s*=\s*(\{(?:[^{}]|{[^{}]*})*\}|\"[^\"]*\")\s*,?/g; let m;
-        while((m=fieldRegex.exec(body))!==null){
-          const name=m[1].toLowerCase(); let value=m[2].trim();
-          if((value.startsWith('{')&&value.endsWith('}'))||(value.startsWith('"')&&value.endsWith('"'))) value=value.slice(1,-1);
-          fields[name]=value.replace(/\s+/g,' ').trim();
-        }
-        entries.push({type,key,...fields});
-      });
-      return entries;
-    }
-
-    function formatAuthorsAPA(str){
-      if(!str) return '';
-      const parts=str.split(/\s+and\s+/i).map(s=>s.trim()).filter(Boolean);
-      const formatted=parts.map(a=>{
-        if(a.includes(',')){
-          const [last,first]=a.split(',').map(x=>x.trim());
-          const initials=(first||'').split(/\s+/).map(n=>n[0]? n[0].toUpperCase()+'.' : '').join(' ');
-          return `${last}, ${initials}`.trim();
-        } else {
-          const tokens=a.split(/\s+/); const last=tokens.pop();
-          const initials=tokens.map(n=>n[0]? n[0].toUpperCase()+'.' : '').join(' ');
-          return `${last}, ${initials}`.trim();
-        }
-      });
-      if(formatted.length===1) return formatted[0];
-      if(formatted.length===2) return formatted.join(' & ');
-      return formatted.slice(0,-1).join(', ')+', & '+formatted[formatted.length-1];
-    }
-
-    function formatApaReference(pub, lang){
-      const authors = formatAuthorsAPA(pub.author);
-      const year = pub.year ? ` (${pub.year}).` : '.';
-      const title = pub.title ? ` ${cleanLatex(pub.title)}.` : '';
-      // journal or booktitle
-      let outlet = '';
-      if (pub.journal){ outlet = ` <em>${pub.journal}</em>`; }
-      else if (pub.booktitle){ outlet = ` En <em>${pub.booktitle}</em>`; }
-      const volno = [pub.volume, pub.number ? `(${pub.number})` : ''].filter(Boolean).join('');
-      const pages = pub.pages ? `, ${pub.pages}` : '';
-      const doi = pub.doi ? ` https://doi.org/${pub.doi}` : (pub.url ? ` ${pub.url}` : '');
-      return `${authors}${year}${title}${outlet}${volno}${pages}.${doi}`;
-    }
-
-    function renderPublications(lang){
-      const journalsList=document.getElementById('publications-journals-list');
-      const chaptersList=document.getElementById('publications-chapters-list');
-      journalsList.innerHTML=''; chaptersList.innerHTML='';
-      const sorted=[...publicationsCache].sort((a,b)=> (b.year||'').localeCompare(a.year||''));
-      sorted.forEach(pub=>{
-        const isChapter = pub.type==='incollection' || !!pub.booktitle;
-        const item=document.createElement('div'); item.className='pub-item';
-        const refHTML = formatApaReference(pub, lang);
-        const abstractHTML = pub.abstract ? `
-          <button type="button" class="abstract-toggle">${ABSTRACT_LABELS[lang].show}</button>
-          <div class="pub-abstract">${cleanLatex(pub.abstract)}</div>` : '';
-        item.innerHTML = `<div class="pub-ref">${refHTML}</div>${abstractHTML}`;
-        (isChapter ? chaptersList : journalsList).appendChild(item);
-      });
-    }
-
-    async function loadBibtex(){
-      const loading = document.querySelector('#publications .loading');
-      try{
-        const resp = await fetch('./library.bib?t='+Date.now());
-        if(!resp.ok){ if(loading) loading.textContent='No se pudo cargar library.bib'; return; }
-        const text = await resp.text();
-        publicationsCache = parseBibtex(text);
-        renderPublications(currentLang);
-        if (loading) loading.style.display='none';
-      }catch{ if(loading) loading.textContent='Error al cargar publicaciones'; }
-    }
-
-    /* ====== IMPORTAR desde cv_projects_page.html (sin parsers TeX) ====== */
-    async function importProjectsAndTalksFromHTML(){
-      const projLoading = document.querySelector('#projects .loading');
-      const confLoading = document.querySelector('#conferences .loading');
-      const projContainer = document.getElementById('projects-list');
-      const confContainer = document.getElementById('conferences-list');
-
-      try{
-        const resp = await fetch('./cv_projects_page.html?t='+Date.now());
-        if(!resp.ok) throw new Error('No se pudo leer cv_projects_page.html');
-        const html = await resp.text();
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-
-        // Proyectos: .project-card => nuestros .proj-item
-        const cards = [...doc.querySelectorAll('.project-card')];
-        projContainer.innerHTML='';
-        cards.forEach(card=>{
-          const title = card.querySelector('.project-title')?.textContent?.trim() || '';
-          const role = card.querySelector('.project-role')?.textContent?.trim() || '';
-          const details = card.querySelector('.project-details')?.textContent?.trim() || '';
-          const period = card.querySelector('.project-period')?.textContent?.trim() || '';
-
-          const el = document.createElement('div');
-          el.className='proj-item';
-          el.innerHTML = `
-            <div class="proj-header">
-              <div class="proj-period">${period}</div>
-            </div>
-            <div class="proj-title">${title}</div>
-            <div class="proj-meta">
-              ${details ? `<div class="proj-funding">${details}</div>`:''}
-              ${role ? `<div class="proj-role">${role}</div>`:''}
-            </div>`;
-          projContainer.appendChild(el);
-        });
-        if (projLoading) projLoading.style.display='none';
-
-        // Presentaciones: .presentation-item => nuestros .talk-item
-        const talks = [...doc.querySelectorAll('.presentation-item')];
-        confContainer.innerHTML='';
-        talks.forEach(t=>{
-          const y = t.querySelector('.presentation-year')?.textContent?.trim() || '';
-          const title = t.querySelector('.presentation-title')?.textContent?.trim() || '';
-          const event = t.querySelector('.presentation-event')?.textContent?.trim() || '';
-          const loc = t.querySelector('.presentation-location')?.textContent?.trim() || '';
-          const rest = [title, event, loc].filter(Boolean).join(' — ');
-          const item = document.createElement('div');
-          item.className='talk-item';
-          item.innerHTML = `
-            <div class="year-badge">${y || (extractYear(rest)>0 ? extractYear(rest) : '')}</div>
-            <div class="talk-content"><strong>${rest}</strong></div>`;
-          confContainer.appendChild(item);
-        });
-        if (confLoading) confLoading.style.display='none';
-      }catch(e){
-        if (projLoading) projLoading.textContent = 'No se pudo cargar cv_projects_page.html';
-        if (confLoading) confLoading.textContent = 'No se pudo cargar cv_projects_page.html';
-      }
-    }
-
-    /* ====== Render básico de cabeceras / navegación ====== */
-    function updateNavigation(lang){
-      const nav = CONTENT[lang].nav;
-      document.getElementById('affil').textContent = CONTENT[lang].affil;
-      document.getElementById('nav-general').textContent = nav[0];
-      document.getElementById('nav-education').textContent = nav[1];
-      document.getElementById('nav-experience').textContent = nav[2];
-      document.getElementById('nav-publications').textContent = nav[3];
-      document.getElementById('nav-projects').textContent = nav[4];
-      document.getElementById('nav-conferences').textContent = nav[5];
-      document.getElementById('nav-awards').textContent = nav[6];
-
-      document.getElementById('general-title').textContent = CONTENT[lang].generalTitle;
-      document.getElementById('education-title').textContent = CONTENT[lang].educationTitle;
-      document.getElementById('experience-title').textContent = CONTENT[lang].experienceTitle;
-      document.getElementById('publications-title').textContent = CONTENT[lang].publicationsTitle;
-      document.getElementById('projects-title').textContent = CONTENT[lang].projectsTitle;
-      document.getElementById('conferences-title').textContent = CONTENT[lang].conferencesTitle;
-      document.getElementById('awards-title').textContent = CONTENT[lang].awardsTitle;
-      document.getElementById('pub-journals-title').textContent = CONTENT[lang].publicationsJournalsTitle;
-      document.getElementById('pub-chapters-title').textContent = CONTENT[lang].publicationsChaptersTitle;
-    }
-    function renderGeneral(lang){ document.getElementById('general-box').innerHTML = CONTENT[lang].generalHTML; }
-    function renderEducation(){ /* contenido propio si lo deseas */ }
-    function renderExperience(){ /* contenido propio si lo deseas */ }
-    function renderAwards(){ /* contenido propio si lo deseas */ }
-
-    function renderAll(lang){
-      updateNavigation(lang);
-      renderGeneral(lang);
-      renderEducation();
-      renderExperience();
-      renderAwards();
-      renderPublications(lang);
-      // OJO: ya no hay render de proyectos/presentaciones de TeX
-    }
-
-    function toggleLanguage(){
-      currentLang = currentLang === 'es' ? 'en' : 'es';
-      renderAll(currentLang);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      currentLang = 'es';
-      renderAll('es');
-      loadBibtex();                               // ← único render basado en .bib
-      importProjectsAndTalksFromHTML();           // ← trae Proyectos/Presentaciones desde cv_projects_page.html
-      document.getElementById('lang-btn')?.addEventListener('click', toggleLanguage);
-
-      // Delegación para mostrar/ocultar resúmenes
-      document.addEventListener('click', (e)=>{
-        if (e.target.classList.contains('abstract-toggle')) {
-          const btn = e.target; const abs = btn.nextElementSibling; if(!abs) return;
-          const hidden = abs.style.display==='' || abs.style.display==='none';
-          abs.style.display = hidden ? 'block' : 'none';
-          btn.textContent = hidden ? ABSTRACT_LABELS[currentLang].hide : ABSTRACT_LABELS[currentLang].show;
-        }
-      });
-    });
-  </script>
-</body>
-</html>
