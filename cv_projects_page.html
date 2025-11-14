@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos y Presentaciones - Andrés M. Vallone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.3em;
+            color: #2a5298;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-details {
+            color: #555;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .project-period {
+            color: #888;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        .presentation-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .presentation-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 3px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .presentation-year {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .presentation-title {
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .presentation-event {
+            color: #2a5298;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .presentation-location {
+            color: #888;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Andrés Marcelo Vallone</h1>
+            <p>Profesor Asociado · Universidad Católica del Norte</p>
+        </div>
+
+        <div class="content">
+            <!-- Sección de Proyectos -->
+            <div class="section">
+                <h2 class="section-title">Participación en Proyectos</h2>
+
+                <div class="project-card">
+                    <div class="project-title">Mapa de desigualdad para las caletas del área costera de Chile</div>
+                    <div class="project-role">Director</div>
+                    <div class="project-details">FONDO CONVENIOS DE DESEMPEÑO 2023, UNIVERSIDAD CATÓLICA DEL NORTE, CHILE</div>
+                    <div class="project-period">2023 - 2025</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Programa Fortalece PyME Coquimbo - Red de asistencia digital fortalece PyME</div>
+                    <div class="project-role">Director</div>
+                    <div class="project-details">CORPORACIÓN DE FOMENTO DE LA PRODUCCIÓN (CORFO), COEJECUTADO CON ASOEX, CHILE</div>
+                    <div class="project-period">2021 - 2024</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Observatorio de turismo sustentable de la Región de Coquimbo</div>
+                    <div class="project-role">Investigador</div>
+                    <div class="project-details">SERVICIO NACIONAL DE CAPACITACIÓN Y EMPLEO, CHILE</div>
+                    <div class="project-period">2021 - 2021</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Nodo Laboratorio Natural Océano Centro-Norte, Concurso para el Desarrollo de Nodos de Aceleración del Impacto Territorial de la CTCI</div>
+                    <div class="project-role">Investigador</div>
+                    <div class="project-details">AGENCIA NACIONAL DE INVESTIGACIÓN Y DESARROLLO, CHILE</div>
+                    <div class="project-period">2022 - 2026</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Seguimiento y evaluación para la optimización de la gestión de residuos en establecimientos de atención de salud mediante una plataforma tecnológica N° IT20I10084 - IX Concurso FONDEF IDeA - Investigación Tecnológica 2020</div>
+                    <div class="project-role">Director Alterno - Investigador</div>
+                    <div class="project-details">AGENCIA NACIONAL DE INVESTIGACIÓN Y DESARROLLO, CHILE</div>
+                    <div class="project-period">2021 - 2023</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Trabajo de sistematización de los avances y estado del arte de la iniciativa Corredor Biocéanico Central y los avances en la gestión del desarrollo y construcción del Túnel Binacional Agua Negra</div>
+                    <div class="project-role">Investigador</div>
+                    <div class="project-details">AGENCIA CHILENA DE COOPERACIÓN INTERNACIONAL PARA EL DESARROLLO, CHILE</div>
+                    <div class="project-period">2021-2022</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Barómetro de la Construcción</div>
+                    <div class="project-role">Investigador</div>
+                    <div class="project-details">CÁMARA CHILENA DE LA CONSTRUCCIÓN - SERVICIO NACIONAL DE CAPACITACIÓN Y EMPLEO, CHILE</div>
+                    <div class="project-period">2021 - 2022</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Atlas de Extremadura</div>
+                    <div class="project-role">Colaborador</div>
+                    <div class="project-details">INSTITUTO DE ESTADÍSTICAS DE EXTREMADURA, COMUNIDAD AUTÓNOMA DE EXTREMADURA, ESPAÑA</div>
+                    <div class="project-period">2017, 2019, 2023</div>
+                </div>
+            </div>
+
+            <!-- Sección de Presentaciones -->
+            <div class="section">
+                <h2 class="section-title">Presentaciones</h2>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2025</span>
+                    <div class="presentation-title">Vallone, A. & Olivares-Arenas, M, "Inequality Map for the Caletas of Chile's Coastal Area"</div>
+                    <div class="presentation-event">2025 RSA Annual Conference</div>
+                    <div class="presentation-location">University of Porto. Porto, Portugal</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2025</span>
+                    <div class="presentation-title">Gonzalez, F & Vallone, A., "Consumo de alcohol y accidentes de tránsito en Chile"</div>
+                    <div class="presentation-event">III Congreso RedCERT</div>
+                    <div class="presentation-location">Universidad Católica del Norte, Coquimbo, Chile</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2024</span>
+                    <div class="presentation-title">Vallone, A., "Mapa de desigualdad de las caletas del área costera de Chile"</div>
+                    <div class="presentation-event">II Congreso RedCERT</div>
+                    <div class="presentation-location">Universidad Católica de Temuco. Temuco, Chile</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2023</span>
+                    <div class="presentation-title">Vallone, A., "Transformación Tecnológica del sector agrícola"</div>
+                    <div class="presentation-event">Seminario Internacional AGRO 5.0</div>
+                    <div class="presentation-location">Universidad Católica de Cuyo. San Juan, Argentina</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2022</span>
+                    <div class="presentation-title">Balaguera-Quintero, A., Vallone, A., & Igor-Tapia, S., "Carbon footprint estimation for la serena-coquimbo conurbation based on global protocol for community-scale greenhouse gas emission inventories (gpc)"</div>
+                    <div class="presentation-event">7mo Encuentro de la Red de Centros de Estudios Regionales y Territoriales de Universidades Chilenas</div>
+                    <div class="presentation-location">Temuco, Chile</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2022</span>
+                    <div class="presentation-title">Vallone, A. y Morales, C., "Crisis hídrica en Chile, Acciones a nivel micro"</div>
+                    <div class="presentation-event">Segundo Conservatorio Regional sobre crisis hídrica, "¿Hay Agua en Argentina?"</div>
+                    <div class="presentation-location">Seminario online organizado por la Universidad Católica de Cuyo. San Juan, Argentina</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2020</span>
+                    <div class="presentation-title">Vallone, A., "Beyond GDP: an analysis of the socio-economic diversity of European regions"</div>
+                    <div class="presentation-event">QuaRCS-lab Webinar Series 2020</div>
+                    <div class="presentation-location">Co-organized by the Japan Society for International Development (Tokai Branch) and Nagoya University's Graduate School of International Development</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2018</span>
+                    <div class="presentation-title">Vallone, A. y Chasco, C., "Spatio-temporal methods for the analysis of the Chilean urban system dynamics"</div>
+                    <div class="presentation-event">17th Workshop on Spatial Econometrics and Statistics</div>
+                    <div class="presentation-location">Dijon, Francia</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2017</span>
+                    <div class="presentation-title">Vallone, A. y Chasco, C., "Some strategies to access web-based urban spatial data for socioeconomic research using R."</div>
+                    <div class="presentation-event">ECONRES Research Group Workshop</div>
+                    <div class="presentation-location">Madrid, España</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2016</span>
+                    <div class="presentation-title">Vallone, A., Chasco, C. y Atienza, M., "Space, time and cities. Analysis of the concentration and dynamics of the Chilean urban system"</div>
+                    <div class="presentation-event">63th North American Regional Science Council Meeting</div>
+                    <div class="presentation-location">Minneapolis, E.E.U.U.</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2016</span>
+                    <div class="presentation-title">Vallone, A., Chasco, C. y Atienza, M., "Space, time and cities. Analysis of the concentration and dynamics of the Chilean urban system"</div>
+                    <div class="presentation-event">AQR Research Group Seminar</div>
+                    <div class="presentation-location">Barcelona, España</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2016</span>
+                    <div class="presentation-title">Vallone, A., Chasco, C. y Atienza, M., "Space, time and cities. Analysis of the concentration and dynamics of the Chilean urban system"</div>
+                    <div class="presentation-event">ECONRES Research Group Seminar</div>
+                    <div class="presentation-location">Madrid, España</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2016</span>
+                    <div class="presentation-title">Vallone, A., "Discrete Markov Chain. Theory and use"</div>
+                    <div class="presentation-event">ECONRES Research Group Seminar</div>
+                    <div class="presentation-location">Madrid, España</div>
+                </div>
+
+                <div class="presentation-item">
+                    <span class="presentation-year">2015</span>
+                    <div class="presentation-title">Vallone, A. y Atienza, M., "Concentration, Development and the evolution of the urban system in Chile between 1885 and 2012"</div>
+                    <div class="presentation-event">12th EU REAL Workshop</div>
+                    <div class="presentation-location">Madrid, España</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
