@@ -385,52 +385,152 @@
       text-align: justify;
     }
 
-    /* PRESENTATIONS */
+ /* PRESENTATIONS */
     .talk-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 20px;
     }
 
     .talk-item {
       display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 16px;
-      background: var(--card);
-      padding: 16px 20px;
-      border-radius: 10px;
-      border-left: 4px solid var(--green);
-      box-shadow: 0 2px 6px rgba(0,0,0,.04);
-      transition: transform 0.2s, box-shadow 0.2s;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      background: linear-gradient(145deg, #ffffff 0%, #fafaf8 100%);
+      padding: 24px 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.04);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(94, 112, 80, 0.1);
+    }
+
+    .talk-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--green) 0%, var(--accent) 50%, var(--green) 100%);
+      transition: all 0.4s ease;
+    }
+
+    .talk-item::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(94, 112, 80, 0.03) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .talk-item:hover {
-      transform: translateX(4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 32px rgba(0,0,0,.15), 0 4px 8px rgba(0,0,0,.08);
+      border-color: rgba(94, 112, 80, 0.25);
+    }
+
+    .talk-item:hover::before {
+      width: 6px;
+      box-shadow: 2px 0 8px rgba(94, 112, 80, 0.4);
+    }
+
+    .talk-item:hover::after {
+      opacity: 1;
     }
 
     .year-badge {
       align-self: flex-start;
-      background: linear-gradient(135deg, #e7efe6 0%, #d4e4d1 100%);
-      color: var(--green);
-      border: 2px solid var(--green);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
+      background: linear-gradient(135deg, #5e7050 0%, #4a5a3f 50%, #3d4d35 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 16px 10px;
+      font-weight: 800;
+      font-size: 1.4rem;
       text-align: center;
-      min-width: 60px;
+      min-width: 85px;
+      box-shadow: 0 6px 16px rgba(94, 112, 80, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+      position: relative;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .year-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+      border-radius: 12px;
+    }
+
+    .year-badge::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: rgba(188, 125, 56, 0.6);
+      border-radius: 2px;
+    }
+
+    .talk-item:hover .year-badge {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(94, 112, 80, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .talk-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .talk-content strong {
       color: var(--primary);
-      font-size: 1.05rem;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      display: block;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .talk-item:hover .talk-content strong {
+      color: var(--green);
     }
 
     .talk-meta {
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 6px;
+      font-size: 0.96rem;
+      margin-top: 2px;
+      line-height: 1.7;
+      padding-left: 16px;
+      border-left: 2px solid rgba(188, 125, 56, 0.3);
+    }
+
+    .talk-icon {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      opacity: 0.08;
+      transition: all 0.4s ease;
+    }
+
+    .talk-item:hover .talk-icon {
+      opacity: 0.15;
+      transform: rotate(12deg) scale(1.1);
     }
 
     /* PROJECTS */
