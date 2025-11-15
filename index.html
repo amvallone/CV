@@ -503,10 +503,33 @@
       display: block;
       font-weight: 600;
       transition: color 0.3s ease;
+      margin-bottom: 8px;
     }
 
     .talk-item:hover .talk-content strong {
       color: var(--green);
+    }
+
+    .talk-event {
+      color: var(--green);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .talk-location {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .talk-location::before {
+      content: '📍';
+      font-size: 0.9rem;
     }
 
     .talk-meta {
@@ -532,7 +555,7 @@
       opacity: 0.15;
       transform: rotate(12deg) scale(1.1);
     }
-
+    
     /* PROJECTS */
     .proj-list {
       display: flex;
