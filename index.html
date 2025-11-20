@@ -1348,15 +1348,18 @@
       sorted.forEach(conf => {
         const year = String(conf.year || '').replace(/<[^>]+>/g, '');
         const parts = conf.parts || [];
-        const restText = parts.join(' — ');
-        const fullText = [year, restText].filter(Boolean).join(' — ');
+        const title = parts[0] || '';      // Título
+        const event = parts[1] || '';      // Conferencia
+        const location = parts[2] || '';   // Lugar
 
         const item = document.createElement('div');
         item.className = 'talk-item';
         item.innerHTML = `
           <div class="year-badge">${year}</div>
           <div class="talk-content">
-            <strong>${cleanLatex(fullText)}</strong>
+            <strong>${cleanLatex(title)}</strong>
+            <div class="talk-event">${cleanLatex(event)}</div>
+            <div class="talk-location">${cleanLatex(location)}</div>
           </div>`;
         container.appendChild(item);
       });
